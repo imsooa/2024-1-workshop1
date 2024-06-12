@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> {중괄호} </title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			@import url('https://webfontbox.github.io/Arita/font.css');
+			@import url('https://webfontbox.github.io/Arita/font.min.css');
+
+
+			html, body { margin: 0; padding: 0; height: 100%; overflow: hidden;}
+			html::-webkit-scrollbar, .본문::-webkit-scrollbar { display: none; }
+
+			/* 햄버거 메뉴 */
+
+				/*
+				 * Made by Erik Terwan
+				 * 24th of November 2015
+				 * MIT License
+				 *
+				 *
+				 * If you are thinking of using this in
+				 * production code, beware of the browser
+				 * prefixes.
+				 */
+
+				#menuToggle
+				{
+				  display: block;
+				  position: absolute;
+				  top: 2vw;
+				  left: 1vw;
+				  
+				  z-index: 1;
+				  
+				  -webkit-user-select: none;
+				  user-select: none;
+				}
+
+				#menuToggle a
+				{
+				  text-decoration: none;
+				  color: black;
+				  
+				  transition: color 0.3s ease;
+				}
+
+				#menuToggle a:hover
+				{
+				  color: skyblue;
+				}
+
+
+				#menuToggle input
+				{
+				  display: block;
+				  width: 3vw;
+				  height: 2vh;
+				  position: absolute;
+				  top: -1vw;
+				  left: -1vh;
+				  
+				  cursor: pointer;
+				  
+				  opacity: 0; /* hide this */
+				  z-index: 2; /* and place it over the hamburger */
+				  
+				  -webkit-touch-callout: none;
+				}
+
+				/*
+				 * Just a quick hamburger
+				 */
+				#menuToggle span
+				{
+				  display: block;
+				  width: 33px;
+				  height: 4px;
+				  margin-bottom: 5px;
+				  position: relative;
+				  
+				  background: black;
+				  
+				  z-index: 1;
+				  
+				  transform-origin: 4px 0px;
+				  
+				  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				              opacity 0.55s ease;
+				}
+
+				#menuToggle span:first-child
+				{
+				  transform-origin: 0% 0%;
+				}
+
+				#menuToggle span:nth-last-child(2)
+				{
+				  transform-origin: 0% 100%;
+				}
+
+				/* 
+				 * Transform all the slices of hamburger
+				 * into a crossmark.
+				 */
+				#menuToggle input:checked ~ span
+				{
+				  opacity: 1;
+				  transform: rotate(45deg) translate(-2px, -1px);
+				  background: black;
+				}
+
+				/*
+				 * But let's hide the middle one.
+				 */
+				#menuToggle input:checked ~ span:nth-last-child(3)
+				{
+				  opacity: 0;
+				  transform: rotate(0deg) scale(0.2, 0.2);
+				}
+
+				/*
+				 * Ohyeah and the last one should go the other direction
+				 */
+				#menuToggle input:checked ~ span:nth-last-child(2)
+				{
+				  transform: rotate(-45deg) translate(0, -1px);
+				}
+
+				/*
+				 * Make this absolute positioned
+				 * at the top left of the screen
+				 */
+				#menu
+				{
+				  position: absolute;
+				  width: 11vw;
+				  margin: -100px 0 0 -50px;
+				  padding: 50px;
+				  padding-top: 125px;
+				  
+				  background: #fff;
+				  list-style-type: none;
+				  -webkit-font-smoothing: antialiased;
+				  /* to stop flickering of text in safari */
+				  
+				  transform-origin: 0% 0%;
+				  transform: translate(-100%, 0);
+				  
+				  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+				}
+
+				#menu li
+				{ 
+				  font-family: 'Arita';
+				  padding: 10px 0;
+				  font-size: 22px;
+				}
+
+				/*
+				 * And let's slide it in from the left
+				 */
+				#menuToggle input:checked ~ ul
+				{
+				  transform: none;
+				}
+
+
+			.main {
+				font-family: 'Arita buri', serif; 
+				font-weight: 500;
+				outline: 1px solid black;
+				background-color: white;
+				width: 50vw;
+				height: 100vh;
+				float: left;
+				display: flex;
+    			align-items: center;
+			}
+
+			.select {
+				font-family: 'Arita buri', serif;
+				font-weight: 500;
+				font-size: 40pt;
+				outline: 1px solid black;
+				background-color: #A5A5A5;
+				width: 50vw;
+				height: 100vh;
+				float: left;
+				display: flex;
+    			align-items: center;	
+			}	
+
+			.select_text {
+				width: 44vw;
+				margin: 0 auto;
+			}
+
+			.select_p {font-size: 32pt;}
+
+			a {
+				text-decoration: none;
+				color: black;
+			}
+
+			a:hover {color: white;}
+
+			.main_text {
+				width: 40vw;
+				margin: 0 auto;
+			}
+
+			.main_headline {
+				font-size: 36pt;
+				font-weight: 600;
+				text-align: center;
+				margin: 4vh;
+			} 
+
+			span {
+				font-size: 22pt;
+				color: black;
+			}
+
+			ul {
+				font-size: 18pt;
+				line-height: 1.5;
+				color: #A5A5A5;
+				list-style-type: none;
+			}
+
+			li {margin: 10px;}
+
+			.본문 {
+				height: 70vh;
+				overflow: auto;
+			}
+
+			.뒷문장 {margin-left: 3vw;}
+
+		</style>
+	</head>
+
+
+	<body>
+		<!--    Made by Erik Terwan    -->
+		<!--   24th of November 2015   -->
+		<!--        MIT License        -->
+		<nav role="navigation">
+		  <div id="menuToggle">
+		    <!--
+		    A fake / hidden checkbox is used as click reciever,
+		    so you can use the :checked selector on it.
+		    -->
+		    <input type="checkbox" />
+		    
+		    <!--
+		    Some spans to act as a hamburger.
+		    
+		    They are acting like a real hamburger,
+		    not that McDonalds stuff.
+		    -->
+		    <span></span>
+		    <span></span>
+		    <span></span>
+		    
+		    <!--
+		    Too bad the menu has to be inside of the button
+		    but hey, it's pure CSS magic.
+		    -->
+		    <ul id="menu">
+		      <a href="index.html"><li>Main</li></a>
+		      <a href="default_hangeul.html"><li>한글</li></a>
+		      <a href="default_latin.html"><li>라틴</li></a>
+		      <a href="default_munjang.html"><li>문장부호</li></a>
+		    </ul>
+		  </div>
+		</nav>
+
+		<div class="select"> 
+			<div class="select_text">
+				<div class="select_p"> 글의 뜻을 효과적으로 표현하고 논리적으로 밝혀 문장의 이해에 오해가 없도록 하기 위해 사용하는 부호. </div>
+					<a href="mun_finalpyo.html"> 마침.표</a>, 
+					<a href="mun_quepyo.html"> 물음?표</a>, 
+					<a href="mun_feelpyo.html"> 느낌!표</a>, 
+					<a href="mun_comma.html"> 쉼,표</a>, <br>
+					<a href="mun_centerdot.html"> 가운뎃·점</a>, 
+					<a href="mun_doubledot.html"> 쌍:점</a>, 
+					<a href="mun_slash.html"> 빗/금</a>, <br>
+					<a href="mun_bigdda.html"> “큰따옴표”</a>, 
+					<a href="mun_smalldda.html"> ‘작은따옴표’</a>, <br> 
+					<a href="mun_doublenat.html"> 『겹낫표』</a>,
+					<a href="mun_singlenat.html"> 「홑낫표」</a>, <br> 
+					<a href="mun_doublehwa.html"> 《겹화살괄호》</a>,
+					<a href="mun_singlehwa.html"> 〈홑화살괄호〉</a>, <br> 
+					<a href="mun_sho.html"> (소괄호)</a>, 
+					<a href="#" style="color: white;"> {중괄호}</a>, 
+					<a href="mun_lho.html"> [대괄호]</a>,<br> 
+					<a href="mun_butimpyo.html"> 붙임-표</a>,
+					<a href="mun_linepyo.html"> 줄―표</a>,
+					<a href="mun_wave.html"> 물결~표</a>, <br> 
+					<a href="mun_simplepyo.html"> 줄임……표</a> 
+				<div class="select_p" style="display: inline;"> 등이 있다. </div>
+			</div>
+		</div>
+
+		<div class="main">
+			<div class="main_text">
+				<div class="main_headline"> {중괄호} </div>
+				<div class="main_p">
+					<div class="본문">
+						<span> (1) 같은 범주에 속하는 여러 요소를 세로로 묶어서 보일 때 쓴다. </span> <br>
+						<ul style="width: 17vw; float: left;">
+							<li style="height: 80px; line-height: 80px;"> 주격 조사 </li>
+							<li style="height: 120px; line-height: 120px;"> 국가의 성립 요소 </li>
+						</ul>
+
+						<ul style="width: 17vw; float:left;">
+							<li style="height: 80px; line-height: 80px;"> <img src="https://i.imgur.com/R3bwoFw.png"> </li>
+							<li style="height: 120px; line-height: 120px;"> <img src="https://i.imgur.com/WVTzEFd.png"> </li>
+						</ul>
+
+
+						<br> <br>
+						
+						<span> (2) 열거된 항목 중 어느 하나가 자유롭게 선택될 수 있음을 보일 때 쓴다. </span> <br>
+						<ul>
+							<li> 아이들이 모두 학교{에, 로, 까지} 갔어요. </li>
+						</ul>
+
+						<br> <span class="뒷문장">
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

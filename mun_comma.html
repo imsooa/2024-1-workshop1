@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> 쉼,표 </title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			@import url('https://webfontbox.github.io/Arita/font.css');
+			@import url('https://webfontbox.github.io/Arita/font.min.css');
+
+
+			html, body { margin: 0; padding: 0; height: 100%; overflow: hidden;}
+			html::-webkit-scrollbar, .본문::-webkit-scrollbar { display: none; }
+
+			/* 햄버거 메뉴 */
+
+				/*
+				 * Made by Erik Terwan
+				 * 24th of November 2015
+				 * MIT License
+				 *
+				 *
+				 * If you are thinking of using this in
+				 * production code, beware of the browser
+				 * prefixes.
+				 */
+
+				#menuToggle
+				{
+				  display: block;
+				  position: absolute;
+				  top: 2vw;
+				  left: 1vw;
+				  
+				  z-index: 1;
+				  
+				  -webkit-user-select: none;
+				  user-select: none;
+				}
+
+				#menuToggle a
+				{
+				  text-decoration: none;
+				  color: black;
+				  
+				  transition: color 0.3s ease;
+				}
+
+				#menuToggle a:hover
+				{
+				  color: skyblue;
+				}
+
+
+				#menuToggle input
+				{
+				  display: block;
+				  width: 3vw;
+				  height: 2vh;
+				  position: absolute;
+				  top: -1vw;
+				  left: -1vh;
+				  
+				  cursor: pointer;
+				  
+				  opacity: 0; /* hide this */
+				  z-index: 2; /* and place it over the hamburger */
+				  
+				  -webkit-touch-callout: none;
+				}
+
+				/*
+				 * Just a quick hamburger
+				 */
+				#menuToggle span
+				{
+				  display: block;
+				  width: 33px;
+				  height: 4px;
+				  margin-bottom: 5px;
+				  position: relative;
+				  
+				  background: black;
+				  
+				  z-index: 1;
+				  
+				  transform-origin: 4px 0px;
+				  
+				  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				              opacity 0.55s ease;
+				}
+
+				#menuToggle span:first-child
+				{
+				  transform-origin: 0% 0%;
+				}
+
+				#menuToggle span:nth-last-child(2)
+				{
+				  transform-origin: 0% 100%;
+				}
+
+				/* 
+				 * Transform all the slices of hamburger
+				 * into a crossmark.
+				 */
+				#menuToggle input:checked ~ span
+				{
+				  opacity: 1;
+				  transform: rotate(45deg) translate(-2px, -1px);
+				  background: black;
+				}
+
+				/*
+				 * But let's hide the middle one.
+				 */
+				#menuToggle input:checked ~ span:nth-last-child(3)
+				{
+				  opacity: 0;
+				  transform: rotate(0deg) scale(0.2, 0.2);
+				}
+
+				/*
+				 * Ohyeah and the last one should go the other direction
+				 */
+				#menuToggle input:checked ~ span:nth-last-child(2)
+				{
+				  transform: rotate(-45deg) translate(0, -1px);
+				}
+
+				/*
+				 * Make this absolute positioned
+				 * at the top left of the screen
+				 */
+				#menu
+				{
+				  position: absolute;
+				  width: 11vw;
+				  margin: -100px 0 0 -50px;
+				  padding: 50px;
+				  padding-top: 125px;
+				  
+				  background: #fff;
+				  list-style-type: none;
+				  -webkit-font-smoothing: antialiased;
+				  /* to stop flickering of text in safari */
+				  
+				  transform-origin: 0% 0%;
+				  transform: translate(-100%, 0);
+				  
+				  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+				}
+
+				#menu li
+				{ 
+				  font-family: 'Arita';
+				  padding: 10px 0;
+				  font-size: 22px;
+				}
+
+				/*
+				 * And let's slide it in from the left
+				 */
+				#menuToggle input:checked ~ ul
+				{
+				  transform: none;
+				}
+
+
+			.main {
+				font-family: 'Arita buri', serif; 
+				font-weight: 500;
+				outline: 1px solid black;
+				background-color: white;
+				width: 50vw;
+				height: 100vh;
+				float: left;
+				display: flex;
+    			align-items: center;
+			}
+
+			.select {
+				font-family: 'Arita buri', serif;
+				font-weight: 500;
+				font-size: 40pt;
+				outline: 1px solid black;
+				background-color: #A5A5A5;
+				width: 50vw;
+				height: 100vh;
+				float: left;
+				display: flex;
+    			align-items: center;	
+			}	
+
+			.select_text {
+				width: 44vw;
+				margin: 0 auto;
+			}
+
+			.select_p {font-size: 32pt;}
+
+			a {
+				text-decoration: none;
+				color: black;
+			}
+
+			a:hover {color: white;}
+
+			.main_text {
+				width: 40vw;
+				margin: 0 auto;
+			}
+
+			.main_headline {
+				font-size: 36pt;
+				font-weight: 600;
+				text-align: center;
+				margin: 4vh;
+			} 
+
+			span {
+				font-size: 22pt;
+				color: black;
+			}
+
+			ul {
+				font-size: 18pt;
+				line-height: 1.5;
+				color: #A5A5A5;
+				list-style-type: none;
+			}
+
+			li {margin: 10px;}
+
+			.본문 {
+				height: 70vh;
+				overflow: auto;
+			}
+
+			.뒷문장 {margin-left: 3vw;}
+
+		</style>
+	</head>
+
+
+	<body>
+		<!--    Made by Erik Terwan    -->
+		<!--   24th of November 2015   -->
+		<!--        MIT License        -->
+		<nav role="navigation">
+		  <div id="menuToggle">
+		    <!--
+		    A fake / hidden checkbox is used as click reciever,
+		    so you can use the :checked selector on it.
+		    -->
+		    <input type="checkbox" />
+		    
+		    <!--
+		    Some spans to act as a hamburger.
+		    
+		    They are acting like a real hamburger,
+		    not that McDonalds stuff.
+		    -->
+		    <span></span>
+		    <span></span>
+		    <span></span>
+		    
+		    <!--
+		    Too bad the menu has to be inside of the button
+		    but hey, it's pure CSS magic.
+		    -->
+		    <ul id="menu">
+		      <a href="index.html"><li>Main</li></a>
+		      <a href="default_hangeul.html"><li>한글</li></a>
+		      <a href="default_latin.html"><li>라틴</li></a>
+		      <a href="default_munjang.html"><li>문장부호</li></a>
+		    </ul>
+		  </div>
+		</nav>
+
+		<div class="select"> 
+			<div class="select_text">
+				<div class="select_p"> 글의 뜻을 효과적으로 표현하고 논리적으로 밝혀 문장의 이해에 오해가 없도록 하기 위해 사용하는 부호. </div>
+					<a href="mun_finalpyo.html"> 마침.표</a>, 
+					<a href="mun_quepyo.html"> 물음?표</a>, 
+					<a href="mun_feelpyo.html"> 느낌!표</a>, 
+					<a href="#" style="color: white;"> 쉼,표</a>, <br>
+					<a href="mun_centerdot.html"> 가운뎃·점</a>, 
+					<a href="mun_doubledot.html"> 쌍:점</a>, 
+					<a href="mun_slash.html"> 빗/금</a>, <br>
+					<a href="mun_bigdda.html"> “큰따옴표”</a>, 
+					<a href="mun_smalldda.html"> ‘작은따옴표’</a>, <br> 
+					<a href="mun_doublenat.html"> 『겹낫표』</a>,
+					<a href="mun_singlenat.html"> 「홑낫표」</a>, <br> 
+					<a href="mun_doublehwa.html"> 《겹화살괄호》</a>,
+					<a href="mun_singlehwa.html"> 〈홑화살괄호〉</a>, <br> 
+					<a href="mun_sho.html"> (소괄호)</a>, 
+					<a href="mun_mho.html"> {중괄호}</a>, 
+					<a href="mun_lho.html"> [대괄호]</a>,<br> 
+					<a href="mun_butimpyo.html"> 붙임-표</a>,
+					<a href="mun_linepyo.html"> 줄―표</a>,
+					<a href="mun_wave.html"> 물결~표</a>, <br> 
+					<a href="mun_simplepyo.html"> 줄임……표</a> 
+				<div class="select_p" style="display: inline;"> 등이 있다. </div>
+			</div>
+		</div>
+
+		<div class="main">
+			<div class="main_text">
+				<div class="main_headline"> 쉼,표 </div>
+				<div class="main_p">
+					<div class="본문">
+						<span> (1) 같은 자격의 어구를 열거할 때 그 사이에 쓴다. </span> <br>
+						<ul>
+							<li> 근면, 검소, 협동은 우리 겨레의 미덕이다. </li>
+							<li> 충청도의 계룡산, 전라도의 내장산, 강원도의 설악산은 모두 국립 공원이다. </li>
+							<li> 집을 보러 가면 그 집이 내가 원하는 조건에 맞는지, 살기에 편한지, 망가진
+							곳은 없는지 확인해야 한다. </li>
+							<li> 5보다 작은 자연수는 1, 2, 3, 4이다. </li>
+						</ul>
+
+						<br> <br>
+						
+						<span> (2) 짝을 지어 구별할 때 쓴다. </span> <br>
+						<ul>
+							<li> 닭과 지네, 개와 고양이는 상극이다. </li>
+						</ul>
+
+						<br> <br>
+						
+						<span> (3) 이웃하는 수를 개략적으로 나타낼 때 쓴다. </span> <br>
+						<ul>
+							<li> 5, 6세기 </li>
+							<li> 6, 7, 8개 </li>
+						</ul>
+
+						<br> <br>
+						
+						<span> (4) 열거의 순서를 나타내는 어구 다음에 쓴다. </span> <br>
+						<ul>
+							<li> 첫째, 몸이 튼튼해야 한다. </li>
+							<li> 마지막으로, 무엇보다 마음이 편해야 한다. </li>
+						</ul>
+
+						<br> <br>
+						
+						<span> (5) 문장의 연결 관계를 분명히 하고자 할 때 <br> <span class="뒷문장"> 절과 절 사이에 쓴다. </span> </span> <br>
+						<ul>
+							<li> 콩 심은 데 콩 나고, 팥 심은 데 팥 난다. </li>
+							<li> 저는 신뢰와 정직을 생명과 같이 여기고 살아온바, 이번 비리 사건과는 무관하다는 점을 분명히 밝힙니다. </li>
+							<li> 떡국은 설날의 대표적인 음식인데, 이걸 먹어야 비로소 나이도 한 살 더 먹는다고 한다. </li>
+						</ul>
+
+						<br> <br>
+						
+						<span> (6) 같은 말이 되풀이되는 것을 피하기 위하여 <br> <span class="뒷문장"> 일정한 부분을 줄여서 열거할 때 쓴다. </span> </span> <br>
+						<ul>
+							<li> 여름에는 바다에서, 겨울에는 산에서 휴가를 즐겼다. </li>
+						</ul>
+
+						<br> <br>
+						
+						<span> (7) 부르거나 대답하는 말 뒤에 쓴다. </span> <br>
+						<ul>
+							<li> 지은아, 이리 좀 와 봐. </li>
+							<li> 네, 지금 가겠습니다. </li>
+						</ul>
+
+						<br> <br>
+						
+						<span> (8) 한 문장 안에서 앞말을 ‘곧’, ‘다시 말해’ 등과 <br> <span class="뒷문장"> 같은 어구로 다시 설명할 때 앞말 다음에 쓴다. </span> </span> <br>
+						<ul>
+							<li> 책의 서문, 곧 머리말에는 책을 지은 목적이 드러나 있다. </li>
+							<li> 원만한 인간관계는 말과 관련한 예의, 즉 언어 예절을 갖추는 것에서 시작된다. </li>
+							<li> 호준이 어머니, 다시 말해 나의 누님은 올해로 결혼한 지 20년이 된다. </li>
+							<li> 나에게도 작은 소망, 이를테면 나만의 정원을 가졌으면 하는 소망이 있어. </li>
+						</ul>
+
+						<br> <br>
+						
+						<span> (9) 문장 앞부분에서 조사 없이 쓰인 제시어나 <br> <span class="뒷문장"> 주제어의 뒤에 쓴다. </span> </span> <br>
+						<ul>
+							<li> 돈, 돈이 인생의 전부이더냐? </li>
+							<li> 열정, 이것이야말로 젊은이의 가장 소중한 자산이다. </li>
+							<li> 지금 네가 여기 있다는 것, 그것만으로도 나는 충분히 행복해. </li>
+							<li> 저 친구, 저러다가 큰일 한번 내겠어. </li>
+							<li> 그 사실, 넌 알고 있었지? </li>
+
+						</ul>
+
+						<br> <br>
+						
+						<span> (10) 한 문장에 같은 의미의 어구가 반복될 때 <br> <span class="뒷문장" style="margin-left: 4vw;"> 앞에 오는 어구 다음에 쓴다. </span> </span> <br>
+						<ul>
+							<li> 그의 애국심, 몸을 사리지 않고 국가를 위해 헌신한 정신을 우리는 본받아야 한다. </li>
+						</ul>
+
+						<br> <br>
+						
+						<span> (11) 도치문에서 도치된 어구들 사이에 쓴다. </span> <br>
+						<ul>
+							<li> 이리 오세요, 어머님. </li>
+							<li> 다시 보자, 한강수야. </li>
+						</ul>
+
+						<br> <br>
+						
+						<span> (12) 바로 다음 말과 직접적인 관계에 있지 않음을 <br> <span class="뒷문장" style="margin-left: 4vw;"> 나타낼 때 쓴다. </span> </span> <br>
+						<ul>
+							<li> 갑돌이는, 울면서 떠나는 갑순이를 배웅했다. </li>
+							<li> 철원과, 대관령을 중심으로 한 강원도 산간 지대에 예년보다 일찍 첫눈이 내렸습니다. </li>
+						</ul>
+
+						<br> <br>
+						
+						<span> (13) 문장 중간에 끼어든 어구의 앞뒤에 쓴다. </span> <br>
+						<ul>
+							<li> 나는, 솔직히 말하면, 그 말이 별로 탐탁지 않아. </li>
+							<li> 영호는 미소를 띠고, 속으로는 화가 치밀어 올라 잠시라도 견딜 수 없을 만큼 괴로웠지만, 그들을 맞았다. </li>
+						</ul>
+
+						<br> <br>
+						
+						<span> (14) 특별한 효과를 위해 끊어 읽는 곳을 나타낼 때 <br> <span class="뒷문장" style="margin-left: 4vw;">  쓴다. </span> </span> <br>
+						<ul>
+							<li> 내가, 정말 그 일을 오늘 안에 해낼 수 있을까? </li>
+							<li> 이 전투는 바로 우리가, 우리만이, 승리로 이끌 수 있다. </li>
+						</ul>
+
+						<br> <br>
+						
+						<span> (15) 짧게 더듬는 말을 표시할 때 쓴다. </span> <br>
+						<ul>
+							<li> 선생님, 부, 부정행위라니요? 그런 건 새, 생각조차 하지 않았습니다. </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
