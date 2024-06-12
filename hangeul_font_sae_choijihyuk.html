@@ -6,13 +6,11 @@
 			@import url('https://webfontbox.github.io/Arita/font.css');
 			@import url('https://webfontbox.github.io/Arita/font.min.css');
 
-			@import url("https://use.typekit.net/pty8ipo.css");
-
 
 			html, body { margin: 0; padding: 0; height: 100%; overflow: hidden;}
 
 			/* 스크롤 */
-			html::-webkit-scrollbar, .text::-webkit-scrollbar, #life::-webkit-scrollbar, .sectiontext::-webkit-scrollbar { display: none; }
+			html::-webkit-scrollbar, .text::-webkit-scrollbar, #life::-webkit-scrollbar { display: none; }
 
 			/* 햄버거 메뉴 */
 
@@ -197,11 +195,11 @@
 			}
 
 
-			.main {width: 59.4vw; padding-left: 3vw; padding-right: 1.6vw; font-size: 16pt;}
+			.designer {width: 11vw; padding-left: 3vw; overflow: hidden; background-color: white;}
+			.main {width: 47vw;  font-size: 16pt;}
 			.type-print {width: 11vw; background-color: #A5A5A5;}
 			.art-design {width: 10vw; background-color: #C1C1C1;}
 			.history {width: 9vw; background-color: #E0E0E0;}    
-
 
 			.link {
 				font-size: 14pt;
@@ -209,7 +207,7 @@
 				padding: 15px;
 			}
 
-			a {text-decoration-line: none; color: black;}
+			a {text-decoration-line: none;}
 
 			#fontname {
 				font-family: 'Arita';
@@ -229,13 +227,13 @@
 				align-items: right;}
 			#fontname_group {width: 55vw;}
 
-			.section {padding: 3vh 0vh; border-bottom: 2px dotted black;}
-			.sectiontext {float: left; width: 32vw; height: 150px; overflow: auto;}
-			.sectionheadline {
-				margin-right: 2vh; width: 25vw; height: 160px; float: left;
-				font-size: 40pt; line-height: 1.3;
+			#life {
+				overflow: auto;
+				height: 35vh;
+				margin-top: 3vh;
 			}
-			.final {border: 0px;}
+
+			#designername {font-size: 24pt;}
 
 
 
@@ -250,10 +248,18 @@
 		    }
 
 
-			.mainimg {padding: 4vh 0vh; margin-bottom: 20px; height: 23vh; text-align: center;}
+
+			.img {}
+			.designerimg {margin: 2vh 0vh; height: 250px;}
+			.mainimg {margin: 3vh 0vh;  text-align: center; 
+				display: flex;
+				justify-content: center;
+			}
+
+			.sub {font-size: 10pt; text-align: left; padding: 0px 5px;}
 
 		</style>
-		<title>새활자시대</title>
+		<title>최지혁체</title>
 	</head>
 
 	<body>
@@ -283,15 +289,16 @@
 		    but hey, it's pure CSS magic.
 		    -->
 		    <ul id="menu">
-		     <a href="index.html"><li>Main</li></a>
-		     <a href="default_hangeul.html"><li>한글</li></a>
-		     <a href="default_latin.html"><li>라틴</li></a>
-		     <a href="default_munjang.html"><li>문장부호</li></a>
+		      <a href="index.html"><li>Main</li></a>
+		      <a href="default_hangeul.html"><li>한글</li></a>
+		      <a href="default_latin.html"><li>라틴</li></a>
+		      <a href="default_munjang.html"><li>문장부호</li></a>
 		    </ul>
 		  </div>
 		</nav>
 
-		<div class="title main">
+		<div class="title designer"> 디자이너 </div>
+		<div class="title main" style="background-color:white;">
 			<a href="hangeul_pc_yet.html"><div class="link">옛활자시대</div></a>
 			<a href="hangeul_pc_sae.html"><div class="link">새활자시대</div></a>
 			<a href="hangeul_pc_wondo.html"><div class="link">원도활자시대</div></a>
@@ -301,37 +308,32 @@
 		<div class="title art-design"> 예술&디자인 </div>
 		<div class="title history"> 역사 </div>
 
+		<div class="text designer">
+			<br> <span id="designername" style="line-height: 20.4pt;">최지혁</span> <br>
+			선일, 요한 <br>
+			1808 - 1878 <br>
+			충청남도 공주시 <br> <br>
+			조선후기 중국에서 『한불자뎐』, 『한어문전』 등의 편찬사업에 참여한 천주교인. <br><br>
+			활자 디자이너로 보기는 어렵지만 한글 활자 역사에서 상징적인 존재이다.
+		</div>
+
 		<div class="text main" style="background-color: #b8ff48;" >
 			<div id="fontname"> 
-				<div id="fontname_group"> 
-					새활자시대
-				</div>
-					<span class="fontname_small year">1864-1949</span> 
+				<div id="fontname_group"> 최지혁체 </div>
+				<span class="fontname_small year">1980 추정</span> 
 			</div>
+			<div class="img mainimg" > 
+				<div class="sub">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbtmyw-0sYPTl1_I_y-KCEksCvF_x_eSRIyw&s" style="height:400px;"> 
+					<br> 『셩경직해』(1897)의 큰 한글 활자와 2호 최지혁체
+				</div>
+				<img src="https://mblogthumb-phinf.pstatic.net/MjAxODEwMTFfMjI5/MDAxNTM5MjIyMjcyODI2.HKIQ1k3AP037GsgJIO3QDBr5gmJlYmctHwuvy8ZCJRsg.PLp7-Wiud_RMfopzTYdupTuL4tSsJZA6wrreWjsGOP0g.PNG.designpress2016/8.png?type=w800" style="height:400px;"> 
+			</div>
+			<h2> 최지혁의 글씨로 만든 한국 최초의 한글 새활자체. </h2>
 
-			<b> <h2>근대 기술과 활자의 도입으로 출판 환경이 근대식으로 바뀌어 가던 시기</h2> </b>
-			새활자 시대는 근대 기술과 활자의 도입으로 출판 환경이 근대식으로 바뀌어 가던 시기를 말한다. 이 시기의 한글 납활자는 오로지 일본의 기술력에 의존해야 했고, 한글 활자체의 자주적 발전은 지지부진했다.<br><br>
-			1883년(고종 20년)은 우리나라 최초의 신식 인쇄 시설인 박문국에서 순 한문으로 된 《한성순보》 창간호를 신식연활자(첫 한글 전태자모)로 발행한 해이다. 이후 1886년에 《한성순보》를 《한성주보》로 개편해 발간했는데, 이는 중앙 관서에서 만든 최초의 한글 새활자꼴을 사용한 우리나라 최초의 국한문 혼용 신문이었다.<br><br>
-			이 시기에 배재학당 인쇄소에서 신식연활자로 인쇄된 《독립신문》이 창간되었고 같은 해 《대조선독립협회 회보》가 창간되었다. 당시에 간행된 출판물로는 최초의 민간 출판사 광인사에서 연활자를 사용해 출간한 최초의 단행본 『충효경집주합벽』과 『농정신편』(1884), 신문 연재소설이 단행본으로 출간된 『혈의 누』(1903), 국내 최초의 석판 인쇄본으로 추정되는 『아학편』(1904), 우리나라 최초의 어린이 잡지인 《소년》(1908) 등이 있다.<br>
-
-			<div class="img mainimg">
-				<img loading="lazy" srcset="https://www.much.go.kr/holdings/thismonth/service/H0L_202109301124342390.jpg" style="height: 250px;">
-				<img loading="lazy" srcset="https://mono.aks.ac.kr/s/media/3b/3b6fc21f-fda4-47be-8222-5bdc16754144.jpg?preset=orig" style="height: 250px;"> 
-				<img loading="lazy" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/%EB%8F%85%EB%A6%BD%EC%8B%A0%EB%AC%B8_%EC%A0%9C4%EA%B6%8C_108%ED%98%B8.jpg/640px-%EB%8F%85%EB%A6%BD%EC%8B%A0%EB%AC%B8_%EC%A0%9C4%EA%B6%8C_108%ED%98%B8.jpg" style="height: 250px;">
-			</div> <br>
-
-			우리나라 최초의 한글 새활자는 1880년에 일본에서 간행된 『한불자던』을 찍은 최지혁의 5호 작은 활자이다. 최지혁의 활자들은 1883년에 국내로 수입되어 『신명초행』 「성경직해』 등의 천주교 간행물과 『초등소학』 『대한지지』 등의 교과서에 사용되었다.
-			당시 균형감이 훌륭해서 가장 많이 사용된 것은 <a href="hangeul_font_sae_choijihyuk.html"><b>최지혁 활자</b></a>와 <a href="hangeul_font_sae_parkgyeongseo.html"><b>박경서 활자</b></a>였다. 특히 박경서 활자는 현대식 주조 활자나 사진 식자용 원도 설계의 바탕이 되었다. 이 시기에는 동아일보 공모전에서 채택된 <a href="hangeul_font_sae_leewonmo.html"><b>이원모 활자체</b></a>가 탄생했으며, 일본의 이른바 고딕체 한자에서 영향을 받아 한글 고딕체가 등장하기도 했다.
-
-			새활자 시대 후기인 일제 강점기는 우리 문화의 정체성이 단절되었음은 물론 한글의 발전에도 큰 장애로 작용했다. <br>
-			1910년, 굴욕적으로 국권을 빼앗기며 우리나라의 인쇄 및 출판계도 송두리째 일본인의 주도로 넘어가 엄격한 검열을 당하며 절체절명의 위기를 맞게 된다. <br><br>
-			그러나 일제의 탄압에도 1910년 한성광고사가 창업을 시작으로 백영사, 개벽사 등의 광고 대행사가 활동을 시작했다. 또한 이 시기에는 일본으로부터 석판 인쇄와 활판 인쇄가 유입되었고, 1920년대부터는 오프셋 인쇄기와 그라비어 인쇄기가 도입되어 현대 인쇄의 새로운 장을 열었다.
-
-			<div class="img mainimg">
-				<img loading="lazy" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Salon_du_livre_ancien_et_de_l%27estampe_2013_014.jpg/1200px-Salon_du_livre_ancien_et_de_l%27estampe_2013_014.jpg" style="height: 230px;"> 
-				<img loading="lazy" srcset="https://www.hangeul.go.kr/webzine/202109/img/sub/sub3_1_img1.png" style="height: 230px;">
-				<img loading="lazy" srcset="https://ktwilliamsdesigns.wordpress.com/wp-content/uploads/2018/03/screenshot-2018-03-18-18-09-50.png?w=840" style="height: 230px;">
-			</div> <br>
+			1880년(고종 17)의 최지혁 붓글씨 글자본으로, 프랑스 선교사 펠릭스 클레르 리델이 주도하여 일본 요코하마의 히라노활판(도쿄 쓰키지활판의 전신)에서 주조했다. 큰 글자(1호), 중간 글자(2호), 작은 글자(5호) 세 가지 크기로 만들어졌다. <br><br> 최지혁체로 인쇄한 책으로는 『한불자뎐』(韓佛字典, 1880), 『한어문전』(韓語文典, 1881), 『성경직해』(聖經直解, 1892), 『성교감략』(聖敎鑑略, 1883), 『성교요리문답』(聖敎鑑略, 1893) 등이 있으며, 『초등소학』(初等小學, 1907), 『대한지지』(大韓地誌) 등 교과서도 인쇄했다. <br><br>
+			일반적으로 최지혁체로 불리는, 『성경직해』에 나타난 최지혁체 2호(중간 활자)는 글자너비가 좁은 편이며, 붓글씨의 영향을 받아 홀자의 기둥이 아래로 내려갈수록 점점 가늘어지고 이음줄기는 오른쪽 위로 급격히 올라간다. 또한 닿자 ㅅ의 삐침이 부드러운 곡선을 그리며 바깥쪽으로 뻗었고 받침 ㄴ, ㄹ의 맺음줄기는 오른쪽으로 길게 빠져 있다. <br><br>
+			최지혁체 2호는 초기 천주교 서적을 비롯하여 광복 후의 일반 인쇄물에서도 빈번히 등장할 만큼 오랫동안 널리 사용되었다. 70여년간 사용되며 한국인의 정서에 맞는 글자꼴 정립에 커다란 영향을 끼쳤으며 과거 붓글씨체와 오늘날 한글 활자체의 흐름을 잇는 중요한 가교 구실을 했다.
 		</div>
 
 		<div class="text type-print">
@@ -1314,35 +1316,6 @@
 
 
 		<script>
-			const targetElements = document.querySelectorAll('.section');
-			const observer = new IntersectionObserver((entries) => {
-			  entries.forEach((entry) => {
-			    if (entry.isIntersecting) {
-			      const clickedElement = entry.target;
-			      const targetText = clickedElement.querySelector('.specific-text'); // 특정 텍스트 요소 선택
-			      const targetContentId = targetText.dataset.targetContentId; // 특정 콘텐츠 ID 가져오기
-			      const otherElements = targetElements.filter((element) => element !== entry.target);
-			      otherElements.forEach((element) => {
-			        const contentElement = element.querySelector(`#${targetContentId}`); // ID를 사용하여 특정 콘텐츠 요소 선택
-			        if (contentElement) {
-			          // 특정 콘텐츠 로드 로직
-			          loadSpecificContent(contentElement);
-			        }
-			      });
-			    }
-			  });
-			}, {
-			  rootMargin: '100px',
-			});
-
-			targetElements.forEach((element) => {
-			  observer.observe(element);
-			});
-
-			function loadSpecificContent(element) {
-			  // 특정 콘텐츠 로드 로직
-			  // 예: AJAX 요청을 사용하여 콘텐츠를 로드하고 element에 삽입
-			}
 		</script>
 	</body>
 </html>

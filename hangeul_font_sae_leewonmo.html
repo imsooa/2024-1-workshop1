@@ -6,13 +6,11 @@
 			@import url('https://webfontbox.github.io/Arita/font.css');
 			@import url('https://webfontbox.github.io/Arita/font.min.css');
 
-			@import url("https://use.typekit.net/pty8ipo.css");
-
 
 			html, body { margin: 0; padding: 0; height: 100%; overflow: hidden;}
 
 			/* 스크롤 */
-			html::-webkit-scrollbar, .text::-webkit-scrollbar, #life::-webkit-scrollbar, .sectiontext::-webkit-scrollbar { display: none; }
+			html::-webkit-scrollbar, .text::-webkit-scrollbar, #life::-webkit-scrollbar { display: none; }
 
 			/* 햄버거 메뉴 */
 
@@ -197,11 +195,11 @@
 			}
 
 
-			.main {width: 59.4vw; padding-left: 3vw; padding-right: 1.6vw; font-size: 16pt;}
+			.designer {width: 11vw; padding-left: 3vw; overflow: hidden; background-color: white;}
+			.main {width: 47vw;  font-size: 16pt;}
 			.type-print {width: 11vw; background-color: #A5A5A5;}
 			.art-design {width: 10vw; background-color: #C1C1C1;}
 			.history {width: 9vw; background-color: #E0E0E0;}    
-
 
 			.link {
 				font-size: 14pt;
@@ -209,7 +207,7 @@
 				padding: 15px;
 			}
 
-			a {text-decoration-line: none; color: black;}
+			a {text-decoration-line: none;}
 
 			#fontname {
 				font-family: 'Arita';
@@ -221,7 +219,6 @@
 				font-size: 54pt;
 				display: flex;
 				align-items: center;
-
 			}
 			.fontname_small {font-size: 24pt; margin-top: 4vh; margin-left: 1vw;}
 			.year {width: 14vw; text-align: right; display: flex;
@@ -229,13 +226,13 @@
 				align-items: right;}
 			#fontname_group {width: 55vw;}
 
-			.section {padding: 3vh 0vh; border-bottom: 2px dotted black;}
-			.sectiontext {float: left; width: 32vw; height: 150px; overflow: auto;}
-			.sectionheadline {
-				margin-right: 2vh; width: 25vw; height: 160px; float: left;
-				font-size: 40pt; line-height: 1.3;
+			#life {
+				overflow: auto;
+				height: 35vh;
+				margin-top: 3vh;
 			}
-			.final {border: 0px;}
+
+			#designername {font-size: 24pt;}
 
 
 
@@ -250,10 +247,17 @@
 		    }
 
 
-			.mainimg {padding: 4vh 0vh; margin-bottom: 20px; height: 23vh; text-align: center;}
+
+			.designerimg {margin: 2vh 0vh; height: 250px;}
+			.mainimg {margin: 3vh 0vh;  text-align: center; 
+				display: flex;
+				justify-content: center;
+			}
+
+			.sub {font-size: 10pt; text-align: left; padding: 0px 5px;}
 
 		</style>
-		<title>새활자시대</title>
+		<title>이원모체</title>
 	</head>
 
 	<body>
@@ -283,15 +287,16 @@
 		    but hey, it's pure CSS magic.
 		    -->
 		    <ul id="menu">
-		     <a href="index.html"><li>Main</li></a>
-		     <a href="default_hangeul.html"><li>한글</li></a>
-		     <a href="default_latin.html"><li>라틴</li></a>
-		     <a href="default_munjang.html"><li>문장부호</li></a>
+		      <a href="index.html"><li>Main</li></a>
+		      <a href="default_hangeul.html"><li>한글</li></a>
+		      <a href="default_latin.html"><li>라틴</li></a>
+		      <a href="default_munjang.html"><li>문장부호</li></a>
 		    </ul>
 		  </div>
 		</nav>
 
-		<div class="title main">
+		<div class="title designer"> 디자이너 </div>
+		<div class="title main" style="background-color:white;">
 			<a href="hangeul_pc_yet.html"><div class="link">옛활자시대</div></a>
 			<a href="hangeul_pc_sae.html"><div class="link">새활자시대</div></a>
 			<a href="hangeul_pc_wondo.html"><div class="link">원도활자시대</div></a>
@@ -301,37 +306,45 @@
 		<div class="title art-design"> 예술&디자인 </div>
 		<div class="title history"> 역사 </div>
 
+		<div class="text designer">
+			<div class="designerimg"><img src="img/leewonmo.jpeg" style="height:250px; margin-left: 5px;"> </div>
+			<span id="designername" style="line-height: 20.4pt;">이원모</span> <br>
+			1875 - ? <br> <br>
+			최초로 한자 명조체를 한글에 적용하여 ‘동아일보 이원모체’를 디자인하였다.
+		</div>
+
 		<div class="text main" style="background-color: #b8ff48;" >
 			<div id="fontname"> 
-				<div id="fontname_group"> 
-					새활자시대
-				</div>
-					<span class="fontname_small year">1864-1949</span> 
+				<div id="fontname_group"> 이원모체 </div>
+				<span class="fontname_small year">1933</span> 
 			</div>
+			<div class="mainimg" > 
+				<div class="sub">
+					<img src="https://mblogthumb-phinf.pstatic.net/MjAxNzAyMTlfMTAx/MDAxNDg3NDc1OTMwOTgz.7GuZ4tRhs3AlwTT1xVTo04SLVoCsuZEMGgKI6nxSbUYg.BDahs_l6MR2T5CKEjHznZHyW9_mnX2pBRJ_Xzo9-BzYg.JPEG.designpress2016/C0%CC%BFF8B8F0%C3%BC.jpg?type=w800" style="height:400px;"> 
+					<br> 이원모체.
+				</div>
+				<div class="sub">
+					<img src="https://dimg.donga.com/wps/NEWS/IMAGE/2018/01/18/88219902.1.jpg" style="height:400px;"> 
+					<br>새 활자체 모집을 알린 1929년 8월 7일 동아일보 사고. <br> 동아일보DB
+				</div>
+			</div>
+			 
+			<h2>한글에 한자 명조체의 양식을 적용한 최초의 새활자체</h2>
 
-			<b> <h2>근대 기술과 활자의 도입으로 출판 환경이 근대식으로 바뀌어 가던 시기</h2> </b>
-			새활자 시대는 근대 기술과 활자의 도입으로 출판 환경이 근대식으로 바뀌어 가던 시기를 말한다. 이 시기의 한글 납활자는 오로지 일본의 기술력에 의존해야 했고, 한글 활자체의 자주적 발전은 지지부진했다.<br><br>
-			1883년(고종 20년)은 우리나라 최초의 신식 인쇄 시설인 박문국에서 순 한문으로 된 《한성순보》 창간호를 신식연활자(첫 한글 전태자모)로 발행한 해이다. 이후 1886년에 《한성순보》를 《한성주보》로 개편해 발간했는데, 이는 중앙 관서에서 만든 최초의 한글 새활자꼴을 사용한 우리나라 최초의 국한문 혼용 신문이었다.<br><br>
-			이 시기에 배재학당 인쇄소에서 신식연활자로 인쇄된 《독립신문》이 창간되었고 같은 해 《대조선독립협회 회보》가 창간되었다. 당시에 간행된 출판물로는 최초의 민간 출판사 광인사에서 연활자를 사용해 출간한 최초의 단행본 『충효경집주합벽』과 『농정신편』(1884), 신문 연재소설이 단행본으로 출간된 『혈의 누』(1903), 국내 최초의 석판 인쇄본으로 추정되는 『아학편』(1904), 우리나라 최초의 어린이 잡지인 《소년》(1908) 등이 있다.<br>
+			1928년 《동아일보》 활자체 공모에서 당선된 이원모의 글자체. 한자 명조체의 특징을 한글에 적용하여 이원모가 디자인한 글자체로, 일본 이와다자모제작소의 바바(馬場)라는 자모 조각가가 손으로 조각하여 새활자로 제작했다. 1933년 4월 1일자 《동아일보》의 제목과 본문에 처음 등장한 이후 1950년 6·25전쟁까지 사용되었다. <br>
+			전쟁 후 북한에서는 《로동신문》을 위해 이원모체를 바탕으로 활자를 제작했으며, 장봉선도 이를 바탕으로 글자체를 만들었다. <br><br>
+			이원모체는 오늘날 순명조로 그 형태적 계보가 이어지는데, 글자의 형태가 네모틀꼴에 가깝고 가로줄기는 가늘고 세로줄기는 굵다. 글자 줄기가 붓의 영향에서 벗어나 삐침, 내리점을 제외하면 수평선과 수직선에 가깝고, 줄기 끝에는 삼각형의 부리가 달려 있다. 닿자 ㅇ이 좌우 대칭이고 ㅎ과 ㅊ의 짧은 줄기는 세로 방향이며 ㅈ은 갈래지읒이다. <br>
+			이원모체는 활자 크기를 7포인트로 줄이되 글자는 정방형 활자틀에 꽉 차게 디자인하여 작지만 커 보이는 전형적인 신문 활자의 면모를 갖추었다. 또 가로획 수가 적은 글자와 많은 글자의 편차를 줄여 세로짜기에서의 글줄 흐름을 안정적으로 개선했다.
 
-			<div class="img mainimg">
-				<img loading="lazy" srcset="https://www.much.go.kr/holdings/thismonth/service/H0L_202109301124342390.jpg" style="height: 250px;">
-				<img loading="lazy" srcset="https://mono.aks.ac.kr/s/media/3b/3b6fc21f-fda4-47be-8222-5bdc16754144.jpg?preset=orig" style="height: 250px;"> 
-				<img loading="lazy" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/%EB%8F%85%EB%A6%BD%EC%8B%A0%EB%AC%B8_%EC%A0%9C4%EA%B6%8C_108%ED%98%B8.jpg/640px-%EB%8F%85%EB%A6%BD%EC%8B%A0%EB%AC%B8_%EC%A0%9C4%EA%B6%8C_108%ED%98%B8.jpg" style="height: 250px;">
-			</div> <br>
-
-			우리나라 최초의 한글 새활자는 1880년에 일본에서 간행된 『한불자던』을 찍은 최지혁의 5호 작은 활자이다. 최지혁의 활자들은 1883년에 국내로 수입되어 『신명초행』 「성경직해』 등의 천주교 간행물과 『초등소학』 『대한지지』 등의 교과서에 사용되었다.
-			당시 균형감이 훌륭해서 가장 많이 사용된 것은 <a href="hangeul_font_sae_choijihyuk.html"><b>최지혁 활자</b></a>와 <a href="hangeul_font_sae_parkgyeongseo.html"><b>박경서 활자</b></a>였다. 특히 박경서 활자는 현대식 주조 활자나 사진 식자용 원도 설계의 바탕이 되었다. 이 시기에는 동아일보 공모전에서 채택된 <a href="hangeul_font_sae_leewonmo.html"><b>이원모 활자체</b></a>가 탄생했으며, 일본의 이른바 고딕체 한자에서 영향을 받아 한글 고딕체가 등장하기도 했다.
-
-			새활자 시대 후기인 일제 강점기는 우리 문화의 정체성이 단절되었음은 물론 한글의 발전에도 큰 장애로 작용했다. <br>
-			1910년, 굴욕적으로 국권을 빼앗기며 우리나라의 인쇄 및 출판계도 송두리째 일본인의 주도로 넘어가 엄격한 검열을 당하며 절체절명의 위기를 맞게 된다. <br><br>
-			그러나 일제의 탄압에도 1910년 한성광고사가 창업을 시작으로 백영사, 개벽사 등의 광고 대행사가 활동을 시작했다. 또한 이 시기에는 일본으로부터 석판 인쇄와 활판 인쇄가 유입되었고, 1920년대부터는 오프셋 인쇄기와 그라비어 인쇄기가 도입되어 현대 인쇄의 새로운 장을 열었다.
-
-			<div class="img mainimg">
-				<img loading="lazy" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Salon_du_livre_ancien_et_de_l%27estampe_2013_014.jpg/1200px-Salon_du_livre_ancien_et_de_l%27estampe_2013_014.jpg" style="height: 230px;"> 
-				<img loading="lazy" srcset="https://www.hangeul.go.kr/webzine/202109/img/sub/sub3_1_img1.png" style="height: 230px;">
-				<img loading="lazy" srcset="https://ktwilliamsdesigns.wordpress.com/wp-content/uploads/2018/03/screenshot-2018-03-18-18-09-50.png?w=840" style="height: 230px;">
-			</div> <br>
+			<div class="img mainimg" > 
+				<div class="sub">
+					<img src="https://cdn.imweb.me/upload/S202207063e5bbd4d210be/7f49945339a17.png" style="height: 400px;">
+					<br> 동아일보의 이원모체와 명조 순명조 비교(왼쪽) <br>
+					Sandoll 명조 Neo1(오른쪽 위), SM순명조(오른쪽 중간), SM신신명조(오른쪽 아래) <br>
+					한글 서체의 원형을 만든 이들
+				</div>
+			</div>
+			 
 		</div>
 
 		<div class="text type-print">
@@ -1314,35 +1327,6 @@
 
 
 		<script>
-			const targetElements = document.querySelectorAll('.section');
-			const observer = new IntersectionObserver((entries) => {
-			  entries.forEach((entry) => {
-			    if (entry.isIntersecting) {
-			      const clickedElement = entry.target;
-			      const targetText = clickedElement.querySelector('.specific-text'); // 특정 텍스트 요소 선택
-			      const targetContentId = targetText.dataset.targetContentId; // 특정 콘텐츠 ID 가져오기
-			      const otherElements = targetElements.filter((element) => element !== entry.target);
-			      otherElements.forEach((element) => {
-			        const contentElement = element.querySelector(`#${targetContentId}`); // ID를 사용하여 특정 콘텐츠 요소 선택
-			        if (contentElement) {
-			          // 특정 콘텐츠 로드 로직
-			          loadSpecificContent(contentElement);
-			        }
-			      });
-			    }
-			  });
-			}, {
-			  rootMargin: '100px',
-			});
-
-			targetElements.forEach((element) => {
-			  observer.observe(element);
-			});
-
-			function loadSpecificContent(element) {
-			  // 특정 콘텐츠 로드 로직
-			  // 예: AJAX 요청을 사용하여 콘텐츠를 로드하고 element에 삽입
-			}
 		</script>
 	</body>
 </html>
