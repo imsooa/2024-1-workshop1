@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+			@import url('https://webfontbox.github.io/Arita/font.css');
+			@import url('https://webfontbox.github.io/Arita/font.min.css');
+
+			html, body { margin: 0; padding: 0; height: 100%; overflow: hidden;}
+
+			/* 햄버거 메뉴 */
+
+				/*
+				 * Made by Erik Terwan
+				 * 24th of November 2015
+				 * MIT License
+				 *
+				 *
+				 * If you are thinking of using this in
+				 * production code, beware of the browser
+				 * prefixes.
+				 */
+
+				#menuToggle
+				{
+				  display: block;
+				  position: absolute;
+				  top: 2vw;
+				  left: 1vw;
+				  
+				  z-index: 1;
+				  
+				  -webkit-user-select: none;
+				  user-select: none;
+				}
+
+				#menuToggle a
+				{
+				  text-decoration: none;
+				  color: black;
+				  
+				  transition: color 0.3s ease;
+				}
+
+				#menuToggle a:hover
+				{
+				  color: #fff645;
+				}
+
+
+				#menuToggle input
+				{
+				  display: block;
+				  width: 40px;
+				  height: 32px;
+				  position: absolute;
+				  top: -7px;
+				  left: -5px;
+				  
+				  cursor: pointer;
+				  
+				  opacity: 0; /* hide this */
+				  z-index: 2; /* and place it over the hamburger */
+				  
+				  -webkit-touch-callout: none;
+				}
+
+				/*
+				 * Just a quick hamburger
+				 */
+				#menuToggle span
+				{
+				  display: block;
+				  width: 33px;
+				  height: 4px;
+				  margin-bottom: 5px;
+				  position: relative;
+				  
+				  background: black;
+				  
+				  z-index: 1;
+				  
+				  transform-origin: 4px 0px;
+				  
+				  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				              opacity 0.55s ease;
+				}
+
+				#menuToggle span:first-child
+				{
+				  transform-origin: 0% 0%;
+				}
+
+				#menuToggle span:nth-last-child(2)
+				{
+				  transform-origin: 0% 100%;
+				}
+
+				/* 
+				 * Transform all the slices of hamburger
+				 * into a crossmark.
+				 */
+				#menuToggle input:checked ~ span
+				{
+				  opacity: 1;
+				  transform: rotate(45deg) translate(-2px, -1px);
+				  background: black;
+				}
+
+				/*
+				 * But let's hide the middle one.
+				 */
+				#menuToggle input:checked ~ span:nth-last-child(3)
+				{
+				  opacity: 0;
+				  transform: rotate(0deg) scale(0.2, 0.2);
+				}
+
+				/*
+				 * Ohyeah and the last one should go the other direction
+				 */
+				#menuToggle input:checked ~ span:nth-last-child(2)
+				{
+				  transform: rotate(-45deg) translate(0, -1px);
+				}
+
+				/*
+				 * Make this absolute positioned
+				 * at the top left of the screen
+				 */
+				#menu
+				{
+				  position: absolute;
+				  width: 11vw;
+				  margin: -100px 0 0 -50px;
+				  padding: 50px;
+				  padding-top: 125px;
+				  
+				  background: #fff;
+				  list-style-type: none;
+				  -webkit-font-smoothing: antialiased;
+				  /* to stop flickering of text in safari */
+				  
+				  transform-origin: 0% 0%;
+				  transform: translate(-100%, 0);
+				  
+				  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+				}
+
+				#menu li
+				{ 
+				  font-family: 'Arita';
+				  padding: 10px 0;
+				  font-size: 22px;
+				}
+
+				/*
+				 * And let's slide it in from the left
+				 */
+				#menuToggle input:checked ~ ul
+				{
+				  transform: none;
+				}
+
+			.title {
+				height: 6vh;
+				padding-top: 1vw;
+				padding-bottom: 1vw;
+				font-family: 'Arita';
+				font-weight: 600;
+				text-align: center;
+				outline: 1px solid black;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.text {
+				font-family: 'Arita buri';
+				font-weight: 500;
+				line-height: 1.7;
+				height: 82vh;
+				overflow: auto;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.footer {
+				height: 8vh;
+				text-align: center;
+			}
+
+
+			.main {width: 100%;  font-size: 16pt; text-align: center; }
+
+			img {
+			    display: inline-block;
+			    margin: 0 auto;
+			    position: absolute;
+			    top: 50%;
+			    left: 50%;
+			    transform: translate(-50%, -50%);
+			}
+
+			.link {
+				font-size: 14pt;
+				color: black;
+				padding: 15px;
+			}
+
+			a {text-decoration-line: none;}
+
+
+			button {
+				width: 20px;
+				height: 20px;
+				background-color: #A5A5A5;
+				border: none;
+				border-radius: 5px;
+			}
+			button:hover {background-color: #fff645;}
+			button:active {background-color: #fff645;}
+			button:visited {color: #fff645;}
+
+			.spanbutton {
+				font-family: 'Arita'; 
+				margin: 0px 50px;
+				display: inline;
+			}
+
+
+			.name {
+				position: absolute;
+				font-family: 'Arita';
+				font-weight: 600;
+				font-size: 18pt;
+				text-align: left;
+				z-index: 1;
+			}
+
+			span {
+				font-family: 'Arita buri';
+				font-weight: 500;
+				font-size: 14pt;
+				line-height: 1.3;
+				width: 300px;
+				display: inline-block;
+			}
+
+			.name span {
+				display: none;
+			}
+
+			.name:hover {background-color: #fff645; padding: 10px; outline: 0.5px solid black; z-index: 10;}
+
+			.name:hover span {
+				display: block;
+			}
+
+			.bottom {top: 68%;}
+			.bottom2 {top: 74%;}
+			.top {top: 33%; transform: translate(0%, -100%);}
+			.top2 {top: 26.5%; transform: translate(0%, -100%);}
+			.top3 {top: 19%; transform: translate(0%, -100%);}
+			.right {text-align: right;}
+
+			.blank {background-color: white; margin: 1px; display: inline;}
+			.name:hover .blank {background-color: #fff645;}
+			
+
+		</style>
+		<title>라틴</title>
+	</head>
+
+	<body>
+		<!--    Made by Erik Terwan    -->
+		<!--   24th of November 2015   -->
+		<!--        MIT License        -->
+		<nav role="navigation">
+		  <div id="menuToggle">
+		    <!--
+		    A fake / hidden checkbox is used as click reciever,
+		    so you can use the :checked selector on it.
+		    -->
+		    <input type="checkbox" />
+		    
+		    <!--
+		    Some spans to act as a hamburger.
+		    
+		    They are acting like a real hamburger,
+		    not that McDonalds stuff.
+		    -->
+		    <span></span>
+		    <span></span>
+		    <span></span>
+		    
+		    <!--
+		    Too bad the menu has to be inside of the button
+		    but hey, it's pure CSS magic.
+		    -->
+		    <ul id="menu">
+		      <a href="index.html"><li>Main</li></a>
+		      <a href="default_hangeul.html"><li>한글</li></a>
+		      <a href="default_latin.html"><li>라틴</li></a>
+		      <a href="default_munjang.html"><li>문장부호</li></a>
+		    </ul>
+		  </div>
+		</nav>
+
+		<div class="title main">
+			<a href="latin_pc_blackletter.html"><div class="link">고딕 블랙</div></a>
+			<a href="latin_pc_humanist.html"><div class="link">인문주의적 필체</div></a>
+			<a href="latin_pc_oldstyle.html"><div class="link">올드스타일</div></a>
+			<a href="latin_pc_transitional.html"><div class="link">트랜지셔널</div></a>
+			<a href="latin_pc_modern.html"><div class="link">모던</div></a>
+			<a href="latin_pc_slabserif.html"><div class="link">슬랩세리프</div></a>
+			<a href="latin_pc_sanserif.html"><div class="link">산세리프</div></a>
+		</div>
+		<div class="text main">
+				<img src="img/default_latin_geul.svg" id="myImage1" style="height: 100%"> 
+
+				<div class="name top2" style="left: 11.5%;"> 스템 stem, 줄기 <br>
+					<span> 글자의 세로획. </span>
+				</div>
+
+				<div class="name top" style="left: 13.5%;"> 크로스바 crossbar <br>
+					<span> A나 H와 같이 양쪽을 이어주거나 <br> f나 t와 같이 수직획을 위와 아래로 <br> 나누는 선. </span>
+				</div>
+
+				<div class="name top" style="left: 33.5%;"> <div class="blank"> 카운터 counter, 속공간 </div> <br>
+					<span> 글자에서 획으로 둘러싸인 빈 공간. </span>
+				</div>
+
+				<div class="name top3" style="left: 42%;"> 볼 bowl <br>
+					<span> 소문자 윗부분으로, 공간을 감싼 획. </span>
+				</div>
+
+				<div class="name top2" style="left: 45%;"> 이어 ear, 귀 <br>
+					<span> 소문자g 오른쪽 상단에 돌출된 획. </span>
+				</div>
+
+				<div class="name top" style="left: 50.5%;"> <div class="blank"> 에이펙스 apex, 꼭지 </div> <br>
+					<span> 대문자 A 등에 있는 뾰족한 정점. </span>
+				</div>
+
+				<div class="name top2" style="left: 60.3%;"> 암 arm, 팔 <br>
+					<span> T 나 E처럼 한쪽이나 양쪽으로 뻗은 <br> 수평획. </span>
+				</div>
+
+				<div class="name top3" style="left: 77%;"> 스파인 spine, 등뼈 <br>
+					<span> S에서 위와 아래를 연결하는 획. </span>
+				</div>
+
+				<div class="name top2" style="left: 82.8%;"> 아이 eye, 눈 <br>
+					<span> 소문자 e의 폐쇄된 공간. </span>
+				</div>
+
+				<div class="name top right" style="left: 88%; transform: translate(-50%, -100%);"> <div class="blank"> 숄더 shoulder, 어깨 </div> <br>
+					<span> 소문자 n에서와 같이 굵은 수직획과 <br> 가는 수평획을 연결하는 둥근 획. </span>
+				</div>
+
+				<div class="name bottom2" style="left: 10.5%;"> 필레 fillet, 구석살 <br>
+					<span> 스템과 세리프가 연결된 부분을 <br> 자연스럽게 보충하기 위한 살. </span>
+				</div>
+
+				<div class="name bottom" style="left: 16%;"> 세리프 serif <br>
+					<span> 주요 획의 끝 부에 돌출한 작은 획. </span>
+				</div>
+
+				<div class="name bottom" style="left: 25%;"> 레그 leg, 다리 <br>
+					<span> K 또는 k에서 밑으로 뻗은 대각선 획. </span>
+				</div>
+
+				<div class="name bottom" style="left: 35%;"> <div class="blank"> 테일 tail, 꼬리 </div> <br>
+					<span> j처럼 밑으로 흘려진 대각선 획. </span>
+				</div>
+
+				<div class="name bottom2" style="left: 42%;"> 링크 link, 고리 <br>
+					<span style="width: 310px;"> 소문자 g ‘볼’과 ‘루프’를 연결하는 부분. </span>
+				</div>
+
+				<div class="name bottom" style="left: 44.5%;"> 루프 loop <br>
+					<span> 소문자 g 밑부분으로, 공간을 등글게 감싼 획. </span>
+				</div>
+
+				<div class="name bottom" style="left: 72%;"> 스퍼 spur, 발톱 <br>
+					<span> G에서 둥글게 감싼 아래획과 수직획이 연결되며 생기는 작은 돌출 부분. </span>
+				</div>
+		</div>
+
+		<div class="footer main">
+			<div class="spanbutton"> <a href="default_latin-1.html"> <button></button> </a> 기준선 </div>
+			<div class="spanbutton"> <a href="#"> <button style="background-color: #fff645;"></button> </a> 글자부분이름 </div>
+		</div>
+	</body>
+</html>

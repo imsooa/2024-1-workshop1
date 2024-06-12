@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Rockwell </title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			@import url('https://webfontbox.github.io/Arita/font.css');
+			@import url('https://webfontbox.github.io/Arita/font.min.css');
+
+			@import url("https://use.typekit.net/nyy3xls.css");
+
+
+			html, body { margin: 0; padding: 0; height: 100%; overflow: hidden;}
+
+			/* 스크롤 */
+			html::-webkit-scrollbar, .text::-webkit-scrollbar, #life::-webkit-scrollbar { display: none; }
+
+			/* 햄버거 메뉴 */
+
+				/*
+				 * Made by Erik Terwan
+				 * 24th of November 2015
+				 * MIT License
+				 *
+				 *
+				 * If you are thinking of using this in
+				 * production code, beware of the browser
+				 * prefixes.
+				 */
+
+				#menuToggle
+				{
+				  display: block;
+				  position: absolute;
+				  top: 2vw;
+				  left: 1vw;
+				  
+				  z-index: 1;
+				  
+				  -webkit-user-select: none;
+				  user-select: none;
+				}
+
+				#menuToggle a
+				{
+				  text-decoration: none;
+				  color: black;
+				  
+				  transition: color 0.3s ease;
+				}
+
+				#menuToggle a:hover
+				{
+				  color: #fff645;
+				}
+
+
+				#menuToggle input
+				{
+				  display: block;
+				  width: 40px;
+				  height: 32px;
+				  position: absolute;
+				  top: -7px;
+				  left: -5px;
+				  
+				  cursor: pointer;
+				  
+				  opacity: 0; /* hide this */
+				  z-index: 2; /* and place it over the hamburger */
+				  
+				  -webkit-touch-callout: none;
+				}
+
+				/*
+				 * Just a quick hamburger
+				 */
+				#menuToggle span
+				{
+				  display: block;
+				  width: 33px;
+				  height: 4px;
+				  margin-bottom: 5px;
+				  position: relative;
+				  
+				  background: black;
+				  
+				  z-index: 1;
+				  
+				  transform-origin: 4px 0px;
+				  
+				  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				              opacity 0.55s ease;
+				}
+
+				#menuToggle span:first-child
+				{
+				  transform-origin: 0% 0%;
+				}
+
+				#menuToggle span:nth-last-child(2)
+				{
+				  transform-origin: 0% 100%;
+				}
+
+				/* 
+				 * Transform all the slices of hamburger
+				 * into a crossmark.
+				 */
+				#menuToggle input:checked ~ span
+				{
+				  opacity: 1;
+				  transform: rotate(45deg) translate(-2px, -1px);
+				  background: black;
+				}
+
+				/*
+				 * But let's hide the middle one.
+				 */
+				#menuToggle input:checked ~ span:nth-last-child(3)
+				{
+				  opacity: 0;
+				  transform: rotate(0deg) scale(0.2, 0.2);
+				}
+
+				/*
+				 * Ohyeah and the last one should go the other direction
+				 */
+				#menuToggle input:checked ~ span:nth-last-child(2)
+				{
+				  transform: rotate(-45deg) translate(0, -1px);
+				}
+
+				/*
+				 * Make this absolute positioned
+				 * at the top left of the screen
+				 */
+				#menu
+				{
+				  position: absolute;
+				  width: 11vw;
+				  margin: -100px 0 0 -50px;
+				  padding: 50px;
+				  padding-top: 125px;
+				  
+				  background: #fff;
+				  list-style-type: none;
+				  -webkit-font-smoothing: antialiased;
+				  /* to stop flickering of text in safari */
+				  
+				  transform-origin: 0% 0%;
+				  transform: translate(-100%, 0);
+				  
+				  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+				}
+
+				#menu li
+				{ 
+				  font-family: 'Arita';
+				  padding: 10px 0;
+				  font-size: 22px;
+				}
+
+				/*
+				 * And let's slide it in from the left
+				 */
+				#menuToggle input:checked ~ ul
+				{
+				  transform: none;
+				}
+
+			
+
+			.title {
+				height: 6vh;
+				float: left;
+				font-family: 'Arita';
+				font-weight: 600;
+				text-align: center;
+				outline: 1px solid black;
+				font-size: 23pt;
+				padding: 1vw;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.text {
+				font-family: 'Arita buri';
+				font-weight: 500;
+				line-height: 1.7;
+				height: 87vh;
+				float: left;
+				outline: 1px solid black;
+				overflow: auto;
+				padding: 1vw;
+			}
+
+
+			.designer {width: 11vw; padding-left: 3vw; overflow: hidden; background-color: white;}
+			.main {width: 47vw;  font-size: 16pt;}
+			.type-print {width: 11vw; background-color: #A5A5A5;}
+			.art-design {width: 10vw; background-color: #C1C1C1;}
+			.history {width: 9vw; background-color: #E0E0E0;}    
+
+			.link {
+				font-size: 14pt;
+				color: black;
+				padding: 15px;
+			}
+
+			a {text-decoration-line: none;}
+
+			#fontname {
+				font-family: 'Arita';
+				font-weight: 600;
+				height: 8vh;
+				padding-top: 2vh;
+				padding-bottom: 3vh;
+				border-bottom: 1.5px dashed black;
+				font-size: 54pt;
+				display: flex;
+				align-items: center;
+
+			}
+			.fontname_small {font-size: 24pt; margin-top: 4vh; margin-left: 1vw;}
+			.year {width: 14vw; text-align: right; display: flex;
+				justify-content: right;
+				align-items: right;}
+			#fontname_group {width: 55vw;}
+
+			#life {
+				overflow: auto;
+				height: 35vh;
+				margin-top: 3vh;
+			}
+
+			#designername {font-size: 24pt;}
+
+
+
+			.연도 {
+				font-family: 'Arita';
+		        font-weight: 600;
+		    }
+
+		    .내용 {
+		        font-size: 11pt;
+		        margin: 0px 0px 20px 0px;
+		    }
+
+
+
+			.img {}
+			.designerimg {margin: 2vh 0vh; height: 250px;}
+			.mainimg {margin: 2vh 0vh; height: 500px; text-align: center; 
+				display: flex;
+				justify-content: center;
+			    align-items: center;
+			    }
+
+			.mainimg img {width: 75%;}
+
+		</style>
+	</head>
+
+	<body>
+		<!--    Made by Erik Terwan    -->
+		<!--   24th of November 2015   -->
+		<!--        MIT License        -->
+		<nav role="navigation">
+		  <div id="menuToggle">
+		    <!--
+		    A fake / hidden checkbox is used as click reciever,
+		    so you can use the :checked selector on it.
+		    -->
+		    <input type="checkbox" />
+		    
+		    <!--
+		    Some spans to act as a hamburger.
+		    
+		    They are acting like a real hamburger,
+		    not that McDonalds stuff.
+		    -->
+		    <span></span>
+		    <span></span>
+		    <span></span>
+		    
+		    <!--
+		    Too bad the menu has to be inside of the button
+		    but hey, it's pure CSS magic.
+		    -->
+		    <ul id="menu">
+		      <a href="index.html"><li>Main</li></a>
+		      <a href="default_.html"><li>한글</li></a>
+		      <a href="default_.html"><li>라틴</li></a>
+		      <a href="default_.html"><li>문장부호</li></a>
+		    </ul>
+		  </div>
+		</nav>
+
+		<div class="title designer"> 디자이너 </div>
+		<div class="title main" style="background-color:white;">
+			<a href="latin_pc_blackletter.html"><div class="link">고딕 블랙</div></a>
+			<a href="latin_pc_humanist.html"><div class="link">인문주의적 필체</div></a>
+			<a href="latin_pc_oldstyle.html"><div class="link">올드스타일</div></a>
+			<a href="latin_pc_transitional.html"><div class="link">트랜지셔널</div></a>
+			<a href="latin_pc_modern.html"><div class="link">모던</div></a>
+			<a href="latin_pc_slabserif.html"><div class="link">슬랩세리프</div></a>
+			<a href="latin_pc_sanserif.html"><div class="link">산세리프</div></a>
+		</div>
+		<div class="title type-print"> 활자&인쇄 </div>
+		<div class="title art-design"> 예술&디자인 </div>
+		<div class="title history"> 역사 </div>
+
+		<div class="text designer">
+			<div class="img designerimg"><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSsJGz8rRR0RxgN9tm-UKNXk8WUwk4j03koJkmK2rwpV_b_hHL_omVSAubrEq49br4cnZsdUg" style="height:250px;"> </div>
+			<span id="designername" style="line-height: 25pt;">프랭크 힌만 피에르퐁</span> <br>
+			Frank Hinman Pierpont <br>
+			1860 - 1937. 2. 11. <br>
+			미국 출생
+
+			<div id="life">
+				<div class="연도"> 1860 </div> <div class="내용"> 미국 코테니컷 뉴헤이븐에서 출생 </div>
+	            <div class="연도"> 1886 </div> <div class="내용"> 특허청에서 조판기 제작 일을 시작 </div>
+	            <div class="연도"> 1894 </div> <div class="내용"> 유럽으로 떠남 </div>
+	            <div class="연도"> 1894 </div> <div class="내용"> 독일에서 조판기 제조업체 Setzmachinen-Fabrik의 디렉터가 됨 </div>
+	            <div class="연도"> 1899 - 936 </div> <div class="내용"> 자신의 공장을 설립하고 모노타입사 영국 지부의 디렉터로 일함 </div>
+	            <div class="연도"> ? </div> <div class="내용"> 활자체 임프린트(Imprint) 제작 </div>
+	            <div class="연도"> 1913 </div> <div class="내용"> 활자체 플랜틴(Plantin) 제작 </div>
+	            <div class="연도"> 1925 </div> <div class="내용"> 활자체 홀리 올드스타일(Horley Oldstyle) 제작 </div>
+	            <div class="연도"> 1926 </div> <div class="내용"> 활자체 모노타입 그로테스크(Monotype Grotesque) 제작 </div>
+	            <div class="연도"> 1929 </div> <div class="내용"> 활자체 벰보(Bembo) 제작 </div>
+	            <div class="연도"> 1934 </div> <div class="내용"> 활자체 록웰(Rockwell) 제작 </div>
+	            <div class="연도"> 1937. 2. 11. </div> <div class="내용"> 영국 런던에서 사망 </div>   
+			</div>
+		</div>
+		<div class="text main" style="background-color: #fff645;" >
+			<div id="fontname"> 
+				<div id="fontname_group"> 
+					<span style="font-family: 'rockwell', sans-serif;"> Rockwell </span>
+					<span class="fontname_small"> 록웰 </span> 
+				</div>
+				<span class="fontname_small year">1934</span> 
+			</div>
+			<div class="img mainimg" > <img src="img/latin_font_rockwell.svg"> </div>
+			<h2> 산세리프와 세리프 모두 잘 어울리는 이집션의 대표 주자 </h2>
+			19세기에는 기계화로 가능해진 대량 생산과 판매가 진행되면서 바야흐로 광고의 시대가 열렸다. 많은 광고물 사이에서 주목을 받고 강한 시각적 인상을 줄 수 있는 서체에 대한 요구가 증대했고 세리프의 굵기과 모양에서 극단적 표현까지 등장했다. 엄밀히 말하면 슬랩 세리프 양식은 장방형의 굵은 세리프가 역시 비슷한 굵기의 기둥과 직각으로 만나는 이집션 양식과, 장방형의 세리프가 기둥과 곡선으로 연결되는 클라렌든 양식으로 나뉜다. <br><br> 이집션 양식의 대표 서체로는 멤피스, 록웰 등이, 클라렌든 양식의 대표주자는 클라렌든, 센추리 등이 있다. <br><br>
+            슬랩 세리프 중에서도 이집션 양식의 대표 주자인 락웰은 견고하고 적응력이 뛰어난 디자인을 갖고 있다. 캡 A의 납작한 상단 세리프, 특이한 Q의 테일 등 높은 가독성의 락웰은 슬랩 세리프 스타일의 멋지고 현대적인 해석과 동시에 구별되는 약간의 수제적인 매력을 가지고 있다. 이 계열은 브랜드화, 헤드라인 및 기타 디스플레이 사용에 탁월하다. 단순한 모양과 풍부한 세리프는 인쇄 및 화면 환경 모두에서 짧은 텍스트 블록에 적합하다. 가볍고 대담한 무게는 텍스트 블록을 설정하는 데 좋다. 락웰의 큰 엑스하이트, 간단한 모양 및 개방형 카운터는 특별하게 읽히는 디자인을 만든다. 락웰 슬랩 세리프의 이점은 산세리프 서체 및 다양한 세리프 서체와 모두 아름답게 결합할 수 있다는 것이다. 그러나 세리프가 서로 닿을 정도로 자간을 팽팽하게 설정해서는 안된다.
+		</div>
+
+		<div class="text type-print">
+			<div class="연도"> BC 20000-6500경 </div> <div class="내용"> <b>뼈 위에 기록</b> <br> 인류의 초기 ‘글’로 인정 </div>
+	        <div class="연도"> BC 8000경 </div> <div class="내용"> 기하학적 기호가 묘사된 둥근 조약돌 발견(프랑스의 마스 다질) </div>
+	        <div class="연도"> BC 3500 </div> <div class="내용"> 수메르, 그림문자 </div>
+	        <div class="연도"> BC 3100 </div> <div class="내용"> 이집트, 상형문자 </div>
+	        <div class="연도"> BC 2800-2600 </div> <div class="내용"> 수메르, 설형문자 </div>
+	        <div class="연도"> BC 2500 </div> <div class="내용"> 파피루스 발명 </div>
+	        <div class="연도"> BC 2300 </div> <div class="내용"> 그림 형태의 인장 사용 </div>
+	        <div class="연도"> BC 1600경 </div> <div class="내용"> 초기의 알파벳 탄생 </div>
+	        <div class="연도"> BC 1500경 </div> <div class="내용"> 중국, 표의문자 <br> 최초의 책 『사자의 서』 </div>
+	        <div class="연도"> BC 1000경 </div> <div class="내용"> <b>페키니아 알파벳 탄생</b> <br> 이는 최초의 표음문자임 </div>
+	        <div class="연도"> BC 1000경 </div> <div class="내용"> 그리스 알파벳(표음문자) 탄생 <br> 페키니아로부터 페키니언 알파벳을 전수 받음 </div>
+	        <div class="연도"> BC 850경 </div> <div class="내용"> 초기 셈 문자(구두점 등장) </div>
+	        <div class="연도"> BC 403 </div> <div class="내용"> 그리스 아테네, 그리스 알파벳에 다섯 개의 모음(A・E・I・O・Y) 추가 <br> 로마, 그리스로부터 24개의 알파벳 전수 </div>
+	        <div class="연도"> BC 400경 </div> <div class="내용"> 로만 알파벳 탄생 <br> 그리스로부터 13개의 문자(B・H・K・M・N・T・X・Z, A・E・I・O・Y)를 전수받은 후 8개의 문자(C・D・G・L・P・R・S・V)를 새로 고안 <br> 그 후 두 개의 문자(F・Q)가 추가되며 총 23개의 문자를 갖춤 </div>
+	        <div class="연도"> BC 256 </div> <div class="내용"> 중국, 머리카락으로 만든 붓 등장 </div>
+	        <div class="연도"> 105 </div> <div class="내용"> <b>중국, 체륜의 종이 발명</b> </div>
+	        <div class="연도"> 150 </div> <div class="내용"> 두루마리 대신 접는 형태의 책 등장 </div>
+	        <div class="연도"> 400 </div> <div class="내용"> 중국, 먹 발명 <br> 중세 암흑기 시작 </div>
+	        <div class="연도"> 748 </div> <div class="내용"> 즁국, 베이징에서 원시적 형태의 세계 최초 신문 『저보』 발간 </div>
+	        <div class="연도"> 751 </div> <div class="내용"> 캐롤라인 미너스큘 개발 </div>
+	        <div class="연도"> 868 </div> <div class="내용"> <b>중국, 최초의 종이책 『금강경』 인쇄</b> </div>
+	        <div class="연도"> 9C 중반 </div> <div class="내용"> 인문주의적 필체 등장 <br> 카롤링거 왕조의 캐롤라인 미누스쿨을 복원한 것으로, 오늘날 우리가 사용하는 소문자의 전신임 </div>
+	        <div class="연도"> 1151 </div> <div class="내용"> 피생:재사용할 수 있는 진흙 인쇄판 발명 </div>
+	        <div class="연도"> 13C </div> <div class="내용"> 블랙레터(중 텍스투라)가 널리 사용되기 시작 </div>
+	        <div class="연도"> 1221 </div> <div class="내용"> 중국, 목판활자 발명 </div>
+	        <div class="연도"> 1234 </div> <div class="내용"> <b>금속활자 발명</b> </div>
+	        <div class="연도"> 1250 </div> <div class="내용"> 거위의 깃촉을 기구로 사용 </div>
+	        <div class="연도"> 14C </div> <div class="내용"> 로툰다(블랙레터) 성립 <br> 카롤링거 소문자가 이탈리아에서 널리 발견되는 고대 글꼴로 여겨짐 </div>
+	        <div class="연도"> 15C 중반 </div> <div class="내용"> 서구 유럽, 인문주의적 필체(안티크바, 이탈리아)와 고딕체(블랙레터, 독일)가 유행 </div>
+	        <div class="연도"> 1445 </div> <div class="내용"> 중국, 동활자 개발 </div><
+	        <div class="연도"> 1450 </div> <div class="내용"> 독일, <b>요하네스 구텐베르크가 주조활자 개발</b> </div>
+	        <div class="연도"> 1455 </div> <div class="내용"> 독일, 구텐베르크의 <b>「42행 성서」</b> </div>
+	        <div class="연도"> 1457 </div> <div class="내용"> 독일, 최초의 인쇄마크 사용 </div>
+	        <div class="연도"> 1460 </div> <div class="내용"> 피스터가 본문과 목판화가 함께 인쇄된 최초의 서적 출판 </div>
+	        <div class="연도"> 1460 </div> <div class="내용"> 프랑스, 니콜라스 젠슨이 최초의 로만체인 <b>젠슨체</b> 개발 </div>
+	        <div class="연도"> 1480년경 </div> <div class="내용"> 독일, 슈바베허(블랙레터)가 고딕 문자의 대표 글꼴로 개발되어 확산 </div>
+	        <div class="연도"> 1495 </div> <div class="내용"> 이탈리아, Bembo</div>
+	        <div class="연도"> 15C 말 </div> <div class="내용"> 프락투르(블랙레터) 등장 <br> 추후 독일 글꼴로 성장 </div>
+	        <div class="연도"> 16C </div> <div class="내용"> <b>프랑스, Garamond</b></div>
+	        <div class="연도"> 1501 </div> <div class="내용"> 이탈리아, 알도체 </div>
+	        <div class="연도"> 1548 </div> <div class="내용"> 플랜틴체 </div>
+	        <div class="연도"> 1611 </div> <div class="내용"> 샤이너가 전사법을 창안 </div>
+	        <div class="연도"> 1660 </div> <div class="내용"> 독일, 라이프치히에서 <b>세계 최초의 일간신문 『라이프치거 자이퉁』</b> 발간 </div>
+	        <div class="연도"> 1702 </div> <div class="내용"> 프랑스, 왕의 로만체 탄생 <br> 1699년 프랑스 정부 신생 과학 한림원의 특별 위원회 경과 보고서에서 프랑스어 알파벳을 한림원에 제시했다는 구절이 등장 <br> 이후 1718년까지 동판 수 증가 및 형태가 수정 </div>
+	        <div class="연도"> 1704 </div> <div class="내용"> 미국, 신문 『보스턴 뉴스레터』 창간 </div>
+	        <div class="연도"> 1706 </div> <div class="내용"> 영국, 런던에서 신문 『더 이브닝 포스트』 창간 </div>
+	        <div class="연도"> 1710 </div> <div class="내용"> 르 블롱이 3색 인쇄기를 발명 </div>
+	        <div class="연도"> 1723 </div> <div class="내용"> 프랑스, 마르탱 도미니크 파르텔이 첫 프랑스어 인쇄술 안내서 『인쇄술 실용 과학』 간행 </div>
+	        <div class="연도"> 1725 </div> <div class="내용"> 미국, 뉴욕에서 신문 『뉴욕 가제트』 창간 </div>
+	        <div class="연도"> 1734 </div> <div class="내용"> 영국, Caslon</div>
+	        <div class="연도"> 1737 </div> <div class="내용"> 프랑스, 푸르니에가 활자 비례표를 펴냄 <br> 활자 몸통 크기에 단위값을 부여함 <br> 1리뉴를 6‘포인트’로 세분함으로서 타이포그래피 단위를 푸스·리뉴에 간단히 연계 <br> 이는 영어권 표준 도형량(1인치=72포인트)의 바탕이 됨 </div>
+	        <div class="연도"> 1741 </div> <div class="내용"> 미국, 잡지 『더 제너럴 매거진』 창간 </div>
+	        <div class="연도"> 1742 </div> <div class="내용"> 프랑스, 푸르니에가 『인쇄용 문자 표본』 출간 </div>
+	        <div class="연도"> 1750 </div> <div class="내용"> 독일, 프락투르(블랙레터)에 대한 폭 넓은 반대 여론 형성 <br> 프락투르가 낯설어 외국인들이 독일어 학습을 꺼릴 수 있다는 걱정이 주된 이유로 등장 <br> 학술 텍스트는 안티크바로 인쇄하는 일이 늘어남 </div>
+	        <div class="연도"> 1754 </div> <div class="내용"> <b>영국, Baskerville</b></div>
+	        <div class="연도"> 1764 </div> <div class="내용"> 프랑스, 푸르니에가 『타이포그래피 안내서』 출간 <br> 단순화된 프루니에 포인트법이 실림 </div>
+	        <div class="연도"> 1771 </div> <div class="내용"> 스코틀랜드, 최초의 『브리태니커 백과사전』 발행 </div>
+	        <div class="연도"> 1780 </div> <div class="내용"> 쇠로 된 펜촉을 최초로 사용 </div>
+	        <div class="연도"> 1783 </div> <div class="내용"> 프랑스, 프랑수아 앙브루아즈 디도가 디도법을 만듦 <br> 디도법에 있는 12포인트 시세로를 프랑스 피트에 연계하자는 발상이 추후 널리 수용됨 <br> 비영어권 타이포그래피에서 통용된 도량형이 됨 </div>
+	        <div class="연도"> 1784 </div> <div class="내용"> 프랑스, Didot</div>
+	        <div class="연도"> 1785 </div> <div class="내용"> 영국, 신문 『타임스』 창간 </div>
+	        <div class="연도"> 1788 </div> <div class="내용"> <b> 이탈리아, Bodoni </b></div>
+	        <div class="연도"> 1796 </div> <div class="내용"> <b>제네펠더가 석판인쇄를 발명</b> </div>
+	        <div class="연도"> 1798 </div> <div class="내용"> 프랑스, 검인 종이 판형 관련 법규 제정 <br> 0.25제곱미터 전지를 기준으로 두 변이 일정하게 1:1.41 비례를 이루도록 재단 </div>
+	        <div class="연도"> 1798 </div> <div class="내용"> 평판인쇄술 발견 <br> 그러나 미술 인쇄가 아닌 실용 인쇄에서의 잠재성은 제한된 범위에서만 실현됨 </div>
+	        <div class="연도"> 1799 </div> <div class="내용"> 프랑스, 성공적인 (수력 방아) 제지기가 특허를 얻음 </div>
+	        <div class="연도"> 1800 </div> <div class="내용"> 수동 강철 평판 인쇄기 개발 </div>
+	        <div class="연도"> 1801 </div> <div class="내용"> 프랑스, 미터법(도량형)이 법적 지위를 차지함 </div>
+	        <div class="연도"> 1801 </div> <div class="내용"> 영국, 성공적인 (수력 방아) 제지기가 특허를 얻음 </div>
+	        <div class="연도"> 1805 </div> <div class="내용"> 독일, Walbaum</div>
+	        <div class="연도"> 1814 </div> <div class="내용"> 영국, 동력 윤전기가 『타임스』에 처음 쓰임 </div>
+	        <div class="연도"> 1821 </div> <div class="내용"> 미국, 잡지 『더 세터데이 이브닝 포스트』 창간 </div>
+	        <div class="연도"> 1822 </div> <div class="내용"> <b>사진 제판술 탄생</b> </div>
+	        <div class="연도"> 1830년대 </div> <div class="내용"> 영국, 산세리프 활자가 독자적 활자 양식으로 정착 <br> 1816년도 표본에서는 이를 ‘이집션’이라 부름 </div>
+	        <div class="연도"> 1838 </div> <div class="내용"> 효율적인 활자 제작기가 처음으로 특허를 얻음 </div>
+	        <div class="연도"> 1840년대 </div> <div class="내용"> 영국, 보통 굵기 활자로 짠 본문에서 강조용으로 <b>‘무거운’ 활자</b> 사용 </div>
+	        <div class="연도"> 1843 </div> <div class="내용"> 미국, 리처드 마치 호가 <b>윤전기</b> 발명 </div>
+	        <div class="연도"> 1845 </div> <div class="내용"> 영국, Clarendon</div>
+	        <div class="연도"> 1847 </div> <div class="내용"> 미국, 리처드 마치 호가 윤전기를 보완하여 특허를 냄 </div>
+	        <div class="연도"> 1860년대 </div> <div class="내용"> 영국, 구체(또는 구식)가 현대체와 쌍을 이루는 일반 용어로 자리잡음 </div>
+	        <div class="연도"> 1866 </div> <div class="내용"> 영국, 루이스 캐롤이 타이포그래픽 형태시인 〈이상한 나라의 앨리스〉를 씀 </div>
+	        <div class="연도"> 1867 </div> <div class="내용"> 미국, 잡지 『하퍼스 바자』 창간 <br> 최초의 패션 잡지임 </div>
+
+	        <div class="연도"> 1875 </div> <div class="내용"> <b>윤전기를 이용한 오프셋 인쇄</b>가 발명됨 </div>
+	        <div class="연도"> 1880년대 </div> <div class="내용"> 활자 주조와 조판을 겸하는 기계가 생산되기 시작 <br> 마감 공정(재단·정합·재봉·제본) 기계화는 더뎠음 <br> 격렬한 디자인 제작 활동기 </div>
+	        <div class="연도"> 1881 </div> <div class="내용"> 활판 인쇄용 망판 기술의 특허 출원 </div>
+	        <div class="연도"> 1883 </div> <div class="내용"> 제임스 밀링턴이 『거꾸로 읽어야 하나?』 발표 <br> 자발의 연구를 논하고, 부르스로피든 조판법을 상상함 </div>
+	        <div class="연도"> 1884 </div> <div class="내용"> 미국, 잡지 『타임』 창간 </div>
+	        <div class="연도"> 1885 </div> <div class="내용"> 미국, 린 보이드 벤턴이 <b>축도 전사 펀치 제작기</b> 개발 <br> 이는 기계 조판을 촉진한 중요 요소임 </div>
+	        <div class="연도"> 1885 </div> <div class="내용"> 호간이 하프톤 스크린 개발 </div>
+	        <div class="연도"> 1885 </div> <div class="내용"> 독일, 고문자협회 설립 <br> 안티크바(인문주의적 서체)가 주된 서체가 되어야 한다고 주장 <br> 프락투르(블랙레터)는 장식용 문자로만 사용할 것을 주장 </div>
+	        <div class="연도"> 1887 </div> <div class="내용"> 미국, 오트마 머겐탈러의 주조 활자기(linotype)의 발명 <br> 유독 키보드를 사용하였는데, 활자를 한 개씩이 아닌 한 행(line)씩 주조 </div>
+	        <div class="연도"> 1887 </div> <div class="내용"> 랜스턴이 <b>자동 주조 활자기(monotype)</b> 발명 <br> 완전히 자동화된 시스템으로, 한 글자씩 주조 <br> 복잡한 인쇄가 간단해지고, 1분에 약150글자를 주조함으로써 전보다 훨씬 빠른 작업을 가능하게 함 </div>
+	        <div class="연도"> 1890 </div> <div class="내용"> 영국, Golden Type</div>
+	        <div class="연도"> 1896 </div> <div class="내용"> 독일, Akzidenz Grotesk</div>
+	        <div class="연도"> 1890 </div> <div class="내용"> 독일, 일반독일문자협회 설립 <br> 프락투르(블랙레터) 사용 주장 <br> 민족주의적 성향을 강하게 띔 </div>
+	        <div class="연도"> 1896 </div> <div class="내용"> 독일, 뮌헨에서 잡지 『슈겐트』 창간 <br> 독일의 인쇄 부흥 운동이 상당한 생명력을 보였는데, 이 잡지로 인해 <b>유르겐슈틸</b>이라는 이름을 얻은 것으로 추정됨 </div>
+	        <div class="연도"> 1899 </div> <div class="내용"> 영국, 제러드 메이넬이 웨스트민스터 프레스를 설립함 </div>
+	        <div class="연도"> 1899 </div> <div class="내용"> 독일, 잡지 『인젤』(장식·삽화 전문 월간지) 간행 <br> 1902년까지 간행됨 </div>
+	        <div class="연도"> 1900경 </div> <div class="내용"> 대형 제본소 대부분이 사실상 기계화됨 </div>
+	        <div class="연도"> 1900경 </div> <div class="내용"> 독일, 진정한 로먼 활자 전통이 없고 블랙레터가 점차 비판과 공격을 받음 </div>
+	        <div class="연도"> 1900년대 초 </div> <div class="내용"> 독일, 슈테반 게오르게가 수식 조판용 그로테스크(산세리프) 활자를 독자적 표기법에 맞게 개량 <br> 문장 부호 단순화, 일부 언셜 문자 사용, 문장과 시행 첫머리에 국한한 대문자 사용 등이 특징 <br> 훗날 이 활자체는 ‘슈테반 게오르게 슈리프트’라 불리게 됨 </div>
+	        <div class="연도"> 1903 </div> <div class="내용"> 미국, News Gothic</div>
+	        <div class="연도"> 1903 </div> <div class="내용"> 오스트리아, 비엔나 공예제작소 설립 <br> 복사기 발명 </div>
+	        <div class="연도"> 1904 </div> <div class="내용"> 독일, 푀셸이 『최신 출판 미술』 발행 <br> 개인 출판 운동 개혁 정신에 담긴 실용 가치가 잘 드러남 </div>
+	        <div class="연도"> 1904 </div> <div class="내용"> <b>오프셋 인쇄 발명</b> </div>
+	        <div class="연도"> 1905 </div> <div class="내용"> 미국, Franklin Gothic <br> 영국, Linoscript</div>
+	        <div class="연도"> 1907 </div> <div class="내용"> 독일, 뮌헨에서 독일 공작 연맹 결성 <br> 품질 개념에 중심을 둠 <br> 보수적, 민족주의적 성격 </div>
+	        <div class="연도"> 1908 </div> <div class="내용"> 독일, Block</div>
+	        <div class="연도"> 1908 </div> <div class="내용"> 만년필의 대중화 </div>
+	        <div class="연도"> 1911 </div> <div class="내용"> 독일, 독일제국의회에서 안티크바(인문주의적 서체)를 사용하자는 고문자협회의 제안을 부결시킴 <br> 프락투르는 이후에도 계속 장려됨 </div>
+	        <div class="연도"> 1912 </div> <div class="내용"> 프랑스, Cocchin</div>
+	        <div class="연도"> 1913 </div> <div class="내용"> 영국, Plantin</div>
+	        <div class="연도"> 1913 </div> <div class="내용"> 영국, 잡지 『임프린트』 창간 <br> 1월부터 11월까지 간행된 이 잡지는 <b>인쇄 개혁 운동</b>의 첫 집결지였음 </div>
+	        <div class="연도"> 1913 </div> <div class="내용"> 영국, 랜스턴 모노타이프가 플랑탱을 기계 조판에 맞춰 개량함 <br> 『임프린트』의 성공 이후 역사적 활자체를 기계 조판에 맞춰 계량하는 작업을 이어나감 <br> 영국 개혁 운동이 거둔 주요 성과 </div>
+	        <div class="연도"> 1914 </div> <div class="내용"> 미국, Centaur</div>
+	        <div class="연도"> 1914 </div> <div class="내용"> 일본, 오프셋 인쇄 시작 </div>
+	        <div class="연도"> 1915 </div> <div class="내용"> 미국, Goudy Pld Style</div>
+	        <div class="연도"> 1916 </div> <div class="내용"> 프랑스, 프랜시스 메이넬이 펠리건 프레스 설립 <br> 수식 조판 설비를 갖춘 사실상 디자인 사무실 <br> 작품들이 뚜렷한 미적 관심을 보임 </div>
+	        <div class="연도"> 1917 </div> <div class="내용"> 영국, 로저스가 케임브리지 대학교 출판부에서 인쇄 고문으로 일하며 「케임브리지 대학교 출판부 타이포그래피 연구 보고서」를 이사회에 제출 <br> 고문이 등장해 인쇄 업계에 디자인 요소를 불어넣음 <br> 디자인이 ‘타이포그래퍼’의 몫이 됨 </div>
+	        <div class="연도"> 1917 </div> <div class="내용"> 독일, 독일 공업 표준 위원회 설립 </div>
+	        <div class="연도"> 1918~ </div> <div class="내용"> 독일, 세리프 로먼보다 산세리프 로먼이 더 현대적이게 됨 </div>
+	        <div class="연도"> 1919 </div> <div class="내용"> <b>독일, 바이마르 바우하우스 설립</b> <br> 바이마르 공예학교와 바이마르 미술학교가 합쳐진 것으로, 미술·공예·사진·건축 등과 관련된 종합적인 내용을 교육 </div>
+	        <div class="연도"> 1920 </div> <div class="내용"> 독일, 프락투르(블랙레터)와 안티크바(인문주의적 필체)가 균형을 맞춰감 </div>
+	        <div class="연도"> 1920 </div> <div class="내용"> 미국, Cooper Black</div>
+	        <div class="연도"> 1922 </div> <div class="내용"> 미국, 업다이크가 <b>『서양 활자의 역사』</b> 출간 <br> 500쪽 넘게 이어지는 서구 활자의 역사가 중요 업적으로 꼽힘 </div>
+	        <div class="연도"> 1922 </div> <div class="내용"> 미국, 잡지 『리더스 다이제스트』 창간 </div>
+	        <div class="연도"> 1923 </div> <div class="내용"> 영국, 잡지 『플러런』 창간 <br> 잡지 『임프린트』가 시사한 사업을 계승 </div>
+	        <div class="연도"> 1923 </div> <div class="내용"> 영국, 잡지 『더 타임』 창간 </div>
+	        <div class="연도"> 1924 </div> <div class="내용"> 독일, Bauer Bodoni</div>
+	        <div class="연도"> 1925 </div> <div class="내용"> 독일, Wilhelm Klingspor Gotisch <br> 독일, Fette Fraktur </div>
+	        <div class="연도"> 1925 </div> <div class="내용"> 독일, 바우하우스가 데사우로 이전 </div>
+	        <div class="연도"> 1926 </div> <div class="내용"> 미국, Century Schoolbook <br> 영국, Grotesque MT</div>
+	        <div class="연도"> 1926 </div> <div class="내용"> 파이크가 『인쇄물 가독성 연구 보고서』 발표 <br> 정부 문서 형태로, 선행 연구를 꼼꼼히 기록한 것과 공식 문서 성격을 띠었다는 점에서 일정한 역사적 가치가 있음 </div>
+	        <div class="연도"> 1927 </div> <div class="내용"><b> 독일, Futura <br> 영국, Gill Sans</b></div>
+	        <div class="연도"> 1927 </div> <div class="내용"> 독일, 독일공작연맹 해산 </div>
+	        <div class="연도"> 1928 </div> <div class="내용"> 영국, Perpetua</div>
+	        <div class="연도"> 1928 </div> <div class="내용"> 텔레타이프 통신기(teletypesetter) 발명 <br> 자체에서 만든 구멍 뚫린 테이프를 다른 장소로 옮길 수 있고, 전선을 통해 다른 곳에서도 전송 가능 <br> 뉴스 전송 분야에서 높은 가치 평가를 받음 </div>
+	        <div class="연도"> 1928 </div> <div class="내용"> 독일, 얀 치홀트가 뉴타이포그래피 운동 전개 <br> 목적인 의사소통을 지향하며, 가장 간략하고, 단순하고, 긴박한 형태로 나타날 것을 강조 <br> 시각적 감수성을 바탕으로 사진 역시 근원적 타이포그래피에 포함 </div>
+	        <div class="연도"> 1929 </div> <div class="내용"> 영국, 모리슨이 『브리태니커 백과사전』을 발행 <br> 이 책의 ‘타이포그래피’ 항목은 개정·번역 등 여러 형태로 다시 출간됨 </div>
+	        <div class="연도"> 1930 </div> <div class="내용"> 인쇄 개혁 운동의 가장 격렬한 활동기가 끝남 <br> 경기 침체로 인한 계몽된 타이포그래피의 수요 감소가 주된 이유임 <br> 인쇄 개혁파는 모노타이프 코퍼레이션을 통해 업계에 큰 영향을 미침 </div>
+	        <div class="연도"> 1930경 </div> <div class="내용"> <b>산세리프체 확산</b> </div>
+	        <div class="연도"> 1931 </div> <div class="내용"> 독일, Berthold City</div>
+	        <div class="연도"> 1932 </div> <div class="내용"> 영국, Times Roman</div>
+	        <div class="연도"> 1932 </div> <div class="내용"> 브러시 레터링의 대중화 </div>
+	        <div class="연도"> 1934 </div> <div class="내용"> 알렉사이 브로도비치가 『하퍼스 바자』 창간 </div>
+	        <div class="연도"> 1935 </div> <div class="내용"> 독일, 얀 치홀트가 『비대칭 타이포그래피』 간행 </div>
+	        <div class="연도"> 1936 </div> <div class="내용"> 미국, 루스가 잡지 『라이프』 창간 </div>
+	        <div class="연도"> 1937 </div> <div class="내용"> 프랑스, Peignot</div>
+	        <div class="연도"> 1938 </div> <div class="내용"> 미국, 잡지 『보그』 발간 </div>
+	        <div class="연도"> 1930년대 후반 </div> <div class="내용"> 얀 치홀트가 신타이포그래피에서 전통주의로 돌아섬 <br> 영국에서의 경험이 영향을 미침 </div>
+	        <div class="연도"> 1940 </div> <div class="내용"> 독일, Albertus </div>
+	        <div class="연도"> 1945 </div> <div class="내용"> 일본, 사진식자 실용화 </div>
+	        <div class="연도"> 1946 </div> <div class="내용"> <b>컴퓨터 출현</b>(애니악 컴퓨터) </div>
+	        <div class="연도"> 1946 </div> <div class="내용"> 스위스, 막스 빌이 「타이포그래피에 관해」 간행 <br> 스위스 타이포그래피의 기초를 다진 글로 꼽힘 </div>
+	        <div class="연도"> 1948 </div> <div class="내용"> 독일, Palatino</div>
+	        <div class="연도"> 1949 </div> <div class="내용"> 잡지 『디자인』 창간 </div>
+	        <div class="연도"> 1950년대 </div> <div class="내용"> 평판 인쇄술이 진정한 일반 인쇄 방법으로 정착 </div>
+	        <div class="연도"> 1950 </div> <div class="내용"> <b>사진식자기</b>의 첫 세대인 인터타입사의 <b>포토세터(Fotosetter)</b>와 머겐탈러 사의 <b>라이노필름(linofilm)</b>이 개발 </div>
+	        <div class="연도"> 1953 </div> <div class="내용"> 일본, 잡지 『아이디어』 창간 <br> 미국, 잡지 『플레이보이』 발간 </div>
+	        <div class="연도"> 1956 </div> <div class="내용"> 트랜스퍼 레터링 </div>
+	        <div class="연도"> 1956 </div> <div class="내용"> <b>스위스, Helvetica</b> <br> 프랑스, Univers</div>
+	        <div class="연도"> 1957 </div> <div class="내용"> 얀 치홀트가 스위스 타이포그래피를 비판 <br> 글 덩어리 배열에 지나치게 집착하면 언어를 단순한 색조로 환원하고 의미를 부정하게 된다고 시사함 </div>
+	        <div class="연도"> 1957 </div> <div class="내용"> 도트 매트릭스 프린터 탄생 </div>
+	        <div class="연도"> 1958 </div> <div class="내용"> 레이저 발명 <br> 상업용 복사기 출시 </div>
+	        <div class="연도"> 1958 </div> <div class="내용"> 독일, Optima</div>
+	        <div class="연도"> 1960년대 </div> <div class="내용"> <b>표제용 사진 식자기(display photographic typesetting)</b>의 급격한 증가 <br> 글자 크기의 자유로운 조절이 가능하고 글자들이 서로 닿거나 겹치는 효과가 가능해짐 </div>
+	        <div class="연도"> 1960년대 </div> <div class="내용"> 스위스 타이포그래피의 정체기 </div>
+	        <div class="연도"> 1961 </div> <div class="내용"> 볼타자기 개발 </div>
+	        <div class="연도"> 1961 </div> <div class="내용"> 잡지 『아키그램』 창간 </div>
+	        <div class="연도"> 1962 </div> <div class="내용"> 이탈리아, Eurostile</div>
+	        <div class="연도"> 1965 </div> <div class="내용"> 미국, OCR-A</div>
+	        <div class="연도"> 1966 </div> <div class="내용"> 영국, Snell Roundhand</div>
+	        <div class="연도"> 1967 </div> <div class="내용"> 독일, Sabon</div>
+	        <div class="연도"> 1967 </div> <div class="내용"> 라이노타이프 사에서 세계 최초로 <b>CRT(음각선관) 시스템</b>을 개발 <br> CRT이 가지고 있는 고도의 해상력과 레이저의 결합 커뮤니케이션 분야에 또 다른 혁명을 가져옴 </div>
+	        <div class="연도"> 1967 </div> <div class="내용"> 잡지 『팩트』·『뉴욕』·『롤링 스톤』 창간 </div>
+	        <div class="연도"> 1968 </div> <div class="내용"> 미국, OCR-B</div>
+	        <div class="연도"> 1968 </div> <div class="내용"> 잡지 『아방가르드』 창간</div>
+	        <div class="연도"> 1969 </div> <div class="내용"> 잡지 『더 세터데이 이브닝 포스트』 148년만에 폐간 </div>
+	        <div class="연도"> 1970 </div> <div class="내용"> <b>디지털 타입세팅 등장</b> </div>
+	        <div class="연도"> 1970 </div> <div class="내용"> 미국, Avant Garde</div>
+	        <div class="연도"> 1971 </div> <div class="내용"> 스캐너 발명 </div>
+	        <div class="연도"> 1972 </div> <div class="내용"> 컬러 복사기 발명 </div>
+	        <div class="연도"> 1975 </div> <div class="내용"> 프랑스, Frutiger</div>
+	        <div class="연도"> 1979 </div> <div class="내용"> 레이저 인쇄복사기 등장 </div>
+	        <div class="연도"> 1980 </div> <div class="내용"> 레이저 프린터 등장 </div>
+	        <div class="연도"> 1984 </div> <div class="내용"> <b>데스크톱 퍼블리싱</b> 시작 <br> 개인용 데스크톱을 통한 출판물 작업이 가능해짐 </div>
+	        <div class="연도"> 1985 </div> <div class="내용"> 미국, Oakland</div>
+	        <div class="연도"> 1988 </div> <div class="내용"> 독일, Rotis</div>
+	        <div class="연도"> 1989 </div> <div class="내용"> 미국, Lithos <br> 미국, Bureau Grotesque 37 <br> 미국, Trajan <br> 미국, Adobe Garamond </div>
+	        <div class="연도"> 1990경 </div> <div class="내용"> <b>디지털 기반의 디자인 확산</b> </div>
+	        <div class="연도"> 1990 </div> <div class="내용">독일, Officina <br> 미국, Acropolis <br> 독일, Corporate ASE <br> 미국, PMN Caesilia </div>
+	        <div class="연도"> 1991 </div> <div class="내용"> 독일, San Marco <br> 미국, Madrone </div>
+	        <div class="연도"> 1993 </div> <div class="내용"> 미국, Tuscan Egyptian</div>
+	        <div class="연도"> 1996 </div> <div class="내용"> 미국, Mrs Eaves. <br>미국, Adobe Jenson</div>
+	        <div class="연도"> 1999 </div> <div class="내용"> 독일, Scala</div>
+	        <div class="연도"> 2000 </div> <div class="내용"> 미국, Gotham</div>
+	        <div class="연도"> 2001 </div> <div class="내용"> 한국, 제1회 타이포잔치 2001: 서울국제타이포그래피비엔날레 개최 </div>
+	        <div class="연도"> 2002 </div> <div class="내용"> 미국, HWT VanLanen <br> 미국, Neutraface <br> 독일, Optima Nova </div>
+	        <div class="연도"> 2004 </div> <div class="내용"> 스위스, Akkurat </div>
+	        <div class="연도"> 2005 </div> <div class="내용"> 미국, Caslon Italian</div>
+	        <div class="연도"> 2009 </div> <div class="내용"> 독일, Neue Frutiger <br> 네덜란드, Fedra </div>
+	        <div class="연도"> 2010 </div> <div class="내용"> 독일, Univers next</div>
+	        <div class="연도"> 2011 </div> <div class="내용"> 미국, Nenu Haas Grotesk</div>
+	        <div class="연도"> 2011 </div> <div class="내용"> 한국, 제2회 타이포잔치 2011: 서울국제타이포그래피비엔날레 개최 </div>
+	        <div class="연도"> 2012 </div> <div class="내용"> 미국, Google Noto sans </div>
+	        <div class="연도"> 2013 </div> <div class="내용"> 한국, 제3회 타이포잔치 2013: 서울국제타이포그래피비엔날레 개최 </div>
+	        <div class="연도">  </div> <div class="내용">  </div>
+	        <div class="연도">  </div> <div class="내용">  </div>
+		</div>
+
+		<div class="text art-design">
+			<div class="연도"> BC 20000-10000경 </div> <div class="내용"> 알타미라동굴 벽화 </div>
+	        <div class="연도"> BC 750경 </div> <div class="내용"> 호메로스 〈일리아스〉, 〈오디세이아〉 </div>
+	        <div class="연도"> 4C </div> <div class="내용"> <b>비잔틴 양식 등장</b> </div>
+	        <div class="연도"> 11C 중반 </div> <div class="내용"> 유럽, <b>로마네스크 양식 등장</b> <br> 서유럽 각지에 퍼진 크리스트교 미술 양식 <br> 게르만 민족이나 고대 로마, 고대 오리엔트의 요소를 포함하고 고딕에 선행함 <br> 특히, 석조 성당의 둥근 천장, 창, 입구 등에서 반원 아치를 많이 사용한 건축 양식에 특징이 있고, 회화에서는 미니어처(miniature)에 특색이 있음 </div>
+	      	<div class="연도"> 12C </div> <div class="내용"> <b>고딕 양식 출현</b> <br> 프랑스 파리에서 시작되어 15C 중반까지 전 유럽에서 대유행한 건축 양식 <br> 로마네스크 양식을 보완하는 형태로 발전 <br> 건물 내부에 많은 빛이 들어오도록 하는 것을 목적으로 함 <br> 부벽, 수직, 뾰족한 첨탑 등이 특징인데, 이 중에서 첨탑은 신과 조금이라도 가깝게 다가서겠다는 당시 사람들의 생각이 담겨있음 </div>
+	        <div class="연도"> 14C </div> <div class="내용"> <b>르네상스 출현</b> <br> ‘재탄생’. 주로 14세기 이탈리아에서 시작된 새로운 문화 양식과 가치의 급격한 발생을 일컫음 <br> 예술이 고전 시대 동안 완벽의 절정에 도달했다가 로마 제국이 멸망했을 때 사라졌다는 널리 퍼진 관점에서 비롯됨 <br> 대표 작가로는 라파엘로 산치오, 레오나르도 다빈치, 미켈란젤로 부오나로티가 있음 </div>
+	        <div class="연도"> 1353 </div> <div class="내용"> 단테 『신곡』 </div>
+	        <div class="연도"> 1375 </div> <div class="내용"> 보카치오 『데카메론』 </div>
+	        <div class="연도"> 1375 </div> <div class="내용"> 〈로빈 이야기〉의 대중화 </div>
+	        <div class="연도"> 1434 </div> <div class="내용"> 이탈리아, <b>코시모 데 메디치가 피렌체의 수장이 됨</b> <br> 이후 메디치 가문은 유럽 전역에 막대한 권력을 행사함 </div>
+	        <div class="연도"> 1485 </div> <div class="내용"> 산드로 보티첼리 〈비너스의 탄생〉 </div>
+	        <div class="연도"> 1495 </div> <div class="내용"> 레오나르도 다빈치 〈최후의 만찬〉 </div>
+	        <div class="연도"> 1495 </div> <div class="내용"> 레오나르도 다빈치 〈모나리자〉 </div>
+	        <div class="연도"> 16C </div> <div class="내용"> 이탈리아, 친퀘첸토 등장 <br> 이탈리아어로 500이란 뜻으로, 이탈리아 미술에서 1500년대 시대 개념이나 시대 양식을 나타내는 용어 </div>
+	        <div class="연도"> 1500-20 </div> <div class="내용"> 전성기 르네상스 </div>
+	        <div class="연도"> 1519 </div> <div class="내용"> <b>흑 카메라 발명</b> </div>
+	        <div class="연도"> 16C 중반 </div> <div class="내용"> 매너리즘 사조 등장 <br> 르네상스 미술의 방식이나 형식을 계승하되 자신만의 독특한 양식에 따라 예술작품을 구현한 예술 사조 </div>
+	        <div class="연도"> 1551 </div> <div class="내용"> 피테르 아르첸 〈고기 진열대와 구호품을 주는 성가족〉 </div>
+	        <div class="연도"> 1563 </div> <div class="내용"> 주세페 아르침볼 〈여름〉 </div>
+	        <div class="연도"> 1564 </div> <div class="내용"> 셰익스피어 출생 </div>
+	        <div class="연도"> 1586 </div> <div class="내용"> 일본, 가부키 극장 탄생 </div>
+	        <div class="연도"> 1599 </div> <div class="내용"> 영국, 런던에서 글로브 극장이 문을 엶 <br> 도시의 가장 크고 선풍적인 극장으로 자리잡음 <br> 셰익스피어 극의 초연이 많이 열림 </div>
+	        <div class="연도"> 17C </div> <div class="내용"> <b>바로크 출현</b> <br> 왜곡된 삼단논법, 혹은 불협화음으로 인한 비정상적인 소리를 의미 <br> 르네상스 양식의 균형과 조화에 반하여, 최소한의 질서 안에서 우연과 자유분방함이 강조 </div>
+	        <div class="연도"> 1605 </div> <div class="내용"> 세르반테스 『돈키호테』 1부 저술 </div>
+	        <div class="연도"> 1615 </div> <div class="내용"> 아르테미시아 젠틸레스키 〈홀로페르네스의 목을 베는 유디트〉 <br> 여성 예술가로서 독자적인 경력을 추구한 희귀 케이스 </div>
+	        <div class="연도"> 1620 </div> <div class="내용"> 벨기에, 일러스트레이션이 포함된 최초의 신문 『니우베 티딩헨』 발행 </div>
+	        <div class="연도"> 1620 </div> <div class="내용"> 네덜란드, 쉴더스벤트가 로마에서 설립 <br> 외국에 거주하는 네덜란드·플랑드르 예술가들의 공제 조직임 </div>
+	        <div class="연도"> 1629 </div> <div class="내용"> 발타시르 판 데르 아스트 〈꽃, 과일, 조개껍데기 그리고 곤충의 정물화〉 </div>
+	        <div class="연도"> 1635 </div> <div class="내용"> 페테르 파울 루벤스 〈파리스의 심판〉 </div>
+	        <div class="연도"> 1648 </div> <div class="내용"> 프랑스, 프랑스 왕립 회화 및 조각 아카데미가 파리에 설립 <br> 이탈리아 밖에 있는 최초의 공식적인 예술 아카데미 </div>
+	        <div class="연도"> 1656 </div> <div class="내용"> 이탈리아, 나폴리에서 역병이 발생하여 도시의 예술가 대부분이 사망 <br> 제노바 역시 치명적인 타격을 입음 </div>
+	        <div class="연도"> 18C </div> <div class="내용"> <b>로코코 출현</b> <br> 어원은 자갈로, 18세기 프랑스에서 생겨난 예술형식 <br> 바로크 시대의 호방한 취향을 이어받아 경박함 속에 표현되는 화려한 색채와 섬세한 장식, 건축의 유행 </div>
+	        <div class="연도"> 1740-50 </div> <div class="내용"> 로코코의 전성기 </div>
+	        <div class="연도"> 1740 </div> <div class="내용"> 프랑수아 부세 〈비너스의 승리〉 </div>
+	        <div class="연도"> 1742 </div> <div class="내용"> 헨델 〈메시아〉 초연</div>
+	        <div class="연도"> 18C 말 </div> <div class="내용"> <b>신고전주의 출현</b> 프랑스를 중심으로 유럽에서 발전한 미술 사조 <br> 고대 그리스와 고대 로마 문화의 고전적 예술로부터 영감을 받은 장식·시각예술·문학·연극·음악·건축을 이름 <br> 프랑스 혁명의 시각적 동반자가 됨 </div>
+	        <div class="연도"> 18C 말 </div> <div class="내용"> <b>낭만주의 출현</b> <br> 서유럽에서 발생한 미술적·문화적·지적 사조로, 18C 말부터 시작하여 1800~1850년 사이에 정점을 찍음 <br> 개성을 존중하고 자아의 해방을 주장하며 상상과 무한한 것을 동경하는 주관적·감정적 태도가 특징 <br> 고전주의의 차가운 형식 존중에 대한 반동이라는 형태로 나타나 자유분방한 색채·유동적인 필치·동감에 찬 구성을 갖춘 영웅적 작품을 남김 </div>
+	        <div class="연도"> 1870-80년대 </div> <div class="내용"> 미국·영국, 유미주의 발생 <br> 양식이 문란한 과잉 장식이 규범처럼 되어버린 상황에서 이를 신중하고 단순한 장식으로 대체 </div>
+	        <div class="연도"> 1822 </div> <div class="내용"> <b>니엡스의 최초의 사진</b> </div>
+	        <div class="연도"> 1835 </div> <div class="내용"> 탈보트의 초기의 은판사진 </div>
+	        <div class="연도"> 1837 </div> <div class="내용"> 다게르가 은판사진 촬영 </div>
+	        <div class="연도"> 1841 </div> <div class="내용"> 탈보트가 캘로타입(사진술) 소개 </div>
+	        <div class="연도"> 1850년대 </div> <div class="내용"> <b>사실주의의 절정</b> <br> 현실을 존중하고 객관적으로 묘사하려는 예술 제작의 태도 또는 방법 <br> 단순히 자연을 정확하게 묘사하는 게 아니라, 현실 그대로의 일상 생활을 주제로 삼는 것을 뜻함 <br> 동세대의 삶과 사회의 면모를 재현하는 작업에 진지하게 몰두함 </div>
+	        <div class="연도"> 19C 후반 </div> <div class="내용"> <b>인상주의 등장</b> <br> 거의 자연발생적으로 형성된 유파로, 예술가의 정서 상태보다도 오히려 자연 혹은 삶의 편린들을 가능한 한 객관적이며 과학적인 정신에 의해 기록함을 예술의 제일의 덕목으로 삼는 사실주의의 태도에 동조함 <br> 그러나 사회의 개혁에는 크게 관심을 두지 않음 </div>
+	        <div class="연도"> 1851 </div> <div class="내용"> 영국, <b>런던에서 제1회 만국박람회 개최</b> </div>
+	        <div class="연도"> 1861 </div> <div class="내용"> 미술공예운동 발흥 </div>
+	        <div class="연도"> 1869 </div> <div class="내용"> 최초의 컬러사진 </div>
+	        <div class="연도"> 1880년대 </div> <div class="내용"> <b>후기인상주의(탈인상주의) 성행</b> <br> 인상주의에서 시작했지만, 그 영향에서 벗어나 새로운 작품 세계를 확립하려고 한 예술사조 <br> 프랑스를 중심으로 함 </div>
+	        <div class="연도"> 1885 </div> <div class="내용"> 영국, 멕멀도가 센추리 길드 결성 </div>
+	        <div class="연도"> 1888 </div> <div class="내용"> 영국, 미술공예협회 결성 </div>
+	        <div class="연도"> 1889 </div> <div class="내용"> 조지 이스트먼이 셀룰로이드 필름 생산 </div>
+	        <div class="연도"> 1890 </div> <div class="내용"> <b>추상미술 출현</b> <br> 눈에 보이는 현실의 사물을 묘사의 대상으로 하지 않는 미술 <br> 자연의 구체적 대상을 거의 재현하지 않고 색·선·형 등의 추상적 형식으로 작품을 구성하는 미술을 총칭 <br> 20세기 미술에서 가장 중요한 주류 중 하나 </div>
+	        <div class="연도"> 1895 </div> <div class="내용"> 뤼미에르 형제가 시네마토그래프 발명 </div>
+	        <div class="연도"> 1895 </div> <div class="내용"> 유명 극작가이자 시인인 오스카 와일드의 감옥행 <br> 희극 〈정직함의 중요성〉, 〈윈더미어 부인의 부채〉, 〈하찮은 여인〉 등을 쓴 탐미주의 작가 오스카 와일드가 당시 금지됐던 동성애 파문으로 유죄 판결을 받음 </div>
+	        <div class="연도"> 1897 </div> <div class="내용"> 오스트리아, 시세션 운동 <br> 미술·공예·건축 운동 <br> 과거의 예술양식에서 분리하여, 생활과 기능을 연결한 새로운 조형예술의 창조를 목표로 함 </div>
+	        <div class="연도"> 1899 </div> <div class="내용"> 미국, 최초의 대중만화 </div>
+	        <div class="연도"> 19C 말 </div> <div class="내용"> <b>신인상주의 등장</b> <br> 프랑스에서 쇠라와 사낙을 중심으로 한 점묘주의 이론이자 운동으로, 색채분할 등 인상주의의 기법을 더욱 체계화시키는 동시에 신인상주의자들은 인상주의의 경험주의적 사실주의에 정면으로 대비되는 증신, 즉 그림이란 신중하게 고려되고 계획될 수 있으며 과학적으로 계산된 효과가 예견되고 지향될 수 있다는 사고를 도입함 </div>
+	        <div class="연도"> 19C 말 </div> <div class="내용"> <b>상징주의 등장</b> <br> 주관을 강조하고 정조를 상징화하여 표현 </div>
+	        <div class="연도"> 1900 </div> <div class="내용"> <b>입체주의(입체파, 큐비즘) 등장</b> <br> 1914년까지 파리에서 일어난 미술 혁신 운동 <br> 유럽 회화를 르네상스 이래의 사실주의적 전통에서 해방시킨 회화 혁명으로 지칭됨 <br> 서양 회화의 전통인 원근법·명암법·순간적인 사실 묘사를 지양하고, 야수주의의 주정적인 표현을 페기한 되신 시점을 복수화·색체도 녹색과 황토색으로 한정·기하학적 형상으로 환원·사물의 존재성을 이차원의 타블로로 구축적으로 재구성하고자 함 <br> 제 1차 세계대전의 발발로 종말을 맞았으나, 그 성과는 그 후의 미술·디자인·건축에 많은 영향을 끼침 </div>
+	        <div class="연도"> 1902 </div> <div class="내용"> 독일, 바이마르 공예학교 개교 <br> 추후 바이마르 미술학교와 결합해 바이마르 바우하우스가 됨 </div>
+	        <div class="연도"> 1905 </div> <div class="내용"> 독일, 표현주의 그룹 결성 <br> 제1차 세계대전 이후 1920년대 베를린에서 절정을 맞이함 </div>
+	        <div class="연도"> 1907 </div> <div class="내용"> 피카소 〈아비뇽의 처녀들〉 </div>
+	        <div class="연도"> 1909 </div> <div class="내용"> 러시아발레단의 파리 공연 </div>
+	        <div class="연도"> 1909 </div> <div class="내용"> 미래주의 선언 <br> 이탈리아를 중심으로 일어난 일련의 아방가르드 예술 운동 <br> 일체의 과거를 청산하고 속도와 다이내믹한 힘이 넘치는 기계문명의 표현을 강력히 주장함 <br> 과거와 전통을 거부하고 새로움·젊음·기계·운동·힘·속도를 찬양 <br> 공간과 시간 속에서 동시에 일어나는 소리·빛·운동 등을 회화에 가시작으로 표현할 수 있는 가능성을 보여줌 </div>
+	        <div class="연도"> 1910 </div> <div class="내용"> <b>추상주의 등장</b> </div>
+	        <div class="연도"> 1911 </div> <div class="내용"> 독일, 청기사 그룹 결성 <br> 독일 표현주의 회화의 한 그룹으로, 색과 추상을 통해 내면적 진심을 표현할 것을 추구함 <br> 대표적 작가로는 바실리 칸딘스키, 프란츠 마르크, 파울 클레, 가브리엘레 뮌터 등이 있음 </div>
+	        <div class="연도"> 1911 </div> <div class="내용"> 뒤샹 〈계단을 내려오는 누드〉 </div>
+	        <div class="연도"> 1915 </div> <div class="내용"> 그리피스 감독의 활동 사진 〈국가의 탄생〉 </div>
+	        <div class="연도"> 1916 </div> <div class="내용"> 스위스, 취리히에서 다다이즘(약칭 다다) 출현 <br> 허무주의적 예술 운동임 </div>
+	        <div class="연도"> 1917 </div> <div class="내용"> 네덜란드, <b>신조형주의(더스테일)</b> 『다다』지 창간 <br> 더스테일은 네덜란드에서 시작된 예술 운동으로, 형태와 색상의 본질적 요소로 단순화되는 순수한 추상성과 보편성을 지지함 <br> 수직·수평으로 시각적 구성 단순화하였고, 검정색·흰색·원색만을 사용함 </div>
+	        <div class="연도"> 1919 </div> <div class="내용"> 프랑스, 신조형주의 등장 </div>
+	        <div class="연도"> 1921 </div> <div class="내용"> 가상드르의 조형주의적 포스터 유행 </div>
+	        <div class="연도"> 1925 </div> <div class="내용"> 건축모형 국제구성주의 결성 </div>
+	        <div class="연도"> 1925 </div> <div class="내용"> 르 코르뷔지에의 장식미술 선언 </div>
+	        <div class="연도"> 1925 </div> <div class="내용"> 라이카 사진기 생산 </div>
+	        <div class="연도"> 1927 </div> <div class="내용"> 최초의 유성영화 〈재즈가수〉 </div>
+	        <div class="연도"> 1928 </div> <div class="내용"> 최초의 미키마우스 영화 </div>
+	        <div class="연도"> 1929 </div> <div class="내용"> 16밀리 영화용 컬러필름 생산 </div>
+	        <div class="연도"> 1030 </div> <div class="내용"> 미국, 유선형 스타일 등장 </div>
+	        <div class="연도"> 1931 </div> <div class="내용"> 펄 벅 『대지』 발표 </div>
+	        <div class="연도"> 1935 </div> <div class="내용"> 35밀리 코닥크롬필름 생산 </div>
+	        <div class="연도"> 1937 </div> <div class="내용"> 피카소 〈게르니카〉 </div>
+	        <div class="연도"> 1937 </div> <div class="내용"> 미국, 시카고 디자인학교 개교 </div>
+	        <div class="연도"> 1940 </div> <div class="내용"> 유선형 스타일 유행 </div>
+	        <div class="연도"> 1942 </div> <div class="내용"> <b>르 코르뷔지에의 모듈러 창안</b> </div>
+	        <div class="연도"> 1948 </div> <div class="내용"> 울름조형학교 개교 <br> 인스턴트 카메라 발명 </div>
+	        <div class="연도"> 1940년대 후반 </div> <div class="내용"> 추상표현주의 등장 </div>
+	        <div class="연도"> 1951 </div> <div class="내용"> 일본, 일본선전미술회(일선미) 결성 </div>
+	        <div class="연도"> 1953 </div> <div class="내용"> 일본디자인학회 창립 </div>
+	        <div class="연도"> 1956 </div> <div class="내용"> 상황주의 운동 전개 </div>
+	        <div class="연도"> 1957 </div> <div class="내용"> 국제산업디자인단체협의회(ICSID) 창립 </div>
+	        <div class="연도"> 1958 </div> <div class="내용"> 팝 뮤직 탄생 </div>
+	        <div class="연도"> 1960년대 초반 </div> <div class="내용"> <b>팝 아트 등장</b> <br> 최소주의(미니멀리즘) 등장 </div>
+	        <div class="연도"> 1960 </div> <div class="내용"> 레트라세트 개발 <br> 글씨·무늬·그림의 인스턴트제품으로, 작업 시간을 크게 단축시킬 수 있음 </div>
+	        <div class="연도"> 1963 </div> <div class="내용"> 국제그래픽디자인연합회(ICOGRADA) 창립 <br> 바비 인형 탄생 </div>
+	        <div class="연도"> 1963 </div> <div class="내용"> 비디오 아트 등장 <br> 개척자로는 한국 태생의 백남준이 널리 꼽힘 </div>
+	        <div class="연도"> 1960년대 중반 </div> <div class="내용"> 대지예술 등장 </div>
+	        <div class="연도"> 1960년대 후반 </div> <div class="내용"> 행위 예술 등장 </div>
+	        <div class="연도"> 1969 </div> <div class="내용"> 울름조형학교 폐쇄 </div>
+	        <div class="연도"> 1970년대 </div> <div class="내용"> <b>설치예술 등장</b> </div>
+	        <div class="연도"> 1970 </div> <div class="내용"> 미국, 극사실주의운동 전개 </div>
+	        <div class="연도"> 1971 </div> <div class="내용"> 펜타그램사 설립 </div>
+	        <div class="연도"> 1972 </div> <div class="내용"> 오틀 아이허의 뮌헨올림픽 픽토그램 디자인 </div>
+	        <div class="연도"> 1975 </div> <div class="내용"> 프랙탈 이미지 이론 발전 </div>
+	        <div class="연도"> 1970년대 말 </div> <div class="내용"> 신표현주의 등장 </div>
+	        <div class="연도"> 1981 </div> <div class="내용"> 이탈리아, 멤피스그룹 결성 <br> 모던디자인·상업주의 디자인에 반발하고 인위적이고 획일적 시각 표현에서 탈피하고자 한 일련의 이탈리아 산업 디자이너들에 의해 결성된 그룹 </div>
+	        <div class="연도"> 1982 </div> <div class="내용"> 일회용 카메라 시판 </div>
+	        <div class="연도"> 1989 </div> <div class="내용"> 일본, 바이오 디자인운동 확산 </div>
+	        <div class="연도"> 1989 </div> <div class="내용"> 런던, 세계 최초의 디자인박물관 설립 </div>
+	        <div class="연도"> 1990 </div> <div class="내용"> 어도비 사 ‘포토숍’ 출시 </div>
+	        <div class="연도"> 1992 </div> <div class="내용"> 어도비 사 ‘프리미어’ 발표 </div>
+	        <div class="연도"> 1999 </div> <div class="내용"> 어도비 사 ‘인디자인’ 출시 </div>
+	        <div class="연도"> 2007 </div> <div class="내용"> 어도비 사 ‘Creative Suite’ 출시 </div>
+	        <div class="연도"> 2008 </div> <div class="내용"> 한국, 제1회 서울디자인올림픽 개최 </div>
+	        <div class="연도"> 2010 </div> <div class="내용"> 한국, 서울특별시 세계디자인수도 지정 </div>
+		</div>
+
+		<div class="text history">
+	        <div class="연도"> BC 30000- </div> <div class="내용"> 불의 사용과 보관 </div>
+	        <div class="연도"> BC 20000-10000경 </div> <div class="내용"> 기름등잔·낚시바늘·활/화살·피리·밧줄의 발명 <br> 정착 생활의 시작 </div>
+	        <div class="연도"> BC 10000-5000경 </div> <div class="내용"> 빙하시대 종료, 가축 사육, 밀과 보리의 경작, 토기 사용 </div>
+	        <div class="연도"> BC 4241 </div> <div class="내용"> 이집트, 최초의 달력 제작 </div>
+	        <div class="연도"> BC 2680 </div> <div class="내용"> 피라미드 축조 시작 </div>
+	        <div class="연도"> BC 1750경 </div> <div class="내용"> 함무라비 법정 </div>
+	        <div class="연도"> BC 1400경 </div> <div class="내용"> 모세의 〈십계명〉 </div>
+	        <div class="연도"> BC 776 </div> <div class="내용"> 제1회 고대올림픽  </div>
+	        <div class="연도"> BC 563경 </div> <div class="내용"> 석가모니 탄생 </div>
+	        <div class="연도"> BC 551 </div> <div class="내용"> 공자 탄생 </div>
+	        <div class="연도"> BC 300 </div> <div class="내용"> 중국, 외바퀴 짐수레 차 발명 </div>
+	        <div class="연도"> BC 215 </div> <div class="내용"> 중국, 만리장성 축조 </div>
+	        <div class="연도"> BC 50 </div> <div class="내용"> 중국, 통신 수단으로 거위 사용 </div>
+	        <div class="연도"> 570 </div> <div class="내용"> 무함마드 탄생 </div>
+	        <div class="연도"> 595 </div> <div class="내용"> 인도, 세계 최초로 십진법 사용 (‘0’발명) </div>
+	        <div class="연도"> 622 </div> <div class="내용"> 헤지라(이슬람교의 원년) 탄생 </div>
+	        <div class="연도"> 711 </div> <div class="내용"> 이슬람 세력, 이베리아 정복 </div>
+	        <div class="연도"> 1085 </div> <div class="내용"> 그리스도교 전사들의 톨레도 수복 </div>
+	        <div class="연도"> 1095-99 </div> <div class="내용"> 1차 십자군 전쟁 </div>
+	        <div class="연도"> 1102 </div> <div class="내용"> 스페인, 국민 영웅 엘 시드의 발렌시아 탈환 </div>
+	        <div class="연도"> 1147-49 </div> <div class="내용"> 2차 십자군 전쟁 <br> 소아시아에서 패배, 에데사 탈환 실패 </div>
+	        <div class="연도"> 1189-92 </div> <div class="내용"> 3차 십자군 전쟁 <br> 예루살렘 수복 실패, 게르만 황제 익사 </div>
+	        <div class="연도"> 12C 말 </div> <div class="내용"> 이탈리아, 볼로냐 대학 출발 <br> 프랑스, 파리 학교가 모습을 드러냄 </div>
+	        <div class="연도"> 1202-04 </div> <div class="내용"> 4차 십자군 전쟁 <br> 콘스탄티노플 점령과 약탈, 라틴 제국 건설 </div>
+	        <div class="연도"> 1212 </div> <div class="내용"> 소년 십자군 <br> 수천 명의 소년이 노예로 팔려감 </div>
+	        <div class="연도"> 1218-21 </div> <div class="내용"> 5차 십자군 전쟁 <br> 이집트 공략, 일시적인 승리에 그치고 실패 </div>
+	        <div class="연도"> 1228-29 </div> <div class="내용"> 6차 십자군 전쟁 <br> 이집트 술탄과의 계약으로 1244년까지 예루살렘을 보유하기로 함 </div>
+	        <div class="연도"> 1232 </div> <div class="내용"> 그라나다를 제외한 이베리아 반도 전역 회복 </div>
+	        <div class="연도"> 1248-54 </div> <div class="내용"> 7차 십자군 전쟁 <br> 이집트 재공략, 프랑스 왕 루이 9세가 포로로 잡힘 <br> 실패로 돌아감 </div>
+	        <div class="연도"> 1271-72 </div> <div class="내용"> 8차 십자군 전쟁 <br> 튀니스 상륙, 해외 십자군 근거지 소멸 </div>
+	        <div class="연도"> 1295 </div> <div class="내용"> 중국, 전투에서 폭약 사용 </div>
+	        <div class="연도"> 1305 </div> <div class="내용"> 마르크 폴로가 『중국견문기』를 씀 </div>
+	        <div class="연도"> 1307 </div> <div class="내용"> 잉글랜드, 에드워드 1세가 피트·야드·에이커의 사용을 공포 </div>
+	        <div class="연도"> 1337 </div> <div class="내용"> 영국-프랑스, 백년전쟁 발발 <br> 영국으 ㅣ에드워드 3세가 프랑스의 왕위계승권을 주장, 프랑스 왕 필리프 6세가 가스코뉴(영국 왕의 영지)에 대한 몰수령을 내린 것을 계기로 발발 </div>
+	        <div class="연도"> 1347 </div> <div class="내용"> 이탈리아, 흑사병 유행 </div>
+	        <div class="연도"> 1400 </div> <div class="내용"> 유럽 전역, 흑사병 유행 <br> 기독교인은 역병을 죄에 대한 처벌로 여김 </div>
+	        <div class="연도"> 1408 </div> <div class="내용"> 영국, 최초의 영어판 성경인 <b>『위클리프 성경』</b>이 런던에서 유통</div>
+	        <div class="연도"> 1412 </div> <div class="내용"> 이탈리아, 브루넬레스키가 원근법 개발 </div>
+	        <div class="연도"> 1415 </div> <div class="내용"> 체코, 종교개혁가 얀 후스가 화형에 처해짐 <br> 보헤미아의 종교전쟁 유발 </div>
+	        <div class="연도"> 1417 </div> <div class="내용"> 교황 베네딕트 13세가 파문 당함 <br> 서방교회 대분열 종결 </div>
+	        <div class="연도"> 1421 </div> <div class="내용">이탈리아, 피렌체에서 건축가이자 기술가인 필리포 브루넬레스키에게 산업적 발명을 위한 최초의 특허가 부여됨 </div>
+	        <div class="연도"> 1428 </div> <div class="내용"> 나폴리·시칠리아 통치자인 아라곤의 국왕 알폰소 5세가 시칠리아 전역의 유대인에게 설교에 참석하여 천주교로 개종하라고 명령</div>
+	        <div class="연도"> 1429 </div> <div class="내용"> 프랑스, 잔 다르크가 오를레앙 전투에서 영국을 격파 <br> 백년 전쟁에서 영국의 지배로부터 프랑스를 되찾음</div>
+	        <div class="연도"> 1431 </div> <div class="내용"> 프랑스, 잔 다르크 화형 </div>
+	        <div class="연도"> 1434 </div> <div class="내용"> 이탈리아, 토스카나 은행 가문이 수장인 <b>코시모 데 메디치</b>가 피렌체의 통치자가 됨 <br> 메디치 가문은 도시를 정치적으로 지배하기 시작하고, 결과적으로 이탈리아 및 유럽 전역에 유사한 영향력을 행사함 </div>
+	        <div class="연도"> 1453 </div> <div class="내용"> 프랑스, 백년전쟁에서 승리 </div>
+	        <div class="연도"> 1492 </div> <div class="내용"> 콜럼버스가 아메리카 대륙을 발견 </div>
+	        <div class="연도"> 1492 </div> <div class="내용"> 이베리아 반도, 이슬람 세력 완전 축출 </div>
+	        <div class="연도"> 1512 </div> <div class="내용"> 니콜라우스 코페르니쿠스가 태양중심설 제기 </div>
+	        <div class="연도"> 1513 </div> <div class="내용"> 마키아벨리가 『군주론』을 씀 </div>
+	        <div class="연도"> 1316 </div> <div class="내용"> 토마스 모어가 『유토피아』를 씀 </div>
+	        <div class="연도"> 1494 </div> <div class="내용"> 프랑스, 샤를 8세가 이탈리아 침략 <br> 이탈리아 전쟁으로 알려진 분쟁이 1559년까지 지속됨 </div>
+	        <div class="연도"> 1517 </div> <div class="내용"> 마틴 루터의 종교 개혁 </div>
+	        <div class="연도"> 1522 </div> <div class="내용"> 페르디난드 마젤란이 세계를 배로 일주 </div>
+	        <div class="연도"> 1527 </div> <div class="내용"> 이탈리아, 신성 로마 황제 카를 5세 군대가 로마를 약탈 <br> 이탈리아 르네상스 종말 시작 </div>
+	        <div class="연도"> 1533 </div> <div class="내용"> 잉카 제국이 무너짐 </div>
+	        <div class="연도"> 1543 </div> <div class="내용"> 베살리우스가 〈인체해부학〉을 씀 </div>
+	        <div class="연도"> 1582 </div> <div class="내용"> 교황 그레고리우스 13세가 현행의 그레고리력으로 개정 </div>
+	        <div class="연도"> 1588 </div> <div class="내용"> 네덜란드, 스페인으로부터 벗어나 네덜란드 공화국 수립 </div>
+	        <div class="연도"> 1618-48 </div> <div class="내용"> 합스부르크 제국-보헤미아·독일·덴마크·스웨덴·프랑스, 30년 전쟁 </div>
+	        <div class="연도"> 1630 </div> <div class="내용"> 인도, 타지마할묘 축조 </div>
+	        <div class="연도"> 1632 </div> <div class="내용"> 영국, 런던에서 최초의 커피숍 등장 </div>
+	        <div class="연도"> 1637 </div> <div class="내용"> 데카르트가 『방법서설』을 씀 </div>
+	        <div class="연도"> 1642 </div> <div class="내용"> 파스칼이 치차식 휴대용 계산기 발명 </div>
+	        <div class="연도"> 1642 </div> <div class="내용"> 영국, 영국 혁명(청교도 혁명) 발발 </div>
+	        <div class="연도"> 1646 </div> <div class="내용"> 키르허가 환등기 발명 </div>
+	        <div class="연도"> 1649 </div> <div class="내용"> 영국, 국왕 찰스 1세 처형 <br> 군주제에서 공화정으로 바뀜 </div>
+	        <div class="연도"> 1650 </div> <div class="내용"> <b>세계 인구 약 5억</b> </div>
+	        <div class="연도"> 1653 </div> <div class="내용"> 프랑스, 파리에서 우체통 등장 </div>
+	        <div class="연도"> 1672-79 </div> <div class="내용"> 프랑스-네덜란드·오스트리아·스페인·프로이센, 네덜란드 전쟁 </div>
+	        <div class="연도"> 1687 </div> <div class="내용"> 뉴턴의 만유인력의 법칙 </div>
+	        <div class="연도"> 1688 </div> <div class="내용"> 영국, 명예 혁명 <br> 의회가 제임스 2세를 축출함 </div>
+	        <div class="연도"> 1689 </div> <div class="내용"> 영국, 윌리엄 3세와 메리 2세에게 권리장전을 승인토록 하며 명예 혁명 완결 </div>
+	        <div class="연도"> 1709 </div> <div class="내용"> 영국, 최초의 저작권법 인정 </div>
+	        <div class="연도"> 1749 </div> <div class="내용"> 페레이레가 수화 창안 </div>
+	        <div class="연도"> 1769 </div> <div class="내용"> <b>제임스 와트가 증기기관 발명</b> </div>
+	        <div class="연도"> 1789 </div> <div class="내용"> 프랑스, 프랑스 혁명 </div>
+	        <div class="연도"> 1821 </div> <div class="내용"> 프랑스, 샹폴리옹이 로제타석 상형문자를 해독 </div>
+	        <div class="연도"> 1829 </div> <div class="내용"> 브라이유가 점자를 체계화함 </div>
+	        <div class="연도"> 1830 </div> <div class="내용"> 프랑스, 7월 혁명 </div>
+	        <div class="연도"> 1836 </div> <div class="내용"> 모르스가 모르스 전신부호 발명 </div>
+	        <div class="연도"> 1839. 8. 17 </div> <div class="내용"> 영국, 페니 우표 법안이 영국 의회에서 통과 </div>
+	        <div class="연도"> 1840 </div> <div class="내용"> 영국, ‘페니 블랙’ 출시 <br> 소인을 찍는데 사용된 붉은 잉크가 우표의 검정색 바탕 때문에 잘 보이지 않을 뿐더러 쉽사리 지워져 악용되는 사례가 늘어나 출시 1년 만에 사라짐 <br> 1년 후 ‘페니 레드’가 출시됨 <br> 세계 최초의 우표이기 때문에 영국 우표라는 국명을 표기하지 않음 </div>
+	        <div class="연도"> 1848 </div> <div class="내용"> 프랑스, 2월 혁명 </div>
+	        <div class="연도"> 1849 </div> <div class="내용"> 골드러시 <br> 캘리포니아 광산에서 금이 발견되자 포티라이너(광부)들이 금을 캐기 위해 몰려듦 </div>
+	        <div class="연도"> 1857. 6. 29 </div> <div class="내용"> 인도, 델리에서 세포이 병기가 일어남 <br> 동인도회사 소속 용병 세포이들이 메러트 시 주둔 영국군 장교를 총살 후 델리를 향해 행군하면서 항쟁이 일어남 </div>
+	        <div class="연도"> 1859 </div> <div class="내용"> 미국, 펜실베이니아에서 지하 유전을 발견함 </div>
+	        <div class="연도"> 1861 </div> <div class="내용"> 미국, 남북 전쟁 발생 <br> 링컨 당선 이후 노예제를 지지하던 남부주들이 모여 남부연합을 형성하며 미합중국으로부터의 분리를 선언한 뒤, 아메리카 남부 연합군이 사우스캐롤라이나주 찰스턴 항의 섬터 요새 포격을 시작으로 1861년부터 1865년까지 4년 동안 벌어진 전쟁 </div>
+	        <div class="연도"> 1865. 4. 9 </div> <div class="내용"> 미국, 남북 전쟁 종전 <br> 남군의 리 장군이 버지니아 주 애퍼매턱스 법원에서 그랜트 장군에게 항복 선언 </div>
+	        <div class="연도"> 1965. 4. 14 </div> <div class="내용"> 미국, 링컨 대통령 암살 </div>
+	        <div class="연도"> 1876 </div> <div class="내용"> 벨이 전화기 발명 </div>
+	        <div class="연도"> 1876. 6. 25 </div> <div class="내용"> 미국, 리틀빅혼 전투 <br> 미국, 리틀빅혼에서 원주민(인디언)들이 미국 육군을 상대로 승리함 </div>
+	        <div class="연도"> 1879. 11. 4 </div> <div class="내용"> 에디슨, 백금 전선에 연결된 탄소 필라멘트(전구)를 미국 특허청에 출원 </div>
+	        <div class="연도"> 1880-81 </div> <div class="내용"> 영국-보어족, 1차 보어 전쟁 </div>
+	        <div class="연도"> 1882. 4. 3 </div> <div class="내용"> 미국, 악명 높은 열차 강도 제시 제임스 피살 </div>
+	        <div class="연도"> 1888. 9. 30 </div> <div class="내용"> 영국, 런던 화이트채플에서 두 차례의 살인사건 발생 <br> 범인 잭 더 리퍼의 이야기가 순식간에 전세계로 퍼져나감 </div>
+	        <div class="연도"> 1893. 9 </div> <div class="내용"> 뉴질랜드, 여성 참정권 법안 통과 <br> 모든 여성에게 국회의원 선거 투표권을 부여한 세계 최초의 자치국가가 됨 </div>
+	        <div class="연도"> 1896 </div> <div class="내용"> 제1회 근대올림픽 개최 </div>
+	        <div class="연도"> 1899-1902 </div> <div class="내용"> 영국-보어족, 2차 보어 전쟁 <br> 보어 인이 항복하며 전쟁이 끝남 <br> 추후 남아프리카공화국이 됨 </div>
+	        <div class="연도"> 1900 </div> <div class="내용"> 프로이드가 『꿈의 해석』을 씀 </div>
+	        <div class="연도"> 1903 </div> <div class="내용"> 미국, 라이트 형제가 최초의 동력 비행에 성공 </div>
+	        <div class="연도"> 1905 </div> <div class="내용"> 아인슈타인이 특수 상대성 이론 발표 </div>
+	        <div class="연도"> 1912. 4. 14 </div> <div class="내용"> 영국, 화이트스타라인 타이타닉 호 침몰 </div>
+	        <div class="연도"> 1914. 6. 28 </div> <div class="내용"> 오스트리아, 황태자 프란츠 페르디난트가 보스니아의 수도 사라예보에서 피살당함 </div>
+	        <div class="연도"> 1914. 7. 1 </div> <div class="내용"> 오스트리아-헝가리 세르비아에 선전포고 </div>
+	        <div class="연도"> 1914. 8. 4 </div> <div class="내용"> 독일, 오스트리아-헝가리와 손을 잡고 벨기에 침공 <br> 뒤따라 다른 나라들이 참전하며 본격적인 <b>제1차 세계대전 발발</b> </div>
+	        <div class="연도"> 1917. 10. 24 </div> <div class="내용"> 러시아, 10월 혁명 <br> 볼셰비키 당원들이 도시를 급습하며 쿠데타 시작 </div>
+	        <div class="연도"> 1918 </div> <div class="내용"> 영국, 국민행동대표법 통과 <br> 30세 이상이며 재산을 소유해야 한다는 조건이 붙었지만 최초로 여성의 투표권을 보장함 </div>
+	        <div class="연도"> 1918. 11 </div> <div class="내용"> <b>제1차 세계대전 종전</b> <br> 연합군이 독일, 오스트리아, 헝가리를 무너뜨림 </div>
+	        <div class="연도"> 1919. 2 </div> <div class="내용"> 독일, 보통 선거를 통해 연방공화국으로 거듭남 <br> 인플레이션 발생 </div>
+	        <div class="연도"> 1920 </div> <div class="내용"> 미국, 금주령 발효 </div>
+	        <div class="연도"> 1922 </div> <div class="내용"> 소련연방공화국 건국, 출범 </div>
+	        <div class="연도"> 1922 </div> <div class="내용"> 이탈리아, 파시즘 체제 </div>
+	        <div class="연도"> 1924 </div> <div class="내용"> 독일, 천문학적인 인플레이션이 잡힘 </div>
+	        <div class="연도"> 1926 </div> <div class="내용"> 미국, 마이애미 허리케인이 플로리다 강타 <br> 막대한 인적·경제적 손실이 일어났으며, 이는 추후 대공황으로 이어짐 </div>
+	        <div class="연도"> 1927. 5. 21 </div> <div class="내용"> 미국, 찰스 린드버그가 세계 최초로 대서양 횡단 비행에 성공 </div>
+	        <div class="연도"> 1928 </div> <div class="내용"> 스카치테이프 발명 </div>
+	        <div class="연도"> 1929. 10. 24 </div> <div class="내용"> 미국, 검은 목요일 <br> 뉴욕 월스트리트 주식시장의 충격적인 주가 대폭락 <br> <b>대공황 발생</b> </div>
+	        <div class="연도"> 1930. 12 </div> <div class="내용"> 독일, 히틀러가 이끄는 나치가 선거에서 107석을 차지 <br> 군소 정당에서 제2정당으로 급부상 <br> 나치는 독일노동당의 후신으로, 파시즘(극단적 민족주의) 성향을 띔 </div>
+	        <div class="연도"> 1932 </div> <div class="내용"> 독일, 나치가 230석을 차지하며 최대 정당으로 올라섬 </div>
+	        <div class="연도"> 1933 </div> <div class="내용"> RCA사가 TV 진공관 생산 </div>
+	        <div class="연도"> 1933. 1 </div> <div class="내용"> 독일, 히틀러가 수상에 임명됨 </div>
+	        <div class="연도"> 1933. 3 </div> <div class="내용"> 독일, 히틀러가 수권법을 통과시키며 ‘제3제국’을 표방, 노골적인 독재에 들어감 </div>
+	        <div class="연도"> 1933. 10 </div> <div class="내용"> 독일, 국제연맹에서 탈퇴 <br> 독일의 재무장·군비 제약에서 벗어남 </div>
+	        <div class="연도"> 1934 </div> <div class="내용"> 토인비 『역사의 연구』 </div>
+	        <div class="연도"> 1934. 8 </div> <div class="내용"> <b>독일, 히틀러가 총통에 오름</b> <br> 유일한 지도자로 군림 <br> 나치 체제 하에서 경제 근대화를 이루며 <b>경제대국으로 부활</b> </div>
+	        <div class="연도"> 1935. 3 </div> <div class="내용"> 독일, 징병제 부활 </div>
+	        <div class="연도"> 1936 </div> <div class="내용"> BBC가 전세계로 정규 TV방송 시작 </div>
+	        <div class="연도"> 1936 </div> <div class="내용"> 독일, 로카르노 조약 파기 <br> 비무장지대인 라인란트에 군대 진주, 점령 </div>
+	        <div class="연도"> 1936. 10 </div> <div class="내용"> 독일-이탈리아 추축 동맹 <br> 파시즘 국가 간의 동맹 <br> 뒤이어 일본·스페인도 참여 </div>
+	        <div class="연도"> 1938 </div> <div class="내용"> 독일, 본격적인 대외 팽창 시작 </div>
+	        <div class="연도"> 1938. 9 </div> <div class="내용"> 뮌헨 협정에서 영국·프랑스가 히틀러의 요구를 들어줌 </div>
+	        <div class="연도"> 1939. 8 </div> <div class="내용"> 독일-소련, 상호불가침조약 체결 <br> 영국·프랑스가 히틀러의 전쟁 의지를 간파, 폴란드의 독립을 보존하기 위한 경계 태세 돌입 </div>
+	        <div class="연도"> 1939. 9 </div> <div class="내용"> 독일, 폴란드 침공 <br> <b>제2차 세계대전의 막이 오름</b> </div>
+	        <div class="연도"> 1940 </div> <div class="내용"> 프랑스, 라스코 동굴 발견 <br> 컬러 TV 발명 <br> 미국, TV 상업방송 시작 </div>
+	        <div class="연도"> 1940. 4 </div> <div class="내용"> 독일, 중립국인 덴마크·노르웨이 점령, 이후 네덜란드·벨기에까지 점령 후 영국·프랑스를 향해 포문을 엶 </div>
+	        <div class="연도"> 1941 </div> <div class="내용"> 브레턴우즈 협정 체결 <br> 미국 달러화를 기축 통화로 하는 금환본위제도의 실시 <br> 금 1온스를 35달러로 고정시키고, 그 외에 다른 나라의 통화는 달러에 고정 </div>
+	        <div class="연도"> 1941. 봄 </div> <div class="내용"> 독일, 발칸 반도·그리스 점령 </div>
+	        <div class="연도"> 1941. 6 </div> <div class="내용"> 독일, 소련 공격 <br> 상호불가침조약 무시하며 공격했지만 겨울 추위에 패퇴 </div>
+	        <div class="연도"> 1941. 12 </div> <div class="내용"> 일본, 진주만 공습 <br> 일본 제국이 타이·영국령 말라야와 싱가포르·홍콩을 침공하고 미군 기지인 진주만과 웨이크섬·괌·필리핀에 공격을 가함 </div>
+	        <div class="연도"> 1941. 12 </div> <div class="내용"> 일본-미국·영국, 태평양 전쟁 발발 </div>
+	        <div class="연도"> 1942. 여름 </div> <div class="내용"> 독일, 재차 소련 원정 시도했으나 실패 <br> 이 전투에서 항복 후 전세가 역전됨 </div>
+	        <div class="연도"> 1945 </div> <div class="내용"> 미국, 볼펜 생산 </div>
+	        <div class="연도"> 1945. 5 </div> <div class="내용"> <b>독일, 항복</b> </div>
+	        <div class="연도"> 1945- </div> <div class="내용"> 전쟁 이후 미국·소련의 암묵적 합의 하에 서유럽은 반공, 동유럽은 공산 진영으로 재편성 <br> 냉전 구도 강요 </div>
+	        <div class="연도"> 1946 </div> <div class="내용"> <b>에니악 컴퓨터 발명</b> </div>
+	        <div class="연도"> 1946-49 </div> <div class="내용"> 그리스, 내전 발발 <br> 미국이 직접 개입해 공산당 진압 </div>
+	        <div class="연도"> 1947 </div> <div class="내용"> 소련, 국제적 정보 기관 코민포름 결성 <br> 동유럽의 공산주의 질서를 공고히 하기 위함 </div>
+	        <div class="연도"> 1948 </div> <div class="내용"> 아일랜드, 영국으로부터 완전한 독립 </div>
+	        <div class="연도"> 1948 </div> <div class="내용"> 트랜지스터 발명 <br> 가보가 홀로그램 원리 발견 </div>
+	        <div class="연도"> 1948-1952 </div> <div class="내용"> 미국, 마셜 플랜 <br> 반공 노선을 수용한 대가로 서유럽에 막대한 경제 원조 제공 </div>
+	        <div class="연도"> 1949 </div> <div class="내용"> 나토(NATO, 북대서양조약기구) 출범 <br> 서유럽을 공산주의로부터 방어 </div>
+	        <div class="연도"> 1951 </div> <div class="내용"> 컴퓨터 비행 시뮬레이션 </div>
+	        <div class="연도"> 1953 </div> <div class="내용"> 컬러 TV 방송 </div>
+	        <div class="연도"> 1954 </div> <div class="내용"> 미국, 최초의 핵잠수함 등장 </div>
+	        <div class="연도"> 1955 </div> <div class="내용"> 세계저작권 협정 </div>
+	        <div class="연도"> 1955 </div> <div class="내용"> 소련, 군사동맹체 바르샤바조약기구 출범 </div>
+	        <div class="연도"> 1956 </div> <div class="내용"> 소련, 세계 최초의 인공위성 발사 </div>
+	        <div class="연도"> 1956 </div> <div class="내용"> 헝가리, 동유럽 진영에서 탈퇴 시도했으나 무력 응징 당함 </div>
+	        <div class="연도"> 1957 </div> <div class="내용"> 미국, 최초의 실리콘 반도체 고안 </div>
+	        <div class="연도"> 1958 </div> <div class="내용"> 최초의 전문 프로그램 언어 ‘포트란’ 탄생 </div>
+	        <div class="연도"> 1962 </div> <div class="내용"> 컴퓨터에서 최초로 라이트 펜 사용 <br> 코닥 환등기 개발 <br> 텔스타 원거리 통신위성 </div>
+	        <div class="연도"> 1963 </div> <div class="내용"> 컴퓨터에서 최초로 마우스 사용 </div>
+	        <div class="연도"> 1964 </div> <div class="내용"> 화상전화 개발 </div>
+	        <div class="연도"> 1967 </div> <div class="내용"> 미국, 히피족 탄생 </div>
+	        <div class="연도"> 1968 </div> <div class="내용"> 최초로 터치 스크린 사용 </div>
+	        <div class="연도"> 1968. 1 </div> <div class="내용"> 체코슬로바키아, 프라하의 봄 <br> 개혁파 공산주의자들, 사회주의를 통해 축적된 사회적·경제적 성과에 덧붙여 시민적 자유를 쟁취하고자 하였으나 실패로 돌아감 </div>
+	        <div class="연도"> 1968. 5 </div> <div class="내용"> 서유럽, 68혁명 <br> 프랑스 파리 대학생들이 교육 환경의 개선을 요구, 1천만 명의 노동자들이 초대형 파업으로 호응하며 시발된 청년 반란이 서유럽에 확산 <br> 기성세대의 낡은 가치관·무사안일주의·물질만능주의(자본주의)·베트남을 둘러싼 미국과 서유럽의 제국주의적 야함에 대한 거부 의사를 다양한 정치적 이념에 실어 표현하였으나 실패로 돌아감 </div>
+	        <div class="연도"> 1969 </div> <div class="내용"> 달 착륙을 지구에 생중계 </div>
+	        <div class="연도"> 1970년대 초 </div> <div class="내용"> 유럽, 경제 위기 </div>
+	        <div class="연도"> 1970 </div> <div class="내용"> 비디오디스크 발명 </div>
+	        <div class="연도"> 1970 </div> <div class="내용"> 폴란드, 그단스크 노동자들의 봉기 <br> 공산 체제의 기대 이하의 물적 복지에 항의 </div>
+	        <div class="연도"> 1971 </div> <div class="내용"> 마이크로 프로세서 발표 </div>
+	        <div class="연도"> 1971 </div> <div class="내용"> 미국, 달러화의 평가 절하 및 금 태환 중지 조치 <br> 국제 통화 체제 동요 </div>
+	        <div class="연도"> 1973 </div> <div class="내용"> <b>오일 쇼크</b> <br> 아랍산유국들의 석유무기화 전략에 의해 원유 가격이 3개월 동안 4배 상승 </div>
+	        <div class="연도"> 1973 </div> <div class="내용"> 최초의 LCD 계산기 <br> FAX 상품화 </div>
+	        <div class="연도"> 1976 </div> <div class="내용"> 수퍼컴퓨터 ‘CLay1’ </div>
+	        <div class="연도"> 1977 </div> <div class="내용"> 애플Ⅱ 컴퓨터 </div>
+	        <div class="연도"> 1978 </div> <div class="내용"> 영국, 최초의 시험관 아기 출생 <br> 소니, 워크맨 </div>
+	        <div class="연도"> 1979 </div> <div class="내용"> 이란, 이란 혁명 <br> 석유 가격 상승에 영향을 미침 <br> 20년 가까이 유지되던 경제 성장 둔화, <b>스태그플레이션 발생</b> </div>
+	        <div class="연도"> 1979 </div> <div class="내용"> 영국, 마거릿 대처의 총리 당선 <br> 긴축재정 정책으로 영국병 치유 <br> 주변 서유럽 국가들이 이 정책을 모방함 </div>
+	        <div class="연도"> 1982 </div> <div class="내용"> 폴란드, 자유노조 지도자 바웬사가 노벨평화상 수상 </div>
+	        <div class="연도"> 1984 </div> <div class="내용"> <b>애플사 매킨토시(맥) 최초 발매</b> </div>
+	        <div class="연도"> 1985 </div> <div class="내용"> 소련, 고르바초프가 공산당 서기장에 취임 </div>
+	        <div class="연도"> 1985 </div> <div class="내용"> CD-ROM 개발 <br> 마이크로소프트 윈도우 1.0 발표 </div>
+	        <div class="연도"> 1986 </div> <div class="내용"> AIDS 확산 <br> PC 워드 프로세서 출시 </div>
+	        <div class="연도"> 1987 </div> <div class="내용"> 세계 인구 50억 돌파 </div> 
+	        <div class="연도"> 1988 </div> <div class="내용"> 헝가리, 장기독재자 카다르 축출 <br> 오스트리아와의 국경 철조망 제거 </div>
+	        <div class="연도"> 1999. 11 </div> <div class="내용"> 독일, 베를린 장벽 붕괴 및 개방 </div>
+	        <div class="연도"> 1980년대 말 </div> <div class="내용"> 서유럽, 스태그플레이션 극복 <br> 실업 문제는 독일 외 국가에서 해결되지 못함 </div>
+	        <div class="연도"> 1990 </div> <div class="내용"> 마이크로소프트 윈도우 V3.0 발표 </div>
+	        <div class="연도"> 1990. 3 </div> <div class="내용"> 발트 3국(에스토니아·라트비아·리투아니아), 소련 탈퇴 선언 </div>
+	        <div class="연도"> 1990. 10 </div> <div class="내용"> 폴란드, 바웬사가 대통령에 취임, 자유주의 정책 실시 </div>
+	        <div class="연도"> 1990. 10 </div> <div class="내용"> 독일, 동독 붕괴로 재통일 </div>
+	        <div class="연도"> 1991. 6 </div> <div class="내용"> 동유럽, 유고연방 붕괴 </div>
+	        <div class="연도"> 1991. 12 </div> <div class="내용"> 소련 해체, 독립국가연합 창설(민스크 협정) </div>
+	        <div class="연도"> 1992. 7 </div> <div class="내용"> 체코슬로바키아연방 해체, 체코·슬로바키아 두 공화국 탄생 </div>
+	        <div class="연도"> 2002 </div> <div class="내용"> 한일 월드컵 개최 </div>
+	        <div class="연도"> 2011 </div> <div class="내용"> 애플 창업자 스티브 잡스 사망 </div>
+	        <div class="연도"> 2018 </div> <div class="내용"> 한국, 평창동계올림픽 개최 </div>
+		</div>
+
+
+
+
+		<script>
+		</script>
+	</body>
+</html>

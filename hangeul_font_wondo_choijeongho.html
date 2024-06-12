@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+			@import url('https://webfontbox.github.io/Arita/font.css');
+			@import url('https://webfontbox.github.io/Arita/font.min.css');
+
+
+			html, body { margin: 0; padding: 0; height: 100%; overflow: hidden;}
+
+			/* 스크롤 */
+			html::-webkit-scrollbar, .text::-webkit-scrollbar, #life::-webkit-scrollbar { display: none; }
+
+			/* 햄버거 메뉴 */
+
+				/*
+				 * Made by Erik Terwan
+				 * 24th of November 2015
+				 * MIT License
+				 *
+				 *
+				 * If you are thinking of using this in
+				 * production code, beware of the browser
+				 * prefixes.
+				 */
+
+				#menuToggle
+				{
+				  display: block;
+				  position: absolute;
+				  top: 2vw;
+				  left: 1vw;
+				  
+				  z-index: 1;
+				  
+				  -webkit-user-select: none;
+				  user-select: none;
+				}
+
+				#menuToggle a
+				{
+				  text-decoration: none;
+				  color: black;
+				  
+				  transition: color 0.3s ease;
+				}
+
+				#menuToggle a:hover
+				{
+				  color: #b8ff48;
+				}
+
+
+				#menuToggle input
+				{
+				  display: block;
+				  width: 3vw;
+				  height: 2vh;
+				  position: absolute;
+				  top: -1vw;
+				  left: -1vh;
+				  
+				  cursor: pointer;
+				  
+				  opacity: 0; /* hide this */
+				  z-index: 2; /* and place it over the hamburger */
+				  
+				  -webkit-touch-callout: none;
+				}
+
+				/*
+				 * Just a quick hamburger
+				 */
+				#menuToggle span
+				{
+				  display: block;
+				  width: 33px;
+				  height: 4px;
+				  margin-bottom: 5px;
+				  position: relative;
+				  
+				  background: black;
+				  
+				  z-index: 1;
+				  
+				  transform-origin: 4px 0px;
+				  
+				  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				              opacity 0.55s ease;
+				}
+
+				#menuToggle span:first-child
+				{
+				  transform-origin: 0% 0%;
+				}
+
+				#menuToggle span:nth-last-child(2)
+				{
+				  transform-origin: 0% 100%;
+				}
+
+				/* 
+				 * Transform all the slices of hamburger
+				 * into a crossmark.
+				 */
+				#menuToggle input:checked ~ span
+				{
+				  opacity: 1;
+				  transform: rotate(45deg) translate(-2px, -1px);
+				  background: black;
+				}
+
+				/*
+				 * But let's hide the middle one.
+				 */
+				#menuToggle input:checked ~ span:nth-last-child(3)
+				{
+				  opacity: 0;
+				  transform: rotate(0deg) scale(0.2, 0.2);
+				}
+
+				/*
+				 * Ohyeah and the last one should go the other direction
+				 */
+				#menuToggle input:checked ~ span:nth-last-child(2)
+				{
+				  transform: rotate(-45deg) translate(0, -1px);
+				}
+
+				/*
+				 * Make this absolute positioned
+				 * at the top left of the screen
+				 */
+				#menu
+				{
+				  position: absolute;
+				  width: 11vw;
+				  margin: -100px 0 0 -50px;
+				  padding: 50px;
+				  padding-top: 125px;
+				  
+				  background: #fff;
+				  list-style-type: none;
+				  -webkit-font-smoothing: antialiased;
+				  /* to stop flickering of text in safari */
+				  
+				  transform-origin: 0% 0%;
+				  transform: translate(-100%, 0);
+				  
+				  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+				}
+
+				#menu li
+				{ 
+				  font-family: 'Arita';
+				  padding: 10px 0;
+				  font-size: 22px;
+				}
+
+				/*
+				 * And let's slide it in from the left
+				 */
+				#menuToggle input:checked ~ ul
+				{
+				  transform: none;
+				}
+
+			
+
+			.title {
+				height: 6vh;
+				float: left;
+				font-family: 'Arita';
+				font-weight: 600;
+				text-align: center;
+				outline: 1px solid black;
+				font-size: 23pt;
+				padding: 1vw;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.text {
+				font-family: 'Arita buri';
+				font-weight: 500;
+				line-height: 1.7;
+				height: 87vh;
+				float: left;
+				outline: 1px solid black;
+				overflow: auto;
+				padding: 1vw;
+			}
+
+
+			.designer {width: 11vw; padding-left: 3vw; background-color: white;}
+			.main {width: 47vw;  font-size: 16pt;}
+			.type-print {width: 11vw; background-color: #A5A5A5;}
+			.art-design {width: 10vw; background-color: #C1C1C1;}
+			.history {width: 9vw; background-color: #E0E0E0;}    
+
+			.link {
+				font-size: 14pt;
+				color: black;
+				padding: 15px;
+			}
+
+			a {text-decoration-line: none;}
+
+			#fontname {
+				font-family: 'Arita';
+				font-weight: 600;
+				height: 8vh;
+				padding-top: 2vh;
+				padding-bottom: 3vh;
+				border-bottom: 1.5px dashed black;
+				font-size: 54pt;
+				display: flex;
+				align-items: center;
+			}
+			.fontname_small {font-size: 24pt; margin-top: 4vh; margin-left: 1vw;}
+			.year {width: 14vw; text-align: right; display: flex;
+				justify-content: right;
+				align-items: right;}
+			#fontname_group {width: 55vw;}
+
+			#life {
+				overflow: auto;
+				height: 35vh;
+				margin-top: 3vh;
+			}
+
+			#designername {font-size: 24pt;}
+
+
+
+			.연도 {
+				font-family: 'Arita';
+		        font-weight: 600;
+		    }
+
+		    .내용 {
+		        font-size: 11pt;
+		        margin: 0px 0px 20px 0px;
+		    }
+
+
+
+			.img {}
+			.designerimg {margin: 2vh 0vh; height: 250px;}
+			.mainimg {margin: 3vh 0vh;  text-align: center; 
+				display: flex;
+				justify-content: center;
+			}
+
+			.sub {font-size: 10pt; text-align: left; padding: 0px 5px;}
+
+		</style>
+		<title>동아출판사체</title>
+	</head>
+
+	<body>
+		<!--    Made by Erik Terwan    -->
+		<!--   24th of November 2015   -->
+		<!--        MIT License        -->
+		<nav role="navigation">
+		  <div id="menuToggle">
+		    <!--
+		    A fake / hidden checkbox is used as click reciever,
+		    so you can use the :checked selector on it.
+		    -->
+		    <input type="checkbox" />
+		    
+		    <!--
+		    Some spans to act as a hamburger.
+		    
+		    They are acting like a real hamburger,
+		    not that McDonalds stuff.
+		    -->
+		    <span></span>
+		    <span></span>
+		    <span></span>
+		    
+		    <!--
+		    Too bad the menu has to be inside of the button
+		    but hey, it's pure CSS magic.
+		    -->
+		    <ul id="menu">
+		      <a href="index.html"><li>Main</li></a>
+		      <a href="default_hangeul.html"><li>한글</li></a>
+		      <a href="default_latin.html"><li>라틴</li></a>
+		      <a href="default_munjang.html"><li>문장부호</li></a>
+		    </ul>
+		  </div>
+		</nav>
+
+		<div class="title designer"> 디자이너 </div>
+		<div class="title main" style="background-color:white;">
+			<a href="hangeul_pc_yet.html"><div class="link">옛활자시대</div></a>
+			<a href="hangeul_pc_sae.html"><div class="link">새활자시대</div></a>
+			<a href="hangeul_pc_wondo.html"><div class="link">원도활자시대</div></a>
+			<a href="hangeul_pc_digital.html"><div class="link">디지털타입시대</div></a>
+		</div>
+		<div class="title type-print"> 활자&인쇄 </div>
+		<div class="title art-design"> 예술&디자인 </div>
+		<div class="title history"> 역사 </div>
+
+		<div class="text designer">
+			<div class="img designerimg"><img src="https://i.namu.wiki/i/vCSJdmHjwVyd7WKEN_AyBRwReNeHyE61gJRnKQ3qfAKLlZvMtQvUH8MlvYlFIQMk6WvInaHwGkLEJQXOQuyClrUUId396NMxz4sRJv_5b0fLuhLMieNCmVcOq6GTG34acdkxmHoAr1KxxZazU2e2OA.webp" style="height:250px;"> </div>
+			<span id="designername" style="line-height: 20.4pt;">최정호</span> <br>
+			1916. 11. 30. - 1988. 6. 5.<br>
+			충청북도 영동군 추풍령면 <br> <br>
+			대한민국 1세대 한글 폰트 디자이너. 최정호활자서체연구소를 설립. 오늘날에 널리 쓰이는 명조체·고딕체·굴림체를 제작했다. <br><br>
+
+			가장 보편적인 명조체의 틀을 만들었다. 동아출판사의 벤톤 활자 조각용 원도 제작을 시작으로 당시 우리나라 한글 기본 서체의 대부분을 제작했다. 한글 궁체 활자꼴에 일본어 히라가나의 글자 줄기 모양을 덧붙인 ‘한글 명조’의 원도를 완성했다.
+		</div>
+
+		<div class="text main" style="background-color: #b8ff48;" >
+			<div id="fontname"> 
+				<div id="fontname_group"> 동아출판사체 </div>
+				<span class="fontname_small year">1957</span> 
+			</div>
+			<div class="img mainimg" > 
+				<div class="sub">
+					<img src="https://postfiles.pstatic.net/MjAxOTA3MjNfMzMg/MDAxNTYzODQ0OTgyNzU5.NOaYpruFVYQgWpxYs9TPPb5FK6dtmq3OoVjsEO_7VtMg.P1j4b6QTEYoXU0gXU5EkQWQYytRV1l0sbwddEjod6-sg.JPEG.naver_diary/%EB%A6%AC%EC%84%9C%EC%B9%981_%EC%82%AC%EC%A7%848_%EB%8F%99%EC%95%84%EC%B6%9C%ED%8C%90%EC%82%AC%EC%B2%B4_%EC%84%B8%EA%B3%84%EB%AC%B8%ED%95%99%EC%A0%84%EC%A7%91_4_%ED%86%A0%EB%A7%88%EC%8A%A4_%EB%A7%8C_%EB%8F%99%EC%95%84%EC%B6%9C%ED%8C%90%EC%82%AC_1959.jpg?type=w773" style="height:400px;"> 
+					<br>  최정호의 동아출판사체 〈세계문학전집 4 : 토마스 만〉 <br> 동아출판사, 1959
+				</div>
+			</div>
+			<h2>높은 완성도, 한글 활자의 새로운 장</h2>
+			최정호 원도로 완성한 동아출판사체는 박경서 이후에 한글 활자의 완성도를 다시 한 번 끌어올렸다는 점에서 한글 활자의 새로운 장을 열었다. <br><br>
+			박경서의 건강 악화로 의뢰를 맡은 최정호는 1955년부터 개발에 착수하여 대한문교서적의 벤톤 자모 조각기로 자모를 제작했지만 만족스러운 결과를 얻지는 못했다. 1957년에 2,200자를 완성한 후 5회에 걸쳐 개량했는데, 기록에 의하면 1958년 발행한 『국어새사전』과 1959년에 발행한 『새백과사전』 모두 개량된 활자로 인쇄한 것이다. <br><br>
+			동아 출판사체를 크기별로 비교해보면 최정호가 처음부터 활자 크기별로 글자 공간을 조정했음을 알 수 있다. 『국어대사전』 6포인트 활자(본문 활자)는 글자의 속공간을 넓혀 본문용에 적합하도록 고안하였다. 포인트에 따라 공간과 구조가 미세하게 다른 것으로 보아 크기에 따라서 원도를 사용하여 활자를 만든 것으로 추측한다. 
+
+			<div class="mainimg">
+				<div class="sub">
+					<img src="https://www.yetnal.co.kr/data/item/1537443787/thumb-SAM_6590_900x900.jpg" style="height:250px;"> 
+					<br> 『국어새사전』 동아출판사, 1958
+				</div>
+				<div class="sub">
+					<img src="https://mblogthumb-phinf.pstatic.net/20161009_236/hauskaa_1476024750805ARVnI_PNG/%B5%BF%BE%C6%C3%E2%C6%C7%BB%E7%C3%BC%B7%CE-%C0%CE%BC%E2%B5%C8-%BB%E7%C0%FC.png?type=w800" style="height:250px;"> 
+					<br> 동아출판사의 옛 사전. <br> 네이버 블로그
+				</div>
+			</div>
+		</div>
+
+		<div class="text type-print">
+			<div class="연도"> -1400 </div> <div class="내용"> <b>고활자 시대</b> </div>
+			<div class="연도"> 414 </div> <div class="내용"> 고구려 광개토대왕비 </div>
+			<div class="연도"> 416 </div> <div class="내용"> 고구려 성벽 석각문에 이두문 </div>
+			<div class="연도"> 751 </div> <div class="내용"> 『무구정광대다라니경』 </div>
+			<div class="연도"> 1020 </div> <div class="내용"> 『고려대장경』 조판 개시 </div>
+			<div class="연도"> 1145 </div> <div class="내용"> 김부식, 『삼국사기』 </div>
+			<div class="연도"> 1234-1241 </div> <div class="내용"> 『고금상정예문』 </div>
+			<div class="연도"> 1236-1251 </div> <div class="내용"> 『팔만대장경』 완성 </div>
+			<div class="연도"> 1377 </div> <div class="내용"> 『직지심체요절』 </div>
+
+			<div class="연도"> 1443-1863 </div> <div class="내용"> <b>옛활자 및 한자 문화 시대</b> </div>
+			<div class="연도"> 1403 </div> <div class="내용"> 조자소 설치 <br> 계미자 </div>
+			<div class="연도"> 1418 </div> <div class="내용"> 세종 즉위 </div>
+			<div class="연도"> 1420 </div> <div class="내용"> 세종, 집현전 </div>
+			<div class="연도"> 1422 </div> <div class="내용"> 경자자, 『자치통감강목』 </div>
+			<div class="연도"> 1434 </div> <div class="내용"> 갑인자 </div>
+			<div class="연도"> 1443 </div> <div class="내용"> 훈민정음 창제 </div>
+			<div class="연도"> 1446 </div> <div class="내용"> 훈민정음 반포 </div>
+			<div class="연도"> 1447-1449 </div> <div class="내용"> 『동국정운』 『용비어천가』 『석보상절』 『월인천강지곡』 </div>
+			<div class="연도"> 1450 </div> <div class="내용"> 세종 붕어 </div>
+			<div class="연도"> 1451 </div> <div class="내용"> 『훈민정음언해본』 </div>
+			<div class="연도"> 1455 </div> <div class="내용"> 『홍무정운역훈』 <br> 을해자 <br> 강희안체 </div>
+			<div class="연도"> 1459 </div> <div class="내용"> 『월인석보』 </div>
+			<div class="연도"> 1461 </div> <div class="내용"> 간경도감 </div>
+			<div class="연도"> 1464 </div> <div class="내용"> 가장 오래된 한글 필사본 <br> 『어첩 상원사중창권선문』 </div>
+			<div class="연도"> 1465 </div> <div class="내용"> 정난종체 </div>
+			<div class="연도"> 1469 </div> <div class="내용"> 『경국대전』 완성 </div>
+			<div class="연도"> 1490 </div> <div class="내용"> 민중 교과서 『산정언해삼강행실도』 </div>
+			<div class="연도"> 1496 </div> <div class="내용"> 인경체 </div>
+			<div class="연도"> 1505 </div> <div class="내용"> 정철 붓글씨체 <br> 경서체 </div>
+			<div class="연도"> 1527 </div> <div class="내용"> 최세진, 『훈몽자회』 </div>
+			<div class="연도"> 1588 </div> <div class="내용"> 교정청, 『소학언해』 </div>
+			<div class="연도"> 1591 </div> <div class="내용"> 선조 어필 <br> 인목대비 친필 <br> 효종 어필 </div>
+			<div class="연도"> 1593 </div> <div class="내용"> 훈련도감 </div>
+			<div class="연도"> 1618 </div> <div class="내용"> 허균, 『홍길동전』 </div>
+			<div class="연도"> 1660 </div> <div class="내용"> 현종 어필 </div>
+			<div class="연도"> 1662 </div> <div class="내용"> 명성왕후 친필 </div>
+			<div class="연도"> 1668 </div> <div class="내용"> 김좌명체 </div>
+			<div class="연도"> 1684 </div> <div class="내용"> 인서체 </div>
+			<div class="연도"> 1685 </div> <div class="내용"> 궁체 홀림자 <br> 궁체 정자 <br> 인현왕후 친필 <br> 숙종 어필 </div>
+			<div class="연도"> 1692 </div> <div class="내용"> 김만중의 한글 소설 『구운몽』 『사씨남정기』 </div>
+			<div class="연도"> 1723 </div> <div class="내용"> 교서관체 </div>
+			<div class="연도"> 1729 </div> <div class="내용"> 도활자 </div>
+			<div class="연도"> 1772 </div> <div class="내용"> 임인자 병용 한글자(15만 자) </div>
+			<div class="연도"> 1776 </div> <div class="내용"> 규장각 완성 </div>
+			<div class="연도"> 1777 </div> <div class="내용"> 정유자 병용 한글자(갑인자 15만 자) </div>
+			<div class="연도"> 1792 </div> <div class="내용"> 생생자(22만 자) </div>
+			<div class="연도"> 1795 </div> <div class="내용"> 정리자(12만 8천 자) </div>
+			<div class="연도"> 1797 </div> <div class="내용"> 『오륜행실도』 </div>
+			<div class="연도"> 1801 </div> <div class="내용"> 장혼체 <br> 박종경체 </div>
+			<div class="연도"> 1858 </div> <div class="내용"> 개주정리자 3만 자 『국어』 등 인쇄 </div>
+			<div class="연도"> 1861 </div> <div class="내용"> 김정호, 대동여지도 </div>
+			<div class="연도"> 1863 </div> <div class="내용"> 최지혁체 『한어문전』 </div>
+
+			<div class="연도"> 1864-1949 </div> <div class="내용"> <b>새활자 시대</b> </div>
+			<div class="연도"> 1882 </div> <div class="내용"> 박문국 설치(고종 20년) </div>
+			<div class="연도"> 1883 </div> <div class="내용"> 《한성순보》 발행 <br> 최초의 서양식 근대 활판 인쇄술 도입 </div>
+			<div class="연도"> 1884 </div> <div class="내용"> 갑신정변 </div>
+			<div class="연도"> 1885 </div> <div class="내용"> 《한성주보》 창간 </div>
+			<div class="연도"> 1886 </div> <div class="내용"> 학부체 </div>
+			<div class="연도"> 1895 </div> <div class="내용"> 한성에 최초의 소학교 설립 </div>
+			<div class="연도"> 1896 </div> <div class="내용"> 서재필, 윤치호, 《독립신문》 창간 </div>
+			<div class="연도"> 1908 </div> <div class="내용"> 주시경, 『국어문전음학』 </div>
+			<div class="연도"> 1908 </div> <div class="내용"> 최남선, 최초의 근대시 『해에게서 소년에게』 </div>
+			<div class="연도"> 1909 </div> <div class="내용"> 기계식 타자기 </div>
+			<div class="연도"> 1910 </div> <div class="내용"> 주시경, 『국어문법』 </div>
+		 	<div class="연도"> 1917 </div> <div class="내용"> 이광수, 본격적인 근대 소설 『무정』 </div>
+			<div class="연도"> 1919 </div> <div class="내용"> 김동인, 주요한 <br> 최초의 순수 문학 동인지 《창조》 <br> 3.1 독립운동 </div>
+			<div class="연도"> 1920 </div> <div class="내용"> 《조선일보》《동아일보》 창간 <br> 조선총독부, 『조선어사전』 <br> 이원익 타자기 <br> 《개벽》 창간 </div>
+			<div class="연도"> 1921 </div> <div class="내용"> 조선어연구회 결성(1931년, 조선어학회로 개명) </div>
+			<div class="연도"> 1926 </div> <div class="내용"> 한용운, 『님의 침묵』 </div>
+			<div class="연도"> 1930 </div> <div class="내용"> 고짓구체 <br> 박경서체 </div>
+			<div class="연도"> 1933 </div> <div class="내용"> 조선어학회, 한글맞춤법통일안 <br> 이원모체 </div>
+			<div class="연도"> 1936 </div> <div class="내용"> 《동아일보》, 일장기 말소 사건으로 정간 </div>
+			<div class="연도"> 1937 </div> <div class="내용"> 최현배, 『우리말본』 </div>
+			<div class="연도"> 1940 </div> <div class="내용"> 창씨개명 <br> 한국어 서적 출판 금지 </div>
+			<div class="연도"> 1942 </div> <div class="내용"> 조선어학회 사건(조선어학회 관련 인사 33인 투옥) </div>
+			<div class="연도"> 1947 </div> <div class="내용"> 공병우식 타자기 개발 </div>
+			<div class="연도"> 1949 </div> <div class="내용"> 조선어학회, 한글학회로 개명 </div>
+
+
+			<div class="연도"> 1950-1989 </div> <div class="내용"> <b>원도활자 시대</b> </div>
+			<div class="연도"> 1950 </div> <div class="내용"> 6·25 전쟁(-1953년) 발발 </div>
+			<div class="연도"> 1954 </div> <div class="내용"> 초기 국교체 <br> 벤턴 자모 조각기, 사진 식자기 도입 </div>
+			<div class="연도"> 1956 </div> <div class="내용"> 초기 동아체, 손글자체, 최정순활자체 <br> 궁서체, 고딕체, 명조체, 그라픽체, 신명조체 <br> 최정호체 </div>
+			<div class="연도"> 1959 </div> <div class="내용"> 국어학회 설립 </div>
+			<div class="연도"> 1961 </div> <div class="내용"> 이희승, 『국어대사전』 </div>
+			<div class="연도"> 1962 </div> <div class="내용"> 《한국일보》(최정순체) </div>
+			<div class="연도"> 1965 </div> <div class="내용"> 컴퓨터 사진 식자기 개발 <br> 《중앙일보》(최정순체) </div>
+			<div class="연도"> 1969 </div> <div class="내용"> 타자기 한글표준판 공포 <br> (4벌식과 통신용 2벌) </div>
+			<div class="연도"> 1970 </div> <div class="내용"> 최정호 <br> 굴림체·그라픽체·둥근고딕체·신명조체 </div>
+			<div class="연도"> 1976 </div> <div class="내용"> 조영제, 탈네모꼴 <br> 《뿌리깊은 나무》 창간 </div>
+			<div class="연도"> 1977 </div> <div class="내용"> 김인철, 탈네모꼴 </div>
+			<div class="연도"> 1979 </div> <div class="내용"> 김정호, 국산 한글 수동 사진 식자기 개발 </div>
+			<div class="연도"> 1984 </div> <div class="내용"> 이상철, 《샘이 깊은물》 </div>
+			<div class="연도"> 1985 </div> <div class="내용"> 안상수, 탈네모꼴 안체 </div>
+			<div class="연도"> 1985 </div> <div class="내용"> 《서울신문》 전산식자 시스템 활자(최정순체) </div>
+			<div class="연도"> 1987 </div> <div class="내용"> 한글 가로쓰기, 《한겨레신문》 창간 </div>
+			<div class="연도"> 1989 </div> <div class="내용"> 새한글맞춤법과 표준어 시행 </div>
+
+			<div class="연도"> 1990- </div> <div class="내용"> 디지털 타입 시대 </div>
+			<div class="연도"> 1993 </div> <div class="내용"> 대전세계박람회 개최 </div>
+			<div class="연도"> 1995 </div> <div class="내용"> 광주디자인비엔날레 제1회 개최 <br> 문화체육보에서 바탕체, 돋움체 등 아홈 종의 한글 글자본 개발 보급 </div>
+			<div class="연도"> 1997 </div> <div class="내용"> 『훈민정음』(해례본) 세계기록유산으로 등재 </div>
+			<div class="연도"> 1999 </div> <div class="내용"> 국립국어연구원, 「표준국어대사전」 펴냄 </div>
+			<div class="연도"> 2002 </div> <div class="내용"> 한일월드컵 개최 </div>
+			<div class="연도"> 2006 </div> <div class="내용"> 수출 3,000억 달러 돌파(세계 열한 번째) </div>
+			<div class="연도"> 2008 </div> <div class="내용"> 서울서체(서울한강체, 서울남산체) 개발 보급 <br> (사)한국타이포그라피학회 발족 </div>
+
+			<div class="연도"> 2009 </div> <div class="내용"> 한글 수출 1호(인도네시아 찌아찌아족) </div>
+			<div class="연도"> 2010 </div> <div class="내용"> 무역 1조 달러 돌파(세계 아홉 번째) </div>
+			<div class="연도"> 2012 </div> <div class="내용"> (사)한국타이포그라피학회, 『타이포그래피사전』 발행 </div>
+			<div class="연도"> 2013 </div> <div class="내용"> 한글날 공휴일 재지정 </div>
+			<div class="연도"> 2014 </div> <div class="내용"> 국립한글박물관 개관 </div>
+			<div class="연도"> 2016 </div> <div class="내용"> 대한민국정부, 통합로고 및 정부상징체 제정 </div>
+		</div>
+
+		<div class="text art-design">
+			<div class="연도"> BC 500000-100000 </div> <div class="내용"> 평양 상원군 검은모루 유적(전기 구석기 문화) </div>
+			<div class="연도"> BC 100000-40000 </div> <div class="내용"> 함경북도 웅기군 굴포리 유적 (중기 구석기 문화) </div>
+			<div class="연도"> BC 40000-30000 </div> <div class="내용"> 충청남도 공주 석장리 유적(후기 구석기 문화) </div>
+			<div class="연도"> BC 5000-4000 </div> <div class="내용"> 신석기 문화·원시농경 시작. 간석기 토기 제조(전기 신석기 문화)  </div>
+			<div class="연도"> BC 6000 </div> <div class="내용"> 전기 신석기 문화 형성 </div>
+			<div class="연도"> BC 5000 </div> <div class="내용"> 빗살무늬토기·반구대 암각화  </div>
+			<div class="연도"> BC 2333 </div> <div class="내용"> 서울 암사동 유적 형성 단군, 고조선 건국(『삼국유사』) </div>
+			<div class="연도"> BC 2000 </div> <div class="내용"> 청동기 문화 시작 </div>
+			<div class="연도"> BC 1000 </div> <div class="내용"> 전기 청동기 문화 형성. 세형동검• 세문경 제작  </div>
+			<div class="연도"> BC 700 </div> <div class="내용"> 철기 문화 시작  </div>
+			<div class="연도"> BC 194 </div> <div class="내용"> 위만, 위만조선 세움  </div>
+			<div class="연도"> BC 108 </div> <div class="내용"> 위만조선 멸망, 한사군 설치  </div>
+			<div class="연도"> BC 57 </div> <div class="내용"> 신라 건국  </div>
+			<div class="연도"> BC 37 </div> <div class="내용"> 고구려 건국  </div>
+			<div class="연도"> BC 18 </div> <div class="내용"> 백제 건국 </div>
+			<div class="연도"> 342 </div> <div class="내용"> 고구려, 안악 3호 고분 〈대 행렬도〉 그림  </div>
+			<div class="연도"> 350 </div> <div class="내용"> (이 무렵) 고구려, 안악 1호분·3호분 형성 <br>
+			백제, 청주 신봉동 고분군 유적 형성  </div>
+			<div class="연도"> 372 </div> <div class="내용"> 전진 승려 순도, 고구려에 불교 전함 <br>
+			백제, 근초고왕이 〈칠지도〉를 왜왕에게 하사 </div>
+			<div class="연도"> 380경 </div> <div class="내용"> 고구려, 평양 장상동 고분군 유적, 집안 우산하 68호분 등 형성  </div>
+			<div class="연도"> 384 </div> <div class="내용"> 백제, 동진 승려 마란난타가 불교 전함 </div>
+			<div class="연도"> 400경 </div> <div class="내용"> 신라, 금관총·금령총·서봉총·천마총·황남대총 등 경주 적석목곽분 형성 <br>
+			백제, 임실 금성리 고분군 유적 형성 <br>
+			고구려, 집안 만보정 고분군 유적 형성 <br>
+			가야, 함안 가야리 고분군 형성  </div>
+			<div class="연도"> 408 </div> <div class="내용"> 고구려, 덕흥리 벽화 고분 완성  </div>
+			<div class="연도"> 414 </div> <div class="내용"> 고구려, 광개토대왕비 세움, 장군총 만듦  </div>
+			<div class="연도"> 427 </div> <div class="내용"> 고구려, 집안에서 평양으로 천도  </div>
+			<div class="연도"> 449 </div> <div class="내용"> 고구려, 중원고구려비 세움 </div>
+			<div class="연도"> 450 </div> <div class="내용"> (이 무렵) 고구려, 복사리 벽화 고분, 고산리 5호분, 대안리 1호분, 집안 우산하 41호분 유적, 집안 장천 2호분 유적 형성  </div>
+			<div class="연도"> 451 </div> <div class="내용"> (이 무렵) 가야, 함양 백천리 고분군 유적, 합천 창리 고분군 유적 형성  </div>
+			<div class="연도"> 475 </div> <div class="내용"> (이 무렵) 고구려, 중화 진파리 고분군 유적 형성  </div>
+			<div class="연도"> 480 </div> <div class="내용"> (이 무렵) 고구려, 집안 우산하 고분군 유적, 집안 장천 1호분 유적 형성  </div>
+			<div class="연도"> 489 </div> <div class="내용"> 고구려, 〈대화 13년명 석불상〉 건립  </div>
+			<div class="연도"> 500 </div> <div class="내용"> 고구려, 동명왕릉·중화성내 벽화고분 등 만듦 <br>
+			백제, 부여 군수리 출토 〈금동보살입상〉, 〈서산 마애삼존불상〉 만듦 <br>
+			신라, 경주 제155호분 만듦 </div>
+			<div class="연도"> 523 </div> <div class="내용"> 백제, 무령왕 지석 만듦 </div>
+			<div class="연도"> 525 </div> <div class="내용"> 백제, 무령왕릉 축조 </div>
+			<div class="연도"> 527 </div> <div class="내용"> 신라, 흥륜사·영취사 창건 </div>
+			<div class="연도"> 538 </div> <div class="내용"> 백제, 일본에 태자상 관불기 등 보냄. 공주 송산리 5호분 만듦 <br>
+			신라, 백률사 창건 </div>
+			<div class="연도"> 539 </div> <div class="내용"> 고구려,  〈연가7년명 금동여래입상〉 만듦 </div>
+			<div class="연도"> 550 </div> <div class="내용"> (이 무렵) 고구려, 통구 삼실총·쌍영총·성총·각저총·구갑총·무용총·개마총 등 형성. 집안 우산하 1080호 유적, 춘성 방동기 고분 유적 형성 <br>
+			가야, 진주 가좌동 고분군 유적 형성 </div>
+			<div class="연도"> 563 </div> <div class="내용"> 백제, 〈계미명 금동삼존불입상〉 만듦 </div>
+			<div class="연도"> 566 </div> <div class="내용"> (이 무렵) 신라, 솔거가 황룡사 벽에 노송 그림 </div>
+			<div class="연도"> 568 </div> <div class="내용"> 신라, 〈황초령 진흥왕순수비〉와 〈마운령 진흥왕순수비〉 세움 </div>
+			<div class="연도"> 569 </div> <div class="내용"> 고구려, 평양성벽 석각 새김 </div>
+			<div class="연도"> 571 </div> <div class="내용"> 고구려, 〈경景신묘년상 불상〉, 〈신묘년명 금동삼존불상〉 만듦 </div>
+			<div class="연도"> 575 </div> <div class="내용"> (이 무렵) 고구려, 평양 내리 1호분, 평양 금사총 축조 </div>
+			<div class="연도"> 579 </div> <div class="내용"> 신라, 옥대 만듦 <br>
+			백제, 지혜智惠가 안홍사 벽에 53불 그림 </div>
+			<div class="연도"> 580 </div> <div class="내용"> (이 무렵) 고구려, 통구 고분군 형성 </div>
+			<div class="연도"> 584 </div> <div class="내용"> 신라, 황룡사 금당 완성 </div>
+			<div class="연도"> 588 </div> <div class="내용"> 백제, 사신·승려·건축가·미술가 등 일본에 보내 불사리를 전하고 비조사飛鳥寺 건립 </div>
+			<div class="연도"> 589 </div> <div class="내용"> 고구려, 강서3묘 만듦 </div>
+			<div class="연도"> 592 </div> <div class="내용"> 백제, 일본에 기술자들을 보내 법흥사法興寺의 불당·보랑 완성 </div>
+			<div class="연도"> 596 </div> <div class="내용"> 신라·고구려·백제의 기술자, 일본 법흥사 준공 <br>
+			백제, 〈건흥명 금동여래상〉 만듦 </div>
+			<div class="연도"> 597 </div> <div class="내용"> 백제, 아좌태자가 일본에 가서 〈쇼토쿠 태자상〉 그림 <br>
+			신라, 무위사無爲寺 창건 </div>
+			<div class="연도"> 599 </div> <div class="내용"> 백제, 오함사·수덕사·금산사 창건 <br>
+			고구려, 〈연가7년명 금동여래입상〉 완성(일설 539년) </div>
+			<div class="연도"> 600 </div> <div class="내용"> (이 무렵) 고구려, 〈금동미륵반가상〉 만듦 <br>
+			백제, 〈군수리 금동보살입상〉, 〈군수리 석조여래좌상〉, 〈서산 마애삼존불상〉, 〈태안 마애삼존불상〉 만듦 </div>
+			<div class="연도"> 601 </div> <div class="내용"> (이 무렵) 신라, 〈방형대좌 금동미륵보살반가상〉, 경주 단석산 〈신선사 마애불상〉 만듦 <br>
+			백제, 〈금동보살 삼존상〉 만듦 </div>
+			<div class="연도"> 606 </div> <div class="내용"> 고구려인 도리, 일본 원흥사元興寺 장륙불상 주조 </div>
+			<div class="연도"> 623 </div> <div class="내용"> 백제, 〈게미명 금동삼존불입상〉 만듦(일설 563년) </div>
+			<div class="연도"> 624 </div> <div class="내용"> 고구려, 〈갑신명 금동석가좌상〉 만듦 </div>
+			<div class="연도"> 633 </div> <div class="내용"> 신라, 내소사 건립 </div>
+			<div class="연도"> 640 </div> <div class="내용"> (이 무렵) 백제, 익산 미륵사 다층석탑 건립 </div>
+			<div class="연도"> 643 </div> <div class="내용"> 신라, 통도사·대화사 창건 </div>
+			<div class="연도"> 644 </div> <div class="내용"> 신라, 〈삼화령 미륵삼존석불〉 만듦 </div>
+			<div class="연도"> 645 </div> <div class="내용"> 신라, 황룡사 9층석탑 건립. 자장, 통도사 세움 </div>
+			<div class="연도"> 647 </div> <div class="내용"> 신라, 선덕여왕 때 첨성대 건립. 영묘사 장륙삼존·천왕사탑 만듦. 선덕여왕릉 만듦. </div>
+			<div class="연도"> 648 </div> <div class="내용"> 백제, 개심사 창건 </div>
+			<div class="연도"> 650 </div> <div class="내용"> (이 무렵) 고구려, 통구 사신총, 서강 17호분, 강서 3묘, 호남리 사신총, 진파리 1호분·4호분 형성 <br> 
+			백제, 〈금동미륵반가사유상〉, 〈익산 연동리 석불좌상〉 제작 (이 무렵)  </div>
+			<div class="연도"> 651 </div> <div class="내용"> 신라, 〈금동미륵보살반가상〉, 〈경주 남산 불곡 마애여래좌상〉 만듦  </div>
+			<div class="연도"> 660 </div> <div class="내용"> 백제 멸망 </div>
+			<div class="연도"> 661 </div> <div class="내용"> 신라, 무열왕릉비 세움. 〈경주 남산 석불상〉, 〈구례 화엄사 화엄석경〉 만듦  </div>
+			<div class="연도"> 662 </div> <div class="내용"> 신라, 쌍계사 창건 </div>
+			<div class="연도"> 668 </div> <div class="내용"> 고구려 멸망  </div>
+			<div class="연도"> 672 </div> <div class="내용"> 의상, 낙산사 창건 </div>
+			<div class="연도"> 673 </div> <div class="내용"> 〈계유명 아미타불 삼존불비상〉 만듦 </div>
+			<div class="연도"> 674 </div> <div class="내용"> 태풍으로 황룡사 불전 무너짐 </div>
+			<div class="연도"> 675 </div> <div class="내용"> 〈상원2년명 울주 천전리 각자〉 만들어짐 </div>
+			<div class="연도"> 676 </div> <div class="내용"> 의상, 부석사 창건 </div>
+			<div class="연도"> 678 </div> <div class="내용"> 〈세종시 무인명 연화사 비상〉조성. 의상, 범어사 창건  </div>
+			<div class="연도"> 680 </div> <div class="내용"> 신라, 안압지 출토 〈조로2년명 보상화문전〉 만듦. (이 무렵) 〈사천왕사비〉 건립. <br>
+			괴릉의 석인 돌사자·12지신상 호석 및 김유신묘 12지신 호석 제작 </div>
+			<div class="연도"> 681 </div> <div class="내용"> 신라, 대왕암에 문무왕릉 조성, 〈문무왕릉비〉 세움 </div>
+			<div class="연도"> 682 </div> <div class="내용"> 신라, 〈중원군 탑정리 7층석탑〉 건립. 감은사 창건  </div>
+			<div class="연도"> 698 </div> <div class="내용"> 대조영, 발해 건국(국호를 진震이라 함)  </div>
+			<div class="연도"> 700 </div> <div class="내용"> 신라, 〈군위 삼존석굴〉·〈의성 탑리 5층석탑〉 만듦  </div>
+			<div class="연도"> 719 </div> <div class="내용"> 신라, 감산사 창건. 〈감산사 미륵보살상〉 조성  </div>
+			<div class="연도"> 736 </div> <div class="내용"> 신라, 법주사 사천왕 석등·쌍사자 석등·석연지 만듦  </div>
+			<div class="연도"> 737 </div> <div class="내용"> 발해, 〈연등석탑〉 세움 </div>
+			<div class="연도"> 751 </div> <div class="내용"> 신라, 김대성, 불국사 창건. 불국사 〈다보탑〉·〈석가탑〉·〈아미타불상〉·〈석굴암〉 만듦.
+			불국사 석가탑에 〈무구정광대다라니경〉 인본 납입 </div>
+			<div class="연도"> 755 </div> <div class="내용"> 신라, 〈분황사 약사동상〉 주조 </div>
+			<div class="연도"> 756 </div> <div class="내용"> 발해, 돈화 동모산에서 상경용천부로 천도. 문왕 때 흥륭사 석등롱·궁전용 녹유·석각 사자두·녹유 도사자·조상·도제살립상 등 만들어짐 </div>
+			<div class="연도"> 759 </div> <div class="내용"> (이 무렵) 신라, 〈사면석불〉·〈무량사 5층석탑〉 건립  </div>
+			<div class="연도"> 764 </div> <div class="내용"> (이 무렵) 신라, 〈화엄사 4사자 3층석탑〉 세움  </div>
+			<div class="연도"> 765 </div> <div class="내용"> 신라, 〈굴불사지 사면석불〉 만듦 </div>
+			<div class="연도"> 766 </div> <div class="내용"> 승려 진표, 금산사 금당에 〈미륵장륙상〉 주조 및 안치  </div>
+			<div class="연도"> 771 </div> <div class="내용"> 신라, 〈성덕대왕 신종> 주조 </div>
+			<div class="연도"> 772 </div> <div class="내용"> 신라, 팔공산 동화사의 5층석탑 및 금당동·서 3층석탑 건립  </div>
+			<div class="연도"> 780 </div> <div class="내용"> 발해, 정혜공주 묘 </div>
+			<div class="연도"> 801 </div> <div class="내용"> 신라, 〈방어산마애삼존불〉조성. 〈통도사 3층석탑〉 세움  </div>
+			<div class="연도"> 802 </div> <div class="내용"> 신라, 가야산 해인사 창건, 3층석탑 세움  </div>
+			<div class="연도"> 810 </div> <div class="내용"> 신라, 월정사 건립 </div>
+			<div class="연도"> 814 </div> <div class="내용"> 발해, 고예진 등 37인, 당나라에 금불상·은불상 전함  </div>
+			<div class="연도"> 824 </div> <div class="내용"> 신라, 〈보림사 보조선사비〉 세움  </div>
+			<div class="연도"> 830 </div> <div class="내용"> 신라, 〈태화4년명 마애불입상〉 조성  </div>
+			<div class="연도"> 835 </div> <div class="내용"> 신라, 범어사 건립, 3층석탑 조영  </div>
+			<div class="연도"> 867 </div> <div class="내용"> 신라, 보조국사·송광사 세움 </div>
+			<div class="연도"> 873 </div> <div class="내용"> 신라, 〈황룡사 9충목〉 재건  </div>
+			<div class="연도"> 879 </div> <div class="내용"> 신라, 지증국사, 봉암사 창건  </div>
+			<div class="연도"> 926 </div> <div class="내용"> 발해, 거란에 멸망 </div>
+			<div class="연도"> 935 </div> <div class="내용"> 고려, 신라의 투항 받음(신라 멸망) </div>
+			<div class="연도"> 993 </div> <div class="내용"> 〈청자 순화4년명 항아리〉 만듦. 고려비색 청자시대 시작  </div>
+			<div class="연도"> 1007 </div> <div class="내용"> 다라니경판 새겨 찍어냄  </div>
+			<div class="연도"> 1011 </div> <div class="내용"> 제1차 대장경(초조대장경) 만들기 시작  </div>
+			<div class="연도"> 1042 </div> <div class="내용"> 묘향산 보현사 건축  </div>
+			<div class="연도"> 1064 </div> <div class="내용"> 〈황룡사 9층목탑〉 수리  </div>
+			<div class="연도"> 1065 </div> <div class="내용"> 흥왕사 완성 </div>
+			<div class="연도"> 1081 </div> <div class="내용"> 〈청자 신유6월명 주전자〉 만듦 </div>
+			<div class="연도"> 1087 </div> <div class="내용"> 흥왕사에서 1차 대장경(초조대장경·속대장경)완성  </div>
+			<div class="연도"> 1100 </div> <div class="내용"> (이 무렵) 〈청자 양각사자개 주전자〉·〈화청자 모란문 주전자〉 등 만들어짐 </div>
+			<div class="연도"> 1125 </div> <div class="내용"> 〈청자 양각포류수금동자문 대접〉·〈청자 조각쌍사자 베개〉 등 만듦 </div>
+			<div class="연도"> 1145 </div> <div class="내용"> 김부식, 『삼국사기』 50권편찬 </div>
+			<div class="연도"> 1150 </div> <div class="내용"> (이 무렵) 〈청자 음각연당초문 매병〉·〈청자 양각죽순형 주전자〉 만듦 </div>
+			<div class="연도"> 1175 </div> <div class="내용"> 〈청자 상감모란문 항아리〉·〈청자 상감운학문 항아리〉·〈청자 상감운학문 매병〉 등 만들어짐 </div>
+			<div class="연도"> 1185 </div> <div class="내용"> 명종, 〈소상팔경도〉 그림 </div>
+			<div class="연도"> 1200 </div> <div class="내용"> (이 무렵) 〈청자 상감양류수금문 과형 주전자〉•〈청자 상감 진사채 포도동자문 주전자〉
+			등 만들어짐 </div>
+			<div class="연도"> 1232 </div> <div class="내용"> 초조대장경, 몽고병의 침입으로 불 타버림  </div>
+			<div class="연도"> 1234 </div> <div class="내용"> 금속활자로 『상정고금예문』 50권 인쇄(세계 최초의 금속활자본) </div>
+			<div class="연도"> 1235 </div> <div class="내용"> 〈오백나한도〉 그림 </div>
+			<div class="연도"> 1238 </div> <div class="내용"> 몽고군, 동경(경주)에 이르러 〈황룡사 9층목탑〉과 〈장륙상〉 불태움 </div>
+			<div class="연도"> 1250 </div> <div class="내용"> 고려청자 전성기. 〈청자 상감연국문 과형 주전자〉 만들어짐 </div>
+			<div class="연도"> 1251 </div> <div class="내용"> 제2차 대장경(1236~ ) 완성(해인사에 현존)  </div>
+			<div class="연도"> 1285 </div> <div class="내용"> 일연의 『삼국유사』 이룩됨 </div>
+			<div class="연도"> 1295 </div> <div class="내용"> 〈인각사 보각국사 정조탑비〉 건립 </div>
+			<div class="연도"> 1311 </div> <div class="내용"> 〈지대4년명 동종〉 만들어짐(프랑스에 현존) </div>
+			<div class="연도"> 1327 </div> <div class="내용"> 묘향산 보현사 만세루 앞, 〈다보탑〉 건립 〈오대산 월정사시장경비〉 건립 </div>
+			<div class="연도"> 1352 </div> <div class="내용"> 공민왕, 〈천산대렵도〉 〈조경자사도照鏡自寫圖〉 〈이어도鯉漁圖〉 그림 </div>
+			<div class="연도"> 1358 </div> <div class="내용"> 영주 부석사 부량수전 소실 </div>
+			<div class="연도"> 1365 </div> <div class="내용"> 공민왕, 〈노국공주진영〉 그림 </div>
+			<div class="연도"> 1366 </div> <div class="내용"> 전등사 향로 만듦. 봉선사 〈성상도로〉 그려짐 </div>
+			<div class="연도"> 1374 </div> <div class="내용"> 공민왕릉의 석인·석수·석둥·호석 이룩됨 </div>
+			<div class="연도"> 1377 </div> <div class="내용"> 부석사 조사당에 벽화 〈천부상〉 그려짐 </div>
+			<div class="연도"> 1383 </div> <div class="내용"> 〈신륵사 대장각〉·〈장경비〉 건립 </div>
+			<div class="연도"> 1391 </div> <div class="내용"> 〈백자 홍부24년명 완(주발)〉 구워짐 </div>
+			<div class="연도"> 1392 </div> <div class="내용"> 고려 멸망. 조선 개국  </div>
+			<div class="연도"> 1395 </div> <div class="내용"> 천문도 〈천상열차분야지도〉 작성됨 </div>
+			<div class="연도"> 1396 </div> <div class="내용"> 한성 남대문 건축 시작(~1398) </div>
+			<div class="연도"> 1398 </div> <div class="내용"> 고려대장경, 강화 선원사에서 해인사로 옮겨짐 </div>
+			<div class="연도"> 1404 </div> <div class="내용"> 경복궁 준공 </div>
+			<div class="연도"> 1405 </div> <div class="내용"> 창덕궁 창건 </div>
+			<div class="연도"> 1406 </div> <div class="내용"> 덕수궁 준공 </div>
+			<div class="연도"> 1419 </div> <div class="내용"> 강희안, 〈누각도〉 그림  </div>
+			<div class="연도"> 1442 </div> <div class="내용"> 안견, 〈안평대군 초상화〉 그림  </div>
+			<div class="연도"> 1445 </div> <div class="내용"> 안견, 〈장송도〉 그림 </div>
+			<div class="연도"> 1446 </div> <div class="내용"> 훈민정음 반포  </div>
+			<div class="연도"> 1447 </div> <div class="내용"> 안견, 〈임강원도〉 그림  </div>
+			<div class="연도"> 1454 </div> <div class="내용"> 계룡산에서 철화분청 제작 시작됨  </div>
+			<div class="연도"> 1464 </div> <div class="내용"> 안견, 〈묵죽도〉 그림  </div>
+			<div class="연도"> 1465 </div> <div class="내용"> 화가 이상좌 출생(~?) </div>
+			<div class="연도"> 1468 </div> <div class="내용"> 〈보신각 대종〉 이룩됨 <br> 〈원각사 10층석탑〉 세움  </div>
+			<div class="연도"> 1490 </div> <div class="내용"> 송광사 미륵전 창건  </div>
+			<div class="연도"> 1512 </div> <div class="내용"> 신사임당, 〈추초군접도〉 그림 </div>
+			<div class="연도"> 1514 </div> <div class="내용"> 불국사 극락전 벽화 완성  </div>
+			<div class="연도"> 1521 </div> <div class="내용"> 신세림 〈영모도〉 이룩됨 </div>
+			<div class="연도"> 1531 </div> <div class="내용"> 〈독서당계회도〉 그려짐 <br> 화가 이정근 출생(~?) </div>
+			<div class="연도"> 1533 </div> <div class="내용"> 화가 황집중 출생(~?) </div>
+			<div class="연도"> 1535 </div> <div class="내용"> 이해산, 〈산수묵도〉 그림 </div>
+			<div class="연도"> 1549 </div> <div class="내용"> 이상좌, 중종의 〈어용익선관본〉 그림  </div>
+			<div class="연도"> 1551 </div> <div class="내용"> 신사임당 죽음 (1504~ ) </div>
+			<div class="연도"> 1566 </div> <div class="내용"> 화가 어몽룡 출생(~?)  </div>
+			<div class="연도"> 1566 </div> <div class="내용"> 〈장안사 아미타오존도〉 이룩됨  </div>
+			<div class="연도"> 1586 </div> <div class="내용"> 김시 〈매조문향〉, 이성길 〈무이구곡도〉 그림 </div>
+			<div class="연도"> 1600 </div> <div class="내용"> 화가 김명국 출생(~?) </div>
+			<div class="연도"> 1607 </div> <div class="내용"> 화가 이정 죽음(1578~) </div>
+			<div class="연도"> 1609 </div> <div class="내용"> 화가 이우 죽음 (1542~) </div>
+			<div class="연도"> 1621 </div> <div class="내용"> 이정, 〈설죽도〉 그림. 화가 한시각韓時覺 출생(~?)  </div>
+			<div class="연도"> 1622 </div> <div class="내용"> 〈상강야우도〉 그려짐. 화가 이정 죽음(1541~) </div>
+			<div class="연도"> 1627 </div> <div class="내용"> 이징·김명국 등 〈소현세자 가례도〉 그림 <br> 화가 윤정립 죽음(1517~)  </div>
+			<div class="연도"> 1629 </div> <div class="내용"> 이기룡, 〈남지계회도〉 그림 <br> 남구만의 초상화 그려짐 </div>
+			<div class="연도"> 1660 </div> <div class="내용"> 화엄사 개창 </div>
+			<div class="연도"> 1662 </div> <div class="내용"> 김명국 〈금니산수도〉 그림  </div>
+			<div class="연도"> 1668 </div> <div class="내용"> 화가 조속 죽음(1595~) </div>
+			<div class="연도"> 1676 </div> <div class="내용"> 안동 도산서원 사액됨 </div>
+			<div class="연도"> 1680 </div> <div class="내용"> 범어사 대웅전 건립  </div>
+			<div class="연도"> 1707 </div> <div class="내용"> 윤두서, 〈송림망양도〉 그림  </div>
+			<div class="연도"> 1714 </div> <div class="내용"> 윤두서, 〈노송동자도〉 그림  </div>
+			<div class="연도"> 1715 </div> <div class="내용"> 석굴암 중수 </div>
+			<div class="연도"> 1720 </div> <div class="내용"> 이의현, 연경에서 서양화 16폭 가지고 돌아옴  </div>
+			<div class="연도"> 1731 </div> <div class="내용"> 윤덕희 〈하경산수도〉 〈동경산수도〉 그림  </div>
+			<div class="연도"> 1732 </div> <div class="내용"> 조영우 〈동자견우도〉그림 </div>
+			<div class="연도"> 1734 </div> <div class="내용"> 이인상 〈한거도〉그림. 정선 〈금강전도〉 그림  </div>
+	 		<div class="연도"> 1736 </div> <div class="내용"> 이인상 〈은선대〉〈옥류동〉 그림 <br> 윤덕희 〈미인기마도〉 그림  </div>
+			<div class="연도"> 1739 </div> <div class="내용"> 이인상 〈수하한담도〉 그림 <br> 정선 〈청풍계도〉 그림  </div>
+			<div class="연도"> 1740 </div> <div class="내용"> 이인상, 〈청호녹음도〉 그림  </div>
+			<div class="연도"> 1742 </div> <div class="내용"> 정선, 〈연강임술첩〉그림 </div>
+			<div class="연도"> 1744 </div> <div class="내용"> 김두량 〈월야산수도〉 그림 <br> 임사정 〈맹하도〉 그림 <br> 김두량이 아들 김덕하와 함께 〈도리원호여도권〉, 〈전원행렵도권〉을 그림  </div>
+			<div class="연도"> 1745 </div> <div class="내용"> 장득만·장경주·정홍래·조창희 등 〈기사경회첩〉 그림 </div>
+			<div class="연도"> 1746 </div> <div class="내용"> 이광사, 〈고사간화도〉그림  </div>
+			<div class="연도"> 1747 </div> <div class="내용"> 심사정, 〈강상야박도〉 그림  </div>
+			<div class="연도"> 1748 </div> <div class="내용"> 유덕장, 〈설죽도〉 그림 </div>
+			<div class="연도"> 1749 </div> <div class="내용"> 최북 〈도담상봉도〉 그림 <br> 강세황 〈산수도〉 그림 <br> 이인상 〈모정추강도茅亭秋江圖〉 그림 <br>
+			정선 〈사공시화첩〉만듦 </div>
+			<div class="연도"> 1750 </div> <div class="내용"> 성불사 응진전 중수. 불국사 극락전 중수 </div>
+			<div class="연도"> 1751 </div> <div class="내용"> 정선 〈인왕제색도〉 그림. 강세황 〈도산서원도〉 그림. 최북 〈매화치도〉그림  </div>
+			<div class="연도"> 1752 </div> <div class="내용"> 이인상, 설성에 은거하며 〈구룡연도〉 그림  </div>
+			<div class="연도"> 1754 </div> <div class="내용"> 이인상, 〈하독좌도〉 그림 </div>
+			<div class="연도"> 1755 </div> <div class="내용"> 정선, 〈사물탈사도는〉 그림 </div>
+			<div class="연도"> 1756 </div> <div class="내용"> 심사정, 〈쌍치도〉 그림 </div>
+			<div class="연도"> 1757 </div> <div class="내용"> 최북 〈미법산수도〉 그림. 정선 〈청송도〉 그림  </div>
+			<div class="연도"> 1758 </div> <div class="내용"> 심사정 〈방심석전 산수도〉 그림. 화가 신윤복 출생(~?) </div>
+			<div class="연도"> 1759 </div> <div class="내용"> 정선 죽음 (1676~) </div>
+			<div class="연도"> 1760 </div> <div class="내용"> 심사정 〈황취박토도〉그림. 김홍도 〈소선도〉·〈신선도〉·〈영모도〉그림<br>
+			화가 이인상 죽음(1710~). 화가 이방은 출생(~?) </div>
+			<div class="연도"> 1761 </div> <div class="내용"> 화가 조영석 죽음(1686~) </div>
+			<div class="연도"> 1763 </div> <div class="내용"> 화가 김두량 죽음(1696~) </div>
+			<div class="연도"> 1764 </div> <div class="내용"> 화가 강희언 죽음(1710~) </div>
+			<div class="연도"> 1765 </div> <div class="내용"> 최북, 〈송음관폭도〉 그림 </div>
+			<div class="연도"> 1766 </div> <div class="내용"> 강세황 〈자화상〉 그림. 화가 윤독희(1685~)·윤두서(1668~) 죽음 </div>
+			<div class="연도"> 1767 </div> <div class="내용"> 전주 풍남문 건립. 불국사 대웅전, 개심사 대웅전 중수  </div>
+			<div class="연도"> 1768 </div> <div class="내용"> 심사정 〈경구팔경도〉 그림. 김윤겸 〈금강산화첩〉 그림. 최북 죽음(1720~) </div>
+			<div class="연도"> 1769 </div> <div class="내용"> 심사정 죽음 (1707~) </div>
+			<div class="연도"> 1770 </div> <div class="내용"> 김홍도, 동궁(정조)의 수용(어진) 그림  </div>
+			<div class="연도"> 1772 </div> <div class="내용"> 김응환, 김홍도에게 〈금강전도〉 그려줌  </div>
+			<div class="연도"> 1775 </div> <div class="내용"> 김덕성, 〈뇌신도〉 그림  </div>
+			<div class="연도"> 1776 </div> <div class="내용"> 김홍도, 〈금선도〉 병풍 그림  </div>
+			<div class="연도"> 1778 </div> <div class="내용"> 김홍도, 강희언의 집에서 〈행려풍속도〉 병풍 그림  </div>
+			<div class="연도"> 1784 </div> <div class="내용"> 김홍도 〈단원도〉그림. 이명기 〈채제공 초상〉 그림. 정수영 〈백사노인회도〉 그림  </div>
+			<div class="연도"> 1789 </div> <div class="내용"> 강세황 〈피금정도〉 그림, 화가 김응환 죽음 (1742~) </div>
+			<div class="연도"> 1790 </div> <div class="내용"> 수원 화산 용주사 건립 </div>
+			<div class="연도"> 1791 </div> <div class="내용"> 화가 강세황 죽음(1712~). 화가 조정규 출생(~?) </div>
+			<div class="연도"> 1795 </div> <div class="내용"> 김홍도 〈총석정도〉 등이 담긴 화첩 그림  </div>
+			<div class="연도"> 1801 </div> <div class="내용"> 수원 화령전 건축 </div>
+			<div class="연도"> 1804 </div> <div class="내용"> 김홍도, 〈기로세련계도〉 그림 </div>
+			<div class="연도"> 1817 </div> <div class="내용"> 김정희, 〈북한산 신라진흥왕순수비〉 발견 후 68자의 비문 읽어냄  </div>
+			<div class="연도"> 1820 </div> <div class="내용"> 이인문, 〈누각아집도〉 그림  </div>
+			<div class="연도"> 1821 </div> <div class="내용"> 화가 이인문 죽음(1745~) </div>
+			<div class="연도"> 1822 </div> <div class="내용"> 화가 김득신 죽음(1754~) </div>
+			<div class="연도"> 1823 </div> <div class="내용"> 송광사 화엄전 신상정 그림  </div>
+			<div class="연도"> 1825 </div> <div class="내용"> 전기, 〈설경산수도〉 완성  </div>
+			<div class="연도"> 1829 </div> <div class="내용"> 안광직, 〈역대치란전도〉 병풍 제작 </div>
+			<div class="연도"> 1834 </div> <div class="내용"> 창경궁 숭문당·양화당·영춘헌·집복헌·환경전·함인전·경춘전·통명전의 영건 종료<br>
+			창덕궁 대조전·희정당 복구 </div>
+			<div class="연도"> 1837 </div> <div class="내용"> 이재관 〈산수화첩〉 그림. 신위 〈방대도〉 그림  </div>
+			<div class="연도"> 1840 </div> <div class="내용"> 송상래, 〈묵죽도〉 그림 </div>
+			<div class="연도"> 1844 </div> <div class="내용"> 김정희, 〈세한도〉 그림  </div>
+			<div class="연도"> 1845 </div> <div class="내용"> 심사정, 〈하경산수도〉 그림 </div>
+			<div class="연도"> 1848 </div> <div class="내용"> 김정희, 〈추란도〉 그림 </div>
+			<div class="연도"> 1849 </div> <div class="내용"> 김수철 〈연사만경도〉 그림. 신기 〈계산포무도〉 〈운경산수도〉 그림 </div>
+			<div class="연도"> 1856 </div> <div class="내용"> 김정희 죽음(1786~)  </div>
+			<div class="연도"> 1857 </div> <div class="내용"> 이한철, 〈김정희 초상〉 그림  </div>
+			<div class="연도"> 1862 </div> <div class="내용"> 김수철, 〈하경산수도〉 그림  </div>
+			<div class="연도"> 1863 </div> <div class="내용"> 허련, 〈방황자구 벽계청산장도〉 그림 </div>
+			<div class="연도"> 1876 </div> <div class="내용"> 화재로 불탄 경복궁 교태전·자경전·인지당 개수 완료  </div>
+			<div class="연도"> 1881 </div> <div class="내용"> 이하응, 〈총석란도〉 발표  </div>
+			<div class="연도"> 1890 </div> <div class="내용"> (이 무렵) 장승업, 〈삼인문년도〉 그림  </div>
+			<div class="연도"> 1892 </div> <div class="내용"> 허련 죽음 (1809~) </div>
+			<div class="연도"> 1893 </div> <div class="내용"> 한성 중립동에 약현성당 중공(최초의 서양식 성당) </div>
+			<div class="연도"> 1897 </div> <div class="내용"> 장승업 죽음(1843~) </div>
+			<div class="연도"> 1909 </div> <div class="내용"> 안중식, 〈산수도〉 그림  </div>
+			<div class="연도"> 1911 </div> <div class="내용"> 이왕가李王家의 후원으로 서화미술전 설립<br>
+			안중식, 〈성재수간도〉 그림  </div>
+			<div class="연도"> 1912 </div> <div class="내용"> 김관호, 〈해질녘〉그림  </div>
+			<div class="연도"> 1913 </div> <div class="내용"> 안중식, 〈도원문진도〉 그림 </div>
+			<div class="연도"> 1919 </div> <div class="내용"> 민족서화가들 중심으로 서화협회 결성(초대 회장 안중식, 2대 회장 조석진)<br>
+			조석진, 〈어해도〉 〈이어도鯉魚圖〉 그림 </div>
+			<div class="연도"> 1920 </div> <div class="내용"> 김은호, 창덕궁 대조전의 벽화 〈백학도〉 그림<br>
+			허백련, 〈곡산청하〉 그림 </div>
+			<div class="연도"> 1921 </div> <div class="내용"> 고희동, 한국 최초의 미술지 〈서화협회보〉 창간  </div>
+			<div class="연도"> 1924 </div> <div class="내용"> 이상범, 제5회 조선미술전람회에 〈모연도〉 출품 <br>
+			수경, 한국 최초의 추상화 〈파란〉 그림 </div>
+			<div class="연도"> 1930 </div> <div class="내용"> 주경, 〈생존〉 그림. 홍순·이종우 등 동경미술학교 졸업생들 동미회東美會 조직<br>
+			오지호 등 녹향회 조직, 민족주의 신미술운동 전개 (1931년 해체 당함) </div>
+			<div class="연도"> 1932 </div> <div class="내용"> 박수근 〈봄이 오다〉 조선미술전람회에 입선  </div>
+			<div class="연도"> 1935 </div> <div class="내용"> (이 무렵) 구본웅, 〈친구 모습〉 〈여인〉 그림 <br>
+			집안 서강 사신총 벽화 발견 </div>
+			<div class="연도"> 1938 </div> <div class="내용"> 김환기, 〈론도〉 그림 </div>
+			<div class="연도"> 1939 </div> <div class="내용"> 김은호, 〈춘향상〉 그림(한국전쟁 중 소실)
+			변관식, 〈누각정경도〉 그림 </div>
+			<div class="연도"> 1940 </div> <div class="내용"> 주경, 〈붉은색 배경의 내부〉 그림 </div>
+			<div class="연도"> 1941 </div> <div class="내용"> 이중섭 등, 전위미술단체 신미술가협회 조직 </div>
+			<div class="연도"> 1942 </div> <div class="내용"> 부여 부소산 서쪽에서 백제 벽화 발견 </div>
+			<div class="연도"> 1945 </div> <div class="내용"> 조선미술협회 발족(회장 고희동) </div>
+			<div class="연도"> 1950 </div> <div class="내용"> 제1회 국전 개최 </div>
+			<div class="연도"> 1951 </div> <div class="내용"> 장욱진, 〈자화상〉 그림 </div>
+			<div class="연도"> 1952 </div> <div class="내용"> 박수근, 〈절구질하는 여인〉 그럼 </div>
+			<div class="연도"> 1953 </div> <div class="내용"> 장욱진, 〈자동차 있는 풍경〉 그림 </div>
+			<div class="연도"> 1954 </div> <div class="내용"> 박수근, 〈빨래터〉 그림 </div>
+			<div class="연도"> 1955 </div> <div class="내용"> 변관식, 〈해금강 삼선암 추색도〉 그림 </div>
+			<div class="연도"> 1956 </div> <div class="내용"> 노수현, 〈산촌〉 그림 </div>
+			<div class="연도"> 1957 </div> <div class="내용"> 변관식, 〈농가도〉 그림 </div>
+			<div class="연도"> 1958 </div> <div class="내용"> 장욱진, 〈까치〉 그림 </div>
+			<div class="연도"> 1959 </div> <div class="내용"> 이상범, 〈고원귀려도〉 그림 </div>
+			<div class="연도"> 1960. 2. </div> <div class="내용"> 《한국현대화가회전(재6회 백양회전)》이 타이완 국립예술관 회랑에서 개최 </div>
+			<div class="연도"> 1960. 3. </div> <div class="내용"> 서세옥을 주축으로 묵림회가 결성, 제1회 묵림회 전시 개최 </div>
+			<div class="연도"> 1960. 10.  </div> <div class="내용"> 국전이 덕수궁미술관에서 개최 </div>
+			<div class="연도"> 1961. 1. </div> <div class="내용"> 백양회, 동남아 순회전으로 타이완·도쿄·오사카에서 전시회 개최 </div>
+			<div class="연도"> 1961. 3. </div> <div class="내용"> 북한, 조선문학예술총동맹 재결성. 산하에 작가동맹·음악가동맹·미술가동맹·무용인동맹·영화인동맹·연극인동맹·사진가동맹을 둠 </div>
+			<div class="연도"> 1961. 4. </div> <div class="내용"> 북한, 평양 만수대언덕에 〈천리마동상〉 건립 <br>
+			문화자유회의 한국 본부인 춘추회가 창립. 한국 현대미술의 담론 형성에 크게 기여함 </div>
+			<div class="연도"> 1961. 9. </div> <div class="내용"> 제2회 파리비엔날레에 김창열·장성순·정창섭·조용익이 한국 작가로서 처음 참가. 김병기가 커미셔너를 맡음 </div>
+			<div class="연도"> 1961. 11. </div> <div class="내용"> 제19회 국전의 대통령상 특전으로 해외 포상 제도가 실시되어 작가들의 해외 진출을 증대시킴 </div>
+			<div class="연도"> 1962. 1. </div> <div class="내용"> 한국예술문화단체총연합회(예총) 결성 </div>
+			<div class="연도"> 1962. 3. </div> <div class="내용"> 경복궁미술관에서 현대미술가협회와 60년미술가협회가 연합전을 가진 뒤 통합하여 악뛰엘을 결성함으로써 앵포르멜을 공통 회화 이념으로 내세움 </div>
+			<div class="연도"> 1962. 6. </div> <div class="내용"> 무동인無同人 창립전이 국립도서관 화랑에서 개최 </div>
+			<div class="연도"> 1963. 3.</div> <div class="내용"> 백남준의 첫 개인전 《음악의 전시: 전자 텔레비전》이 부퍼탈 파르나스 갤러리에서 개최 </div>
+			<div class="연도"> 1963. 9. </div> <div class="내용"> 앵포르멜에서 벗어난 새로운 회화를 모색하는 그룹 오리진의 창립전이 중앙공보관에서 개최 </div>
+			<div class="연도"> 1963. 9. 20. </div> <div class="내용"> 김경승·김영중·이승택·이종각의 협업으로 수유리 국립4.19민주묘지에 기념탑을 세움 </div>
+			<div class="연도"> 1963. 9. </div> <div class="내용"> 제7회 상파울루비엔날레에 김기창·김영주·김환기·서세옥·유강열·유영국·한용진 등이 한국 작가로 처음 참여. 김환기가 명예상을 수상함 </div>
+			<div class="연도"> 1964. 5. </div> <div class="내용"> 서울 세종로에 애국선열 37명의 석고상이 설치 되었다가 2년 후 부식 등의 이유로 철거됨. 이는 애국선열조상건립 운동의 계기가 됨 </div>
+			<div class="연도"> 1964. 10. </div> <div class="내용"> 제13회 국전에 사진 부문이 추가됨. 이후 1971년부터 1973년까지 국전에서 분리되어 《대한민국건축·사진전람회》로 개최함. 1974년부터는 다시 편입되어 제30회 국전까지 총 17회의 공모전을 가짐 </div>
+			<div class="연도"> 1964. 12.</div> <div class="내용"> 묵람회가 국립중앙공보관에서 개최된 제8회 전시를 끝으로 해산 </div>
+			<div class="연도"> 1965. 2. </div> <div class="내용"> 장우성, 미국 워싱턴에 동양예술학교를 설립하여 동양화와 서예를 가르침 <br> 
+			논꼴 동인의 제1회전이 신문회관에서 개최. 전시와 함께 동인지 『논꼴아트』 출간 </div>
+			<div class="연도"> 1965. 8.</div> <div class="내용"> 한일국교정상화를 목적으로 한국예술문화단체총연합회(예총)이 재일 도쿄 지부를 설치. 지부장에 재일 미술과 곽인식 선출 </div>
+			<div class="연도"> 1965. 9. </div> <div class="내용"> 제8회 상파울루비엔날레(김병기 커미셔너)에 권옥연·김종영·김창열·박서보·이세득·정창섭이 참여. 이응노가 명예상을 수상함 </div>
+			<div class="연도"> 1965. 10. </div> <div class="내용"> 백남준, 뉴욕의 카페 오 고고에서 비디오테이프리코더의 세계 최초 상영회를 개최 <br> 
+			박종배의 추상조각 〈역사의 원〉이 제14회 국전에서 대통령상을 수상. 조각계에 새로운 방향을 제시함 </div>
+			<div class="연도"> 1965. 11. </div> <div class="내용"> 갤러리아 보니노의 《전자 예술》 전시에서 백남준이 주사선 조작을 한 텔레비전 실험 작품들을 선보임 </div>
+			<div class="연도"> 1966. 9. </div> <div class="내용"> 북한, 제9차 국가미술전람회 개최. 김일성 담화 「우리의 미술을 민족적형식에 사회주의적내 용을 담은 혁명적인 미술로 발전시키자」 에서 “조선화를 토대로 하여 우리의 미술을 더욱 발전시켜 나가자”라는 원칙을 확립 </div>
+			<div class="연도"> 1966. 11. </div> <div class="내용"> 건축가 김수근, 월간 『공간』을 창간. 건축·도시·예술을 신조로 미술과 건축을 아우르는 종합예술지로 한국의 문화를 소개 <br> 
+			종합박물관(현 국립민속박물관) 현상설계에서 전통 건축의 모방과 조합이라는 지침을 따른 강봉진의 설계가 당선안으로 확정되고 공사에 이름. 이듬해 건축가들의 반발과 함께 전통적 모티프의 모방에 근거를 둔 전통의 계승과 현대화의 방향에 대한 성찰 진행 </div>
+			<div class="연도"> 1967. 7. </div> <div class="내용"> 이응노, 북한에 있는 아들의 소식을 알고자 동베를린에 갔다가 사상 문제로 체포 및 투옥된 ‘동백림(동베를린) 사건' 발생 <br> 
+			한국 역사에서 중요한 사건들을 회화로 재현하는 민족기록화 사업이 추진되며, 기록화제작사무소가 설립되어 경복궁 미술관에서 《민족기록화전》을 개최함 </div>
+			<div class="연도"> 1967. 9.</div> <div class="내용"> 제9회 상파울루비엔날레에 여성 작가로서 처음 박래현이 한국 대표 가운데 한 명으로 선정 </div>
+			<div class="연도"> 1967. 12.</div> <div class="내용"> 무동인·신전동인·오리진이 《한국청년작가연립전》을 중앙공보관에서 개최 </div>
+			<div class="연도"> 1968. 3.</div> <div class="내용"> 《회화68》 동인전이 신문회관에서 개최. 팝아트·옵아트·키네틱아트 등 당시 미술계 조류의 영향을 보여줌 </div>
+			<div class="연도"> 1968. 4. </div> <div class="내용"> 서울 광화문 광장에 김세중이 제작한 〈충무공이순신장군상〉 건립 </div>
+			<div class="연도"> 1968. 5. </div> <div class="내용"> 강국진·정찬승·정강자가 〈투명풍선과 누드〉 해프닝을 세시봉 음악 감상실에서 발표. 연이어 그해 10월 〈한강변의 타살〉을 선보여 권위적인 아카데미즘 미술에 반기를 들고 전위예술의 의지를 드러냄 </div>
+			<div class="연도"> 1968. 10. </div> <div class="내용"> 한국판화협회를 탈퇴한 일부 작가들 중심으로 한국현대판화가협회 설립. 이어서 이항성이 《한국현대판화 10년전》을 기획 <br> 
+			제17회 국전의 주관 부서가 문교부에서 문화공보부로 바뀜. 국전 사상 처음으로 서예 작품이 대통령상 수상 </div>
+			<div class="연도"> 1969. 7. </div> <div class="내용"> 이우환이 『공간』에 「일본 현대미술의 동향」을 게재하며 한국의 독자를 만남. 현대미술의 방법을 서구의 모델에서 동양의 시선으로 돌리며 한국의 많은 작가들에게 영향을 줌 </div>
+			<div class="연도"> 1969. 9. </div> <div class="내용"> 한국아방가르드협회(AG)가 결성. 협회지 『AG』 1호 발간하여 1971년 4호까지 참여 작가 및 평론가의 글, 해외의 개념 미술 및 대지미술의 경향 등을 소개함 </div>
+			<div class="연도"> 1969. 10. </div> <div class="내용"> 현실동인(오경환·오윤·임세택)의 예정된 전시가 취소됨. ‘예술의 현실의 반영’을 주창하는 전시의 선언문 「현실동인 제1선언」(김지하 집필)이 알려지고 1980년대 민중미술의 부상을 예견 <br> 
+			국립현대미술관이 제18회 국전 개막식과 함께 경복궁에서 개관 </div>
+			<div class="연도"> 1970. 3. </div> <div class="내용"> 이건용을 주축으로 Space and Time 조형미술학회(ST) 창립을 위한 제3차 모임이 열림 </div>
+			<div class="연도"> 1970. 4. </div> <div class="내용"> 반도화랑에서 근무했던 박명자가 독립하여 현대화랑을 엶 </div>
+			<div class="연도"> 1970. 5. </div> <div class="내용"> AG 창립전이 중앙공보관에서 열림. 1975년까지 총 4번의 단체전을 지속함 </div>
+			<div class="연도"> 1970. 6. </div> <div class="내용"> 한국일보사 주최 《제1회 한국미술대상전》에서 김환기의 〈어디서 무엇이 되어 다시 만나랴〉가 대상으로 선정 <br> 
+			김구림을 비롯한 정찬승·방태수·손일광 등이 모여 전위 행위미술 단체 제4집단 결성. 〈가두극〉, 〈기성문화예술의 장례식〉 등을 행하다가 경찰에 연행됨 </div>
+			<div class="연도"> 1970. 8. </div> <div class="내용"> 미국 WGBH 채널 44 방송국이 백남준과 아베 슈야가 제작한 〈백–아베 비디오 신디자이저〉(1969)를 사용하여 〈비디오 코뮨: 처음부터 끝까지 비틀즈〉를 실시간으로 내보냄 </div>
+			<div class="연도"> 1970. 10. </div> <div class="내용"> 제19회 국전에서 한 해 전의 서양화부에 이어 동양화부가 구상부문과 비구상(추상)부문으로 분리됨 </div>
+			<div class="연도"> 1970. 11. </div> <div class="내용"> 동아일보사가 창간 50주년을 기념해 국내 최초의 비엔날레인 동아국제판화비엔날레(1981년 ‘서울국제판화비엔날레'로 개칭, 1992년 폐지)를 창설 </div>
+			<div class="연도"> 1970. 12.</div> <div class="내용"> 명동화랑 개관. 개관 기념전 《오늘의 30대전》에 김기창·박노수·서세옥·김인승·도상봉 등의 작품이 출품됨 </div>
+			<div class="연도"> 1971. 4. </div> <div class="내용"> ST가 창립전을 국립공보관에서 개최한 후 1980년까지 총 7회의 정례전을 가짐 </div>
+			<div class="연도"> 1971. 11. </div> <div class="내용"> 일본에서 출간된 이우환의 「만남의 현상학 서설一새로운 예술론의 준비를 위하여」가 『AG』 4권에 번역되어 수록 </div>
+			<div class="연도"> 1972. 4.</div> <div class="내용"> 북한, 대기념비미술 제작이 활성화되며 평양 만수대 언덕에 〈만수대 대기념비〉를 세움. 이 제작을 전후로 설리된 만수대창작사는 중앙미술제작소와 통합, 내부에 사진제작단·수예제작단을 신설하며 명실상부 종합적인 미술창작기지로 거듭남 </div>
+			<div class="연도"> 1972. 6. </div> <div class="내용"> 국립현대미술관이 《한국근대미술 60년전》 개최. 1900년부터 1960년까지 근대미술을 종합·정리하고자 전국에서 산재한 작품과 자료를 모아 전시함 </div>
+			<div class="연도"> 1972. 8. </div> <div class="내용"> 한국미술협회(미협)가 제1회 앙데팡당전전을 개최 </div>
+			<div class="연도"> 1973. 2. </div> <div class="내용"> 명동화랑에서 《한국현대미술 1957–1972: 추상=상황, 조형과 반조형》이 개최 </div>
+			<div class="연도"> 1973. 11. </div> <div class="내용"> 한국문화예술진흥원 공식 개원 </div>
+			<div class="연도"> 1974. 5. </div> <div class="내용"> 제23회 국전(제2부·제4부)에서 건축과 사진 부문이 다시 추가됨 <br> 
+			박래현, 뉴욕에서 판화를 연구한 뒤 7년 만에 귀국해 《박래현 판화전》을 엶 </div>
+			<div class="연도"> 1974. 10.</div> <div class="내용"> 제1회 대구현대미술제가 계명대학교 미술관에서 개초. 지방에서 최초로 개최한 대규모 전위미술 전시로, 이후 부산·광주 등에서의 전위미술제 개최를 촉발함 </div>
+			<div class="연도"> 1974. 12.</div> <div class="내용"> AG가 기획한 제1회 서울비엔날레가 국립현대미술관에서 개최 </div>
+			<div class="연도"> 1975. 5.</div> <div class="내용"> 도쿄화랑 기획으로 《한국 5인의 작가, 다섯 가지의 흰색》전이 개최. 전통에 기반한 한국 현대회화의 고유한 특성에 대한 담론을 촉발한 전시로 권영우·박서보·서승원·이동엽·허황이 참여해 일본 미술계에 상당한 반향을 불러일으킴 </div>
+			<div class="연도"> 1975. 12.</div> <div class="내용"> 제1회 서울현대미술제가 국립현대미술관에서 개최 </div>
+			<div class="연도"> 1976. 3.</div> <div class="내용"> 『뿌리깊은 나무』 창간. 미술·사진·디자인을 아우르는 시각적 작업의 탁월함으로 한국 시각문화의 수준을 향상시킴. 언론통폐합으로 인해 1980년 8월 통권 50호로 종간됨 </div>
+			<div class="연도"> 1976. 6. </div> <div class="내용"> 국립현대미술관이 개최한 《한국현대미술대전: 동양화》에 60명의 작가가 참여, 150점이 출품됨 </div>
+			<div class="연도"> 1976. 11.</div> <div class="내용"> 미술 잡지 『계간미술』 창간 </div>
+			<div class="연도"> 1977. 4.</div> <div class="내용"> 『미술과 생활』 창간 </div>
+			<div class="연도"> 1977. 8. </div> <div class="내용"> 도쿄 센트럴미술관에서 《한국현대미술의 단면》전 개최. 무채색의 추상회화를 한국회화의 집단적 양상으로 소개하며 한국미술의 현대화와 국제화를 확인함 </div>
+			<div class="연도"> 1977. 10.</div> <div class="내용"> 문예진흥원 미술회관에서 《서울 11인의 방법전》이 열림. AG와 ST를 주축으로 활동하던 작가들이 중심이 되어 출범한 전시 </div>
+			<div class="연도"> 1978. 3. </div> <div class="내용"> 미술회관에서 《사실과 현실 창립전》 개최. 하이퍼리얼리즘 회화를 선보임 <br> <br>
+			동아일보가 주최하는 제1회 동아미술제가 국립현대미술관에서 개최. 변종곤이 〈1978년 1월 28일〉로 대상을 받음 </div>
+			<div class="연도"> 1978. 6. </div> <div class="내용"> 중앙일보사가 주최하는 제1회 중앙미술대전이 국립현대미술관에서 개최. 강대철이 〈생명질–종과 횡〉으로 조각부 대상을 받음 </div>
+			<div class="연도"> 1978. 11.</div> <div class="내용"> 국립현대미술관과 한국미술협회 공동주최로 《한국현대미술 20년의 동향전》 개최. 1957년에서 1977년에 이르는 한국 현대미술의 전개를 주요 그룹과 운동 중심으로 재조명 </div>
+			<div class="연도"> 1979. 10.</div> <div class="내용"> 광주자유미술인협의회 결성. 민중미술 소집단들의 움직임이 시작됨
+			국전 운영 업무가 문화공보부에서 한국문화예술진흥원으로 이관 </div>
+			<div class="연도"> 1980. 7. </div> <div class="내용"> 광주자유미술인협의회가 〈야외작품전–씻김굿〉을 나주시 남편 드들 강변에서 개최 </div>
+			<div class="연도"> 1980. 10. </div> <div class="내용"> 현실과 발언이 미술회관에서 창립전을 계획했으나 당국의 일방적 대관 취소로 무산. 이후 11월에 동산방화랑에서 개최
+			대우재단에서 학술연구지원사업을 국내 최초로 시행 </div>
+			<div class="연도"> 1980. 11. </div> <div class="내용"> 공주 금강 백사장에서 금강현대미술제 창립야외현장전개최
+			 </div>
+			<div class="연도"> 1981. 1.</div> <div class="내용"> 가평 대성리 화랑포 강변에서 종합예술제 《겨울·대성리 31인》이 열림 </div>
+			<div class="연도"> 1981. 3. </div> <div class="내용"> 국립현대미술관이 《’81 청년작가전》을 시작으로 35세 미만의 젊은 작가들을 대상으로 한 정례전 기획. 이는 《젊은 모색》의 전신임 </div>
+			<div class="연도"> 1981. 6.</div> <div class="내용"> 제2회 현대미술 워크숍 기획전이 서울80·ST·현실과 발언의 참여로 동덕미술관에서 개최 </div>
+			<div class="연도"> 1981. 10. </div> <div class="내용"> 국전이 제30회를 마지막으로 폐지 </div>
+			<div class="연도"> 1981. 11. </div> <div class="내용"> 서울미술관 개관. 프랑스 신구상을 소개하고 민중미술의 제도화를 도와 한국미술의 장에 리얼리즘의 복귀에 기여 </div>
+			<div class="연도"> 1981. 12. </div> <div class="내용"> 국립현대미술관에서 《현대·종이의 조형 〈한국과 일본〉전》 개최. 한지를 이용한 창작물을 다룸 </div>
+			<div class="연도"> 1982. 1. </div> <div class="내용"> 국전의 뒤를 이어 대한민국미술대전(미술대전) 출범. 국전에서 불린 ‘동양화'를 ‘한국화'로 개칭하여 한국화를 전통 회화로 호명하는 용어로 정착시킴 </div>
+			<div class="연도"> 1982. 4. </div> <div class="내용"> 호암미술관 개관 </div>
+			<div class="연도"> 1982. 6. </div> <div class="내용"> 국제화랑 개관 </div>
+			
+			<div class="연도"> 1982. 10. </div> <div class="내용"> 송원화랑에서 《오늘의 수묵전》 개최. 전시서문에서 유홍준이 언급한 “수묵화 운동"이 지필묵 중심으로 특정 물성의 기법을 실험하는 경향이 한국 화단에서 강세를 보임
+			임술년, 구만팔천구배국십이에서의 창립전이 개막 </div>
+			
+			<div class="연도"> 1982. 12. </div> <div class="내용"> 출판문화회관에서 《소묘 11인전》 개최. 이후 최초 여성주의 소집단 시월모임 형성의 계기가 됨 </div>
+			
+			<div class="연도"> 1983. 3. </div> <div class="내용"> 실천그룹이 관훈미술관에서 창립전 개최 </div>
+			
+			<div class="연도"> 1983. 4. </div> <div class="내용"> 제3미술관에서 《시대정신》 개최 </div>
+			
+			<div class="연도"> 1983. 7. </div> <div class="내용"> 미술동인 두렁 창립예행전이 애오개 소극장에서 열림 </div>
+			
+			<div class="연도"> 1984. 1. </div> <div class="내용"> 백남준이 연출한 위성쇼 〈굿모닝 미스터 오웰〉이 프랑스·미국·대한민국 등에 생중계되어 2천5백만 명이 이를 시청함 </div>
+			
+			<div class="연도"> 1984. 5.</div> <div class="내용"> 워커힐미술관 개관. 키네틱아트·비디오아트 등 미국의 당대 최신 미술을 소개하는 계기를 마련. 워커힐미술관은 아트센터 나비(2000년 개관)의 전신임 </div>
+			
+			<div class="연도"> 1984. 6. </div> <div class="내용"> 관훈미술관·제3미술관·아랍문화회관에서 《105인 작가에 의한 삶의 미술전》 개최. 민중미술계의 여러 분파를 한데 모아 보여줌 </div>
+			
+			<div class="연도"> 1984. 8. </div> <div class="내용"> 신묵회가 미술회관에서 창립전 개최. 신묵회는 대형산수화를 주로 출품하며 홍익대학교 출신으로 구성됨 </div>
+			
+			<div class="연도"> 1984. 9. </div> <div class="내용"> 삼성그룹이 호암미술관 운영에 더하여 호암갤러리(전 중앙갤러리)를 중앙일보사에 개관 </div>
+			
+			<div class="연도"> 1984. 10. </div> <div class="내용"> 미술 잡지 『미술세계』 창간 </div>
+			
+			<div class="연도"> 1985. 2. </div> <div class="내용"> 난지도·9월 메타복스가 각각 후화랑·관훈미술관에서 창립전을 가짐 <br> <br>
+			이들은 평면이 아닌 공간적 확장, 일상적 오브제에 관심을 갖는 작품을 보여 주고 ‘탈모던’ 소그룹으로 등장함 </div>
+			
+			<div class="연도"> 1985. 7. </div> <div class="내용"> 아랍문화회관에서 《한국미술, 20대의 힘전》(박불똥·손기환·박진화 기획) 개최. 폐막 이전에 경찰이 일부 작품을 압수하고 작가를 연행함 </div>
+			
+			<div class="연도"> 1985. 10. </div> <div class="내용"> 최초의 여성주의 소집단 시월모임(김인숙·김진숙·윤석남)이 결성되어 제1회전을 관훈미술관에서 엶. 1986년 10월 시월모임 2회전 《반에서 하나로》전을 마지막으로 해체 </div>
+			
+			<div class="연도"> 1985. 11. </div> <div class="내용"> 정부의 계속되는 탄압에 대항해 민중미술인이 결집하여 소집단들 및 작가와 이론가들이 모여 민족미술협의회를 창립 </div>
+			
+			<div class="연도"> 1986. 2. </div> <div class="내용"> 갤러리 그림마당 민이 서울에서 개관. 향후 민중미술의 본거지가 됨 </div>
+			
+			<div class="연도"> 1986. 6. </div> <div class="내용"> 제42회 베니스비엔날레에 한국 작가가 처음 참가함. 아르세날레 내 한국관 전시에 고영훈과 하동철이 참가했으며, 이일이 커미셔너를 맡음 </div>
+			
+			<div class="연도"> 1986. 8. </div> <div class="내용"> 로고스와 파토스가 창립전을 개최 </div>
+			
+			<div class="연도"> 1986. 10. </div> <div class="내용"> 뉴욕의 공영방송 WNET가 제작한 백남준의 〈바이바이 키플링〉이 1986년 아시안 게임이 한창인 서울의 마라톤 경기 시간에 맞춰 오전 10시에 방영됨 </div>
+			
+			<div class="연도"> 1986. 12. </div> <div class="내용"> 민족미술협의회 여성분과가 결성. 1988년부터 여성미술연구회로 개칭하여 활동했으며, 1994년까지 총 8회의 《여성과 현실》전을 개최함 </div>
+			
+			<div class="연도"> 1987. 2. </div> <div class="내용"> 신세대 미술 그룹 뮤지엄이 관훈미술관에서 첫 전시를 개최 </div>
+			
+			<div class="연도"> 1987. 6.</div> <div class="내용"> 6월항쟁 당시 경찰 최루탄에 맞아 숨진 이한열 열사를 형상화한 최병수의 대형 걸개그림 〈한열이를 살려내라〉가 연세대학교 학생회관에 걸림 </div>
+			
+			<div class="연도"> 1987. 9. </div> <div class="내용"> 민미협 여성분과의 연례전 《여성과 현실》전이 그림마당 민에서 첫 회를 맞이함. ‘여성과 현실. 무엇을 보는가'라는 제목으로 여성미술가 40여 명이 참가
+			한국여성민우회 창립. 각 여성 대회에 사용하기 위해 그림패 둥지에서 〈평등을 향하여〉라는 걸개그림을 제작함 </div>
+			
+			<div class="연도"> 1987. 11. </div> <div class="내용"> 건축의 사회적 역할을 강조하며 청년건축인협의회(청건협)가 발족. 이후 다양한 집단들의 진보적 건축운동이 1990년대 초까지 진행됨 </div>
+			
+			<div class="연도"> 1988. 3. </div> <div class="내용"> 안상수와 금누리가 홍익대학교에 한국 최초의 사이버 카페 ‘일렉트로닉 카페'를 만들어 네트워크에 예술을 연결하는 통신미술을 시도 </div>
+			
+			<div class="연도"> 1988. 5. </div> <div class="내용"> 격월간지 『가나아트』 창간 <br> 
+			워커힐미술관에서 《사진. 새 시좌》(구본창 기획)전 개최. 국제적 감각을 보여주는 새로운 세대의 사진을 선보임 </div>
+			
+			<div class="연도"> 1998. 6. </div> <div class="내용"> 안상수와 금누리가 한글 디자인 실험을 위한 문화 잡지 『보고서\보고서』 창간 </div>
+			
+			<div class="연도"> 1988. 8. </div> <div class="내용"> 국립현대미술관 과천에 1,003의 텔레비전 모니터를 사용한 〈다다익선〉이 세워짐 <br> 
+			서울시립미술관이 경희궁 공원 부지(신문로)에 개관 <br> 
+			서울올림픽대회 부대 행사로서 《세계현대미술제》 개최. 한국 대표 작가 선정 과정에서 한국 미술계의 여러 노선과 진영에 연루된 문제와 갈등이 분출되었고, 세계미현대미술제 변칙 운영 저지를 위한 범미술인대책위원회가 결성되어 성명을 발표함 </div>
+			
+			<div class="연도"> 1988. 9. </div> <div class="내용"> 갤러리 현대에서 《백남준 비디오 아트》 전시 개최. 서울올림픽을 기념하며 백남준의 〈손에 손 잡고〉가 1986년 〈바이바이 커플링〉에 이어 11개국에 위성중계 됨 <br> 
+			뉴욕의 아티스트 스페이스에서 《민중미술: 한국의 새로운 문화운동》 개최. 해외에 민중미술운동을 처음으로 알린 전시가 됨 <br> 
+			김중업이 올림픽공원 입구에 설계한 〈평화의 문〉 준공 </div>
+			
+			<div class="연도"> 1988. 10. </div> <div class="내용"> 문화공보부가 “1948년 대한민국 정부수립 이전에 발표된 순수 미술작품에 한다.”라는 전세하에 미술인을 포함한 납·월북예술인 해금 조치 단행 </div>
+			
+			<div class="연도"> 1988. 11. </div> <div class="내용"> 여성미술연구회가 기획한 시화전 《우리 봇물을 틀자: 여성해방 시와 그림의 만남》(또 하나의 문화 주관) 전시가 그림마당 민에서 개최. 여성의 억압적 현실에 대한 묘사와 여성의 자아 발견, 그리고 여성 해방의 실천 등을 의제로 내세움 </div>
+			
+			<div class="연도"> 1989. 1. </div> <div class="내용"> 『계간미술』이 월간지가 되면서 『월간미술』로 개칭 </div>
+			
+			<div class="연도"> 1989. 2.</div> <div class="내용"> 미술비평연구회(당시 대표 이영욱)가 발족. 이들은 민미협 공동 소속으로 민중미술 계열의 평론에 큰 부분을 담당함. 1993년에 해체될 때까지 형식주의 미술비평의 풍토를 비판하며 대중사회의 소비문화에 대한 이론적 전망을 제시. 이후 대중시각매체분과에서 활동했던 엄혁·김진송·김수기·조봉진이 현실문화연구를 창립 <br> 
+			여성문제에 초점을 맞춘 전시 기획을 인정받아 제2회 《여성과 현실》 전시는 서울미술관이 선정한 《’88 문제작가 작품전》으로 선정됨 </div>
+			
+			<div class="연도"> 1990. 5. </div> <div class="내용"> 신세대 소그룹 황금사과가 관훈미술관에서 창립전을 가짐 <br> 
+			금호미술관에서 《문화와 삶의 해석─혼합매체전》 개최. 미술의 탈장르적 경향에 주목해 다양한 매체적 실험에 주목함 </div>
+			
+			<div class="연도"> 1990. 6. </div> <div class="내용"> 국립현대미술관이 1981년 처음 《’81 청년작가전》전으로 출발한 신진 작가 발굴 프로그램을 《젊은 모색》으로 개칭하여 격년제로 개최하기 시작 </div>
+			
+			<div class="연도"> 1990. 11. </div> <div class="내용"> 예술의전당에서 《젊은 시각─내일에의 제안》(박신의·심광현·서성록·임두빈·이준 기획) 개최. ‘민중'과 ‘모더니즘' 계열의 공동 기획으로 관심을 모았으나 민중미술에 대한 정부 당국의 철거 요구 등의 개입으로 파행을 겪음 </div>
+			
+			<div class="연도"> 1991.</div> <div class="내용"> 3월 국립현대미술관 《테크놀로지의 예술적 전환》(르네 블록 기획), 9월 예술의전당 《미술과 테크놀로지: 과학기술과 예술의 조형적 만남》 등 미디어아트 중심의 전시가 각각 개최되기 시작 </div>
+			
+			<div class="연도"> 1991. 11. </div> <div class="내용"> 장흥 토탈미술관이 개최한 《제1회 한국 사진의 수평》전이 한국 사진사를 역동적으로 보여준 전시로 호평받음 </div>
+			
+			<div class="연도"> 1991. 12.</div> <div class="내용"> 문화체육관광부 소속의 국립학교 한국예술종합학교(한예종)가 석관동과 서초동에 세워짐 <br> <br>
+			최정화가 연출 및 기획한 《선데이 서울》전이 소나무갤러리에서 개최. 대중문화와 ‘키치'에 대한 젊은 작가들의 관심은 이듬해의 《쑈쑈쑈》(스페이스 오존), 《아! 대한민국》(자하문미술관) 등으로 이어짐 </div>
+			
+			<div class="연도"> 1992. </div> <div class="내용"> 6월 《도시 대중 문화》(덕원미술관) 전시를 시작으로 12월 《미술의 반성》(금호미술관)과 《압구정동:유토피아/디스토피아》(갤러리아미술관)가 각각 열려 대중 소비사회와 후기 산업사회로 접어든 변모한 사회의 일상적 환경에 집중하는 미술을 선보임 </div>
+			
+			<div class="연도"> 1992. 6. </div> <div class="내용"> 독일 카셀도쿠멘타에 육근병이 한국인으로는 백남준에 이어 두 번째로 참가함 <br> <br>
+			북한, 조선로동당출판사에서 단행본 『김정일미술론』 발간 </div>
+			
+			<div class="연도"> 1992. 7. </div> <div class="내용"> 백남준 회고전 《비디오 때·비디오 땅》이 국립현대미술관에서 개최 </div>
+			
+			<div class="연도"> 1992. 8. </div> <div class="내용"> 광주시립미술관 개관. 박물관 및 미술관 진흥법 시행(1992.6.1.) 이후 전국 지방자치단체 중에서 공립미술관으로는 수도권 이외에서 최초 개관임 </div>
+			
+			<div class="연도"> 1992. 10. </div> <div class="내용"> 제7회 《젊은 모색─새로운 세기를 향하여》가 국립현대미술관 학예연구직에 의해 자체 기획됨. 1990년대 사진·설치작업·팝아트 등 새로운 매체에 대한 수용과 실험 전반을 보여주는 전시임 </div>
+			
+			<div class="연도"> 1992. 12. </div> <div class="내용"> 4.3그룹이 《이 시대 우리의 건축》(인공갤러리) 개최. 건축 대상을 언어화하며 건축 담론을 풍부하게 하고자 시도 </div>
+			
+			<div class="연도"> 1993. 3. </div> <div class="내용"> 예술의전당 전관 개관을 기념하며 《서울 플럭서스 페스티발》(예술 감독 르네 블록) 개최. 연계 동반 행사가 국립현대미술관·계원조형예술대학·갤러리 현대·원화랑에서 개최됨 </div>
+			
+			<div class="연도"> 1993. 4. </div> <div class="내용"> 여성미술가로 구성된 신세대 소그룹 30캐럿이 창립전 개최 </div>
+			
+			<div class="연도"> 1993. 6. </div> <div class="내용"> 제45회 베니스비엔날레에서 백남준이 독일관 작가로 황금사자상을 받음 </div>
+			
+			<div class="연도"> 1993. 7. </div> <div class="내용"> 백남준의 적극적 권유로 국립현대미술관에서 《’93 휘트니비엔날레 서울》 개최. 미국 중심의 현대미술을 소개하고 국제적 행사로서 비엔날레의 중요성을 환기함 </div>
+			
+			<div class="연도"> 1993. 8. </div> <div class="내용"> 대전세계박람회(대전엑스포)에서 백남준이 텔레비전 약 350대가 투여된 〈거북선〉을 설치함. 특별 기고문 「비빔밥의 정신과 대전엑스포93」을 전재하기도 함 </div>
+			
+			<div class="연도"> 1993. 10.</div> <div class="내용"> 뉴욕 퀸스미술관에서 서로문화연구회가 마련한 《태평양을 건너서: 오늘의 한국미술》(이영철·제인 파버 기획)전이 개최. 이듬해 서울 금호미술관에서 다시 한 번 열림 </div>
+			
+			<div class="연도"> 1993. 12. </div> <div class="내용"> 30캐럿이 《남성실재·흔들리는 고전주의》 개최 </div>
+			
+			<div class="연도"> 1994.</div> <div class="내용"> 1월 《한국 현대 사진의 흐름: 1945–1994》(예술의전당 한가람미술관)을 시작으로, 8월 제3회 《한국 사진의 수평: 세계의 눈》(공평아트센터), 11월 《사진과 이미지》(아트선재미술관 서울 사무소) 등 사진 예술을 다루는 전시가 이어짐 </div>
+			
+			<div class="연도"> 1994. 1. </div> <div class="내용"> 홍익대학교 앞에 미술 전문 서점 아티누스가 문을 엶 </div>
+			
+			<div class="연도"> 1994. 2. </div> <div class="내용"> 국립현대미술관이 《민중미술 15년: 1980–1994》 개최 </div>
+			
+			<div class="연도"> 1994. 3. </div> <div class="내용"> 한국미술관 주최로 《여성, 그 다름과 힘》(김홍희 기획) 개최. 윤석남·류준화·양주혜·이불 등의 여성미술가들이 참여 </div>
+			
+			<div class="연도"> 1995. 2. </div> <div class="내용"> 성곡미술관 개관. 이후 사립 미술관들이 설립되기 시작함 </div>
+			
+			<div class="연도"> 1995. 3. </div> <div class="내용"> 백남준, 호암예술상 수상
+			국립현대미술관 ‘올해의 작가' 연례 전시 개최. 첫 작가로 전수천이 선정됨 </div>
+			
+			<div class="연도"> 1995. 5. </div> <div class="내용"> 아트선재센터가 소격동 한옥터에서 첫 전시 《싹》으로 미술관의 시작을 알림. 오형근·최정화·이동기·안규철·이불 등 16인의 참여로 새로운 세대가 이끄는 패러다임의 전환을 보여 준 전시임 </div>
+			
+			<div class="연도"> 1995. 6. </div> <div class="내용"> 베니스비엔날레 100주년에 백남준을 중심으로 자르디니 공원 내에 한국관 건립. 전수천이 〈방황하는 혹성들의 토우─그 한국인의 정신〉으로 특별상을 받음 </div>
+			
+			<div class="연도"> 1995. 7. </div> <div class="내용"> 소격동 한옥터에서의 경험으로 서교동 주택에서 최정화 기획의 《뼈: 아메리칸 스탠다드》전 개최 </div>
+			
+			<div class="연도"> 1995. 9. </div> <div class="내용"> 제1회 광주비엔날레가 ‘경계를 넘어'를 주제로 개최. 특별전으로 백남준·신시아 굿맨이 공동 기획하고, 김홍희가 큐레이터로 참여한 《정보예술》전이 개최되어 정보통신·컴퓨터·전자·인터랙티브 미디어와 같은 기술을 활용한 영상 예술에 주목함 </div>
+			
+			<div class="연도"> 1996. 1.</div> <div class="내용"> 이불이 뉴욕 현대미술관(MoMA)의 《프로젝트 57》 시리즈에 〈장엄한 광채〉를 출품. 생선의 부패와 악취로 개막 직전에 작품이 철거되었으나, 하랄트 제만에 의해 제 4회 리옹비엔날레에 초청되어 주목 받음. 더불어, 〈히드라(모뉴먼트)〉(1997)가 《Cities on the Move》 프로젝트를 통해 2년간 7년 도시를 순회하며 세계 미술계에 이름을 알리게 된 이불은 이듬해 솔로몬 R. 구겐하임미술관의 휴고보스상 후보에 오름 </div>
+			
+			<div class="연도"> 1996. 5. </div> <div class="내용"> 국립현대미술관 ‘올해의 작가'에 윤정섭이 무대미술가로는 처음 선정됨 </div>
+			
+			<div class="연도"> 1996. 6. </div> <div class="내용"> 국립현대미술관에서 현대사진의 가능성에 주목한 《사진─새로운 시각》전을 개최 </div>
+			
+			<div class="연도"> 1997. 9. </div> <div class="내용"> 제2회 광주비엔날레가 ‘지구의 여백'이라는 주제로 개최(이영철 총괄 기획), 특별전으로 기획된 《일상, 기억 그리고 역사: 해방이후 한국미술과 시각 문화》(김진송 기획) 전시는 시각문화사와 문화연구 개념을 반영하여 확장된 미술 개념을 보여줌 </div>
+			
+			<div class="연도"> 1997. 10. </div> <div class="내용"> 8명의 여성미술가들이 모여 페미니스트 아티스트 그룹 입김을 결성 </div>
+			
+			<div class="연도"> 1998. 3. </div> <div class="내용"> 『포럼A』 창간 준비호 발행. 이후 2005년까지 15번 발행됨 <br> 
+			김태헌의 개인전 《공간의 파괴와 생성─성남과 분당 사이》가 성곡미술관에서 열림. 이를 계기로 성남프로젝트(1998–99) 결성 </div>
+			
+			<div class="연도"> 1998. 6. </div> <div class="내용"> 주식회사 쌈지가 서울 암사동 사옥을 개조하여 젊은 작가들에게 창작 스튜디오를 제공. 이후 2000년 6월에 홍익대학교 앞으로 이전하면서 10개의 작가 스튜디오·전시장·공연장을 갖추고 2008년까지 운영함 <br> 
+			대우그룹이 1991년 개관한 경주 선재미술관에 이어 서울에 아트선재센터를 엶. 한국 현대미술사의 이전 세대 작가들의 작품을 전시하고, 그다음을 짊어지는 젊은 작가들의 실험을 지지할 것임을 표명함. 이후 개념주의적 경향을 보이는 작가들의 전시를 선보이며 당대 미술의 한 축을 차지함 </div>
+			
+			<div class="연도"> 1998. 8. </div> <div class="내용"> 제1세대 사진평론가인 김승곤을 주축으로 최초의 사진비평 정기간행물인 계간 『사진비평』을 창간 </div>
+			
+			<div class="연도"> 1998. 10. </div> <div class="내용"> ‘사진 영상의 해'를 맞아 《’98 도시와 영상─衣食住》(이영철 기획, 서울600년기념관) 개최 </div>
+			
+			<div class="연도"> 1998. 12. </div> <div class="내용"> 국립현대미술관 덕수궁 분관 개관. 근대미술을 중점적으로 다루게 됨 </div>
+			
+			<div class="연도"> 1999. 2. </div> <div class="내용"> 대안공간 루프가 서울에서 개관 </div>
+			
+			<div class="연도"> 1999. 8. </div> <div class="내용"> ’99 한국현대미술 신세대 흐름전 《믹서&쥬서》가 미술회관에서 개최. 차세대 젊은 작가들의 작품 세계를 보여줌 <br> 
+			《’99 서울사진대전: 사진은 우리를 바라본다》가 서울시립미술관에서 개최. 기록성과 예술성이라는 양분법을 뛰어넘어 다양한 영역의 사진을 통해 사진 담론의 장을 확장함 </div>
+			
+			<div class="연도"> 1999. 9. </div> <div class="내용"> 제1회 여성미술제 《팥쥐들의 행진》〔(사)여성문화예술기획 주최〕이 가부장적 사회질서와 미술의 심각성을 유머와 놀이 개념 등을 통해 비트는 전시를 예술의전당에서 선보임 <br> 
+			제1회 청주국제공예비엔날레 개최 </div> 
+			
+			<div class="연도"> 1999. 10. </div> <div class="내용"> 미술잡지 『아트인컬처』 창간. 온라인플랫폼 『네오룩』 개설 </div>
+			
+			<div class="연도"> 2000. 6. </div> <div class="내용"> 쌈지스페이스가 개관 기념전 《무서운 아이들》 개최 <br> 
+			인사미술공간이 개관 기념전 《또다른 공간》 개최 </div>
+			
+			<div class="연도"> 2000. 9. </div> <div class="내용"> 영은미술관에 창작지원 프로그램으로 창작스튜디오 프로그램이 개설됨 <br> 
+			《미디어_시티 서울 2000》(제1회 서울미디어시티비엔날레, 송미숙 기획)이 ‘도시: 0과 1 사이'를 주제로 서울시립미술관 등에서 개최되어 네트워크 및 미디어 환경의 구심점으로 서울을 소개하며 새로운 시대에 걸맞은 미래 비전을 제시함 <br> 
+			입김이 새로운예술의해 공모 당선작 《아방궁 종묘점거 프로젝트》를 추진했으나, 전주이씨 종친회의 반대로 무산됨 </div>
+			
+			<div class="연도"> 2000. 10. </div> <div class="내용"> 에르메스 코리아 미술상이 제정. 제1회 수상자는 장영혜였음 <br> 
+			일주아트하우스 개관 </div>
+			
+			<div class="연도"> 2000. 12. </div> <div class="내용"> SK 사옥에서 멀티미디어 중심의 아트센터 나비가 문을 엶 <br> 
+			디자인과 예술의 경계를 살펴보는 전시 《디자인 혹은 예술》(아트선재센터 기획)가 예술의전당에서 열림 </div>
+			
+			<div class="연도"> 2001. 11. </div> <div class="내용"> 호암갤러리에서 《아트스펙트럼》이 열림. 2020년까지 총 6차례 열렸으며, 세 번째 전시부터는 삼성미술관 Leeum에서 개최 <br> 
+			김달진미술연구소가 평창동에 개소. 이듬해 1월 월간 『서울아트가이드』 창간 </div>
+			
+			<div class="연도"> 2002. 5. </div> <div class="내용"> 다음작가상이 제정되어 2016년 14회까지 운영. 사진 매체를 기반으로 45세 이하의 작가를 지원하기 위한 상임 </div>
+			
+			<div class="연도"> 2002. 6. </div> <div class="내용"> 국립현대미술관 레지던시 창동미술 스튜디오가 문을 엶 </div>
+			
+			<div class="연도"> 2002. 8. </div> <div class="내용"> 국립현대미술관 ‘올해의 작가'에 승효상이 건축가로 처음 선정되어 《건축가 승효상》전을 가짐 </div>
+			
+			<div class="연도"> 2002. 9. </div> <div class="내용"> 제1회 부산비엔날레 《문화에서 문화로》 개최. 지역 미술의 정통성과 현대미술의 당대성 등을 강조 </div>
+			
+			<div class="연도"> 2003. 7. </div> <div class="내용"> 인사아트센터에서 《과학+예술: 10년 후》 전시 개최 </div>
+			
+			<div class="연도"> 2003. 11. </div> <div class="내용"> 한미사진미술관이 국내 최초 사진미술관으로 등록하고 2004년 개관 </div>
+			
+			<div class="연도"> 2004. 2. </div> <div class="내용"> 제1회 인천여성미술비엔날레 개최. 인천에서 활동하는 여성 미술과 103명이 참가해 500여 점의 작품을 선보임. 2007년에 국제인천여성비엔날레로 개칭함 </div>
+			
+			<div class="연도"> 2004. 3. </div> <div class="내용"> 서울문화재단 출범 </div>
+			
+			<div class="연도"> 2004. 10. </div> <div class="내용"> 삼성미술관 Leeum이 한남동에서 개관 <br> 
+			토탈미술관에서 《당신은 나의 태양: 한국 현대미술 1960–2004》(이영철 기획) 개최 </div>
+			
+			<div class="연도"> 2005. 2. </div> <div class="내용"> 아라리오갤러리가 전속 작가 제도를 시행 </div>
+			
+			<div class="연도"> 2005. 8. </div> <div class="내용"> 한국문화예술위원회 출범. 이와 함께 다원예술소위원회가 구성되었고, 이듬해 지원사업에 다원예술 분야가 신설됨  </div>
+			
+			<div class="연도"> 2005. 11. </div> <div class="내용"> 제1회 안양공공예술프로젝트(APAP) 개최 <br> 
+			한국 국립현대미술관·일본 국제교류기금·도쿄 국립근대미술관·싱가포르 국립미술관이 공동 기획하여 《아시아 큐비즘: 경계없는 대화》 전시 개최 </div>
+			
+			<div class="연도"> 2005. 12. </div> <div class="내용"> 한국문화예술위원회 인사미술 공간이 저널 『볼BOL』 제1호 발간 </div>
+			
+			<div class="연도"> 2006. 1. </div> <div class="내용"> (재)예술경영지원센터 설립. 예술 유통의 활성화와 기관의 경쟁력 강화를 지원함 <br> 
+			백남준이 마이애미에서 타계 </div>
+			
+			<div class="연도"> 2006. 10. </div> <div class="내용"> 제1회 대구사진비엔날레 《기록 사진을 통해 본 아시아》 개최 <br> 
+			현대미술 페스티벌 ‘플랫폼 서울'의 첫 전시였던 《Somewhere in Time》이 아트선재센터에서 열림 </div>
+			
+			<div class="연도"> 2007. 4. </div> <div class="내용"> ‘도시가 작품이다'라는 구호로 서울시 도시갤러리 프로젝트 시작 <br> 
+			‘사운드'에 초점을 둔 《사운드 아트 101》 전시가 쌈지스페이스에서 열림 <br> </div>
+		</div>
+
+		<div class="text history">
+	        <div class="연도"> BC -700000  </div> <div class="내용"> 구석기 문화 시작(공주 석장리) </div>
+			<div class="연도"> BC -500000 </div> <div class="내용"> 검은모루 동굴 유적 형성 </div>
+			<div class="연도"> BC 8000경 </div> <div class="내용"> 신석기 문화 시작(부산 동삼동) </div>
+			<div class="연도"> BC 5000경 </div> <div class="내용"> 서울 암사동 유적 형성 </div>
+			<div class="연도"> BC 2333 </div> <div class="내용"> 단군 왕검, 고조선 건국(삼국유사) </div>
+			<div class="연도"> BC 1000경 </div> <div class="내용"> 청동기 문화 시작 </div>
+			<div class="연도"> BC 300경 </div> <div class="내용"> 철기 문화 시작 </div>
+			<div class="연도"> BC 108 </div> <div class="내용"> 한 나라 침략으로 고조선 멸망 · 한군현 설치 </div>
+			<div class="연도"> BC 82 </div> <div class="내용"> 한 나라가 설치한 임둔, 진번군 몰아냄 </div>
+			<div class="연도"> BC 1세기 </div> <div class="내용"> <b>삼국의 성립</b> </div>
+			<div class="연도">  194 </div> <div class="내용"> 고구려, 진대법 실시 </div>
+			<div class="연도">  313 </div> <div class="내용"> 고구려, 낙랑군 몰아냄 </div>
+			<div class="연도">  371 </div> <div class="내용"> 백제, 고구려 평양성 공격 </div>
+			<div class="연도">  372 </div> <div class="내용"> 고구려, 불교 전래 및 태학 설치 </div>
+			<div class="연도">  384 </div> <div class="내용"> 백제, 불교 전래 </div>
+			<div class="연도">  427 </div> <div class="내용"> 고구려, 평양 천도 </div>
+			<div class="연도">  433 </div> <div class="내용"> 나·제 동맹 성림 </div>
+			<div class="연도">  475 </div> <div class="내용"> 고구려, 백제 한성 점령 <br> 백제, 웅진으로 천도 </div>
+			<div class="연도">  527 </div> <div class="내용"> 신라, 불교 공인 </div>
+			<div class="연도">  538 </div> <div class="내용"> 백제, 사비성으로 천도 </div>
+			<div class="연도">  552 </div> <div class="내용"> 백제, 일본에 불교 전래 </div>
+			<div class="연도">  553 </div> <div class="내용"> 신라, 한강 유역 점령 </div>
+			<div class="연도">  562 </div> <div class="내용"> 신라, 대가야 정복 </div>
+			<div class="연도">  612 </div> <div class="내용"> 고구려, 살수에서 수 나라군을 크게 물리침(살수대첩) </div>
+			<div class="연도">  624 </div> <div class="내용"> 고구려, 도교 받아들임 </div>
+			<div class="연도">  645 </div> <div class="내용"> 고구려, 안시성에서 당 나라군을 물리침 </div>
+			<div class="연도">  660 </div> <div class="내용"> <b>백제 멸망</b> </div>
+			<div class="연도">  668 </div> <div class="내용"> <b>고구려 멸망</b> </div>
+			<div class="연도">  676 </div> <div class="내용"> <b>신라, 삼국 통일</b> </div>
+			<div class="연도">  685 </div> <div class="내용"> 신라, 9주 5소경 설치 </div>
+			<div class="연도">  698 </div> <div class="내용"> <b>발해 건국</b> </div>
+			<div class="연도">  722 </div> <div class="내용"> 신라, 정전 지급 </div>
+			<div class="연도">  732 </div> <div class="내용"> 발해, 당의 덩조우(등주) 공격 </div>
+			<div class="연도">  751 </div> <div class="내용"> 신라, 불국사와 석굴암 건립 </div>
+			<div class="연도">  756 </div> <div class="내용"> 발해, 상경 천도 </div>
+			<div class="연도">  780 </div> <div class="내용"> 신라, 혜공왕 피살 </div>
+			<div class="연도">  828 </div> <div class="내용"> 신라, 장보고가 청해진 설치 </div>
+			<div class="연도">  900 </div> <div class="내용"> 견훤, 후백제 건국 </div>
+			<div class="연도">  901 </div> <div class="내용"> 궁예, 후고구려 건국 </div>
+			<div class="연도">  918 </div> <div class="내용"> <b> 왕건, 고려 건국 </b> </div>
+			<div class="연도">  926 </div> <div class="내용"> <b> 발해 멸망 </b> </div>
+			<div class="연도">  935 </div> <div class="내용"> <b> 신라 경순왕, 고려에 항복 </b> </div>
+			<div class="연도">  936 </div> <div class="내용"> 후백제 멸망, 후삼국 통일 </div>
+			<div class="연도">  956 </div> <div class="내용"> 광종, 노비 안검법 실시 </div>
+			<div class="연도">  958 </div> <div class="내용"> 광종, 과거 제도 실시 </div>
+			<div class="연도">  982 </div> <div class="내용"> 최승로, 시무 28조 올림 </div>
+			<div class="연도">  993 </div> <div class="내용"> 거란(요) 1차 침입, 서희의 담판으로 해결 </div>
+			<div class="연도"> 1010 </div> <div class="내용"> 거란 2차 침입 </div>
+			<div class="연도"> 1018 </div> <div class="내용"> 거란 3차 침입 </div>
+			<div class="연도"> 1019 </div> <div class="내용"> 강감찬, 귀주 싸움에서 거란을 물리침(귀주 대첩) </div>
+			<div class="연도"> 1107 </div> <div class="내용"> 윤관, 여진을 정벌하고 9성 건설 </div>
+			<div class="연도"> 1126 </div> <div class="내용"> 이자겸의 난 </div>
+			<div class="연도"> 1135 </div> <div class="내용"> 묘청, 서경 천도 운동 </div>
+			<div class="연도"> 1145 </div> <div class="내용"> 김부식, 「삼국사기」 편찬 </div>
+			<div class="연도"> 1170 </div> <div class="내용"> 무신정변 </div>
+			<div class="연도"> 1176 </div> <div class="내용"> 망이·망소이의 난 </div>
+			<div class="연도"> 1193 </div> <div class="내용"> 김사미와 효심 봉기 </div>
+			<div class="연도"> 1196 </div> <div class="내용"> 최충헌, 정권 장악 </div>
+			<div class="연도"> 1198 </div> <div class="내용"> 만적의 난 </div>
+			<div class="연도"> 1231 </div> <div class="내용"> 몽골의 1차 침입 </div>
+			<div class="연도"> 1232 </div> <div class="내용"> 강화도로 천도 <br> 몽골의 2차 침입 <br> 고려, 처인성에서 몽고 사령관 사살 </div>
+			<div class="연도"> 1234 </div> <div class="내용"> 세계 최초 금속 활자로 상정고금예문 인쇄 </div>
+			<div class="연도"> 1236 </div> <div class="내용"> 팔만 대장경 새김(-1251) </div>
+			<div class="연도"> 1238 </div> <div class="내용"> 몽골군, 황룡사 9층탑 불태움 </div>
+			<div class="연도"> 1259 </div> <div class="내용"> 고려 태자(원종), 몽고에 항목 </div>
+			<div class="연도"> 1270 </div> <div class="내용"> 개경으로 환도, 삼별초의 항쟁 </div>
+			<div class="연도"> 1274 </div> <div class="내용"> 원과 고려, 일본 정벌 </div>
+			<div class="연도"> 1285 </div> <div class="내용"> 일연, 「삼국유사」 완성 </div>
+			<div class="연도"> 1359 </div> <div class="내용"> 홍건적, 고려에 침입(-1361) </div>
+			<div class="연도"> 1363 </div> <div class="내용"> 문익점, 원에서 목화씨를 가져옴 </div>
+			<div class="연도"> 1366 </div> <div class="내용"> 전민변정도감 설치. 신돈, 개혁 추진 </div>
+			<div class="연도"> 1376 </div> <div class="내용"> 왜구 침입, 최영이 격퇴 </div>
+			<div class="연도"> 1377 </div> <div class="내용"> 왜구 침입, 이성계가 격퇴 <br> 「직지심체요절」 간행 </div>
+			<div class="연도"> 1388 </div> <div class="내용"> 위화도 회군 </div>
+			<div class="연도"> 1389 </div> <div class="내용"> 박위, 쓰시마 섬 정벌 </div>
+			<div class="연도"> 1391 </div> <div class="내용"> 과전법 공포 </div>
+			<div class="연도"> 1392 </div> <div class="내용"> <b> 고려 멸망, 조선 건국 </b> </div>
+			<div class="연도"> 1394 </div> <div class="내용"> 한양 천도 <br> 정도전, 「조선경국전」 편찬 </div>
+			<div class="연도"> 1398 </div> <div class="내용"> 전국적인 토지 조사 사업 실시 <br> 제1차 왕자의 난 일어남 </div>
+			<div class="연도"> 1400
+			</div> <div class="내용"> 제2차 왕자의 난 일어남 <br> 정종, 이방원(태종)에게 왕위를 물려줌 </div>
+			<div class="연도"> 1405 </div> <div class="내용"> 의정부의 일을 6조에 귀속시킴 </div>
+			<div class="연도"> 1413
+			</div> <div class="내용"> 조선 8도의 지방 행정 조직을 완성 <br> 호패법을 정함 <br>  「태조실록」 편찬</div>
+			<div class="연도"> 1419 </div> <div class="내용"> 이종무, 왜구의 근거지인 쓰시마 섬 정벌 </div>
+			<div class="연도"> 1432 </div> <div class="내용"> 「삼강행실도」 편찬 </div>
+			<div class="연도"> 1433 </div> <div class="내용"> 4군 설치 </div>
+			<div class="연도"> 1437 </div> <div class="내용"> 6진 설치 </div>
+			<div class="연도"> 1441 </div> <div class="내용"> 측우기 제작 </div>
+			<div class="연도"> 1444 </div> <div class="내용"> 공법 제도를 정함 </div>
+			<div class="연도"> 1445 </div> <div class="내용"> 「용비어천가」 완성 </div>
+			<div class="연도"> 1446 </div> <div class="내용"> 훈민정음 반포 </div>
+			<div class="연도"> 1453 </div> <div class="내용"> 수양대군, 김종서·황보인 등을 죽이고 정권을 장악 </div>
+			<div class="연도"> 1456 </div> <div class="내용"> 사육신, 단종을 복위하려다 처형됨 </div>
+			<div class="연도"> 1466 </div> <div class="내용"> 과전의 지급 대상을 현직 관리로 한정 </div>
+			<div class="연도"> 1467 </div> <div class="내용"> 함경도에서 이시애의 난이 일어남 </div>
+			<div class="연도"> 1469 </div> <div class="내용"> 「경국대전」 완성 </div>
+			<div class="연도"> 1504 </div> <div class="내용"> 언문(한글)의 사용을 금함 </div>
+			<div class="연도"> 1506 </div> <div class="내용"> 중종 반정이 일어남 </div>
+			<div class="연도"> 1519 </div> <div class="내용"> 향약 실시. 조광조가 사약을 받고 죽음 (기묘사화) </div>
+			<div class="연도"> 1529 </div> <div class="내용"> 비변사, 큰 사건을 의정부와 의논하기로 결정 </div>
+			<div class="연도"> 1543 </div> <div class="내용"> 풍기군수 주세붕, 최초의 서원인 백운동 서원을 세움 </div>
+			<div class="연도"> 1559 </div> <div class="내용"> 황해도에서 민란(임꺽정의 난)이 일어남(-1562) </div>
+			<div class="연도"> 1583 </div> <div class="내용"> 이이, 10만 양병설을 건의 </div>
+			<div class="연도"> 1589 </div> <div class="내용"> 붕당 정치 시작 </div>
+			<div class="연도"> 1592 </div> <div class="내용"> 일본군 21만 조선에 침입(임진왜란 발발) </div>
+			<div class="연도"> 1597 </div> <div class="내용"> 20만의 일본군 조선을 다시 침략함 (정유재란) </div>
+			<div class="연도"> 1609 </div> <div class="내용"> 일본과 국교 재개 </div>
+			<div class="연도"> 1610 </div> <div class="내용"> 허준, 동의보감 완성 <br> 경기도에 대동법 시행 </div>
+			<div class="연도"> 1623 </div> <div class="내용"> 이귀 등 서인, 광해군을 폐하고 실권을 잡음(인조 반정) </div>
+			<div class="연도"> 1627 </div> <div class="내용"> 이괄의 난. 여진족의 금이 조선을 침략 (정묘호란) </div>
+			<div class="연도"> 1628 </div> <div class="내용"> 벨테브레, 제주도 표착  </div>
+			<div class="연도"> 1636 </div> <div class="내용"> 청나라, 대대적인 침입(병자호란) </div>
+			<div class="연도"> 1645 </div> <div class="내용"> 소현세자, 서양 서적과 여지구·천주상을 가지고 서울로 돌아옴 </div>
+			<div class="연도"> 1653 </div> <div class="내용"> 하멜, 제주도 표착 </div>
+			<div class="연도"> 1678 </div> <div class="내용"> 상평통보 주조 </div>
+			<div class="연도"> 1708 </div> <div class="내용"> 전국적으로 대동법 시행 </div>
+			<div class="연도"> 1712 </div> <div class="내용"> 백두산 정계비 건립 </div>
+			<div class="연도"> 1725 </div> <div class="내용"> 영조, 탕평책 실시  </div>
+			<div class="연도"> 1742 </div> <div class="내용"> 탕평비 세움 </div>
+			<div class="연도"> 1750 </div> <div class="내용"> 균역청을 설치하고 균역법 실시 </div>
+			<div class="연도"> 1763 </div> <div class="내용"> 고구마 전래 </div>
+			<div class="연도"> 1769 </div> <div class="내용"> 유형원, 「반계수록」 간행  </div>
+			<div class="연도"> 1776 </div> <div class="내용"> 규장각 설치  </div>
+			<div class="연도"> 1778 </div> <div class="내용"> 박제가, 「북학의」 저술  </div>
+			<div class="연도"> 1786 </div> <div class="내용"> 서학을 금함 </div>
+			<div class="연도"> 1791 </div> <div class="내용"> 시전 상인의 특권인 금난전권을 폐지 </div>
+			<div class="연도"> 1792 </div> <div class="내용"> 정약용, 거중기 발명 </div>
+			<div class="연도"> 1796 </div> <div class="내용"> 화성 완성 </div>
+			<div class="연도"> 1801 </div> <div class="내용"> 천주교에 대한 대대적인 탄압 <br> 6만 6천 명의 공노비 해방  </div>
+			<div class="연도"> 1805 </div> <div class="내용"> 안동 김씨의 세도 정치 시작(~1863) </div>
+			<div class="연도"> 1811 </div> <div class="내용"> 평안도 곡산 농민들이 난을 일으킴 <br>
+			홍경래 등이 지휘하는 평안도 농민 전쟁이 일어남(~1812) </div>
+			<div class="연도"> 1818 </div> <div class="내용"> 정약용, 유배지에서 「목민심서, 완성  </div>
+			<div class="연도"> 1833 </div> <div class="내용"> 서울에 쌀값이 폭등하여 서울 도시 빈민의 폭동이 일어남 </div>
+			<div class="연도"> 1848 </div> <div class="내용"> 이양선, 경상·전라·황해·함경 5도에 나타남 </div>
+			<div class="연도"> 1860 </div> <div class="내용"> 최제우, 동학 창시  </div>
+			<div class="연도"> 1861 </div> <div class="내용"> 김정호, 대동여지도 간행 </div>
+			<div class="연도"> 1862 </div> <div class="내용"> 1862년 농민 항쟁이 일어남 <br> 민란, 전국 각지로 확대. 삼정이정청 설치 </div>
+			<div class="연도"> 1865 </div> <div class="내용"> 경복궁 중건(~1872) </div>
+			<div class="연도"> 1866 </div> <div class="내용"> 제너럴 셔먼 호(미국) 사건 <br> 병인양요 발발(프랑스)  </div>
+			<div class="연도"> 1868 </div> <div class="내용"> 흥선대원군, 서원을 47개만 남기고 폐쇄  </div>
+			<div class="연도"> 1871 </div> <div class="내용"> 신미양요 발발(미국) <br> 척화비 세움 </div>
+			<div class="연도"> 1876 </div> <div class="내용"> 일본과 강화도 조약 맺음 </div>
+			<div class="연도"> 1881 </div> <div class="내용"> 일본에 조사 시찰단, 청에 영선사 파견 <br> 영남의 유학자 척사 운동 전개  </div>
+			<div class="연도"> 1882 </div> <div class="내용"> 임오군란 <br> 청의 간섭 강화  </div>
+			<div class="연도"> 1883 </div> <div class="내용"> 한성 순보 발간 <br> 원산학사 설립  </div>
+			<div class="연도"> 1884 </div> <div class="내용"> 우정국 설치 <br>
+			갑신정변이 일어남 </div>
+			<div class="연도"> 1885 </div> <div class="내용"> 서양식 병원(광혜원) 설립. <br> 영국, 거문도 불법 점령(~1887) </div>
+			<div class="연도"> 1889 </div> <div class="내용"> 함경도, 곡식의 수출을 금지함(방곡령) </div>
+			<div class="연도"> 1893 </div> <div class="내용"> 전국 65곳에서 민란. 보은 금구 집회 </div>
+			<div class="연도"> 1894 </div> <div class="내용"> 갑오 농민 전쟁 발발 <br> 청·일 전쟁 발발 <br> 갑오개혁 추진 <br> 공문서에 처음 한글 사용  </div>
+			<div class="연도"> 1895 </div> <div class="내용"> 을미사변. 명성황후가 시해당함 <br> 단발령 <br> 항일 의병 운동 <br> 한성에 최초의 소학교 설립 </div>
+			<div class="연도"> 1896 </div> <div class="내용"> 양력 사용 <br> 아관 파천. 고종이 거처를 러시아대사관으로 옮김 <br> 독립 신문 창간·독립 협회 창립  </div>
+			<div class="연도"> 1897 </div> <div class="내용"> 대한제국 선포 </div>
+			<div class="연도"> 1898 </div> <div class="내용"> 만민 공동회 개최 <br> 독립 협회 해산  </div>
+			<div class="연도"> 1899 </div> <div class="내용"> 대한국 국제 반포, 최초의 철도(경인선) 개통 <br> 경복궁에 전등 설치  </div>
+			<div class="연도"> 1900 </div> <div class="내용"> 활빈당 활동 활발 </div>
+			<div class="연도"> 1904 </div> <div class="내용"> 러·일 전쟁 발발 <br> 한·일 의정서 맺음 <br> 경부선 준공  </div>
+			<div class="연도"> 1905 </div> <div class="내용"> 을사조약 체결 <br> 항일 의병 운동 재개  </div>
+			<div class="연도"> 1906 </div> <div class="내용"> 대한 자강회 조직, 최익현·신돌석 의병 봉기 <br> 이인직, 신소설 발표  </div>
+			<div class="연도"> 1907 </div> <div class="내용"> 국채 보상 운동 전개 <br> 헤이그 특사 파견 <br> 군대 해산 <br> 신민회 결성 <br> 13도 창의군 활동  </div>
+			<div class="연도"> 1908 </div> <div class="내용"> 동양 척식 주식 회사 설립 </div>
+			<div class="연도"> 1909 </div> <div class="내용"> 안중근, 이토 히로부미 사살 <br> 나철, 대종교 창시 <br> 일본군, 남한 대토벌 벌임 </div>
+			<div class="연도"> 1910 </div> <div class="내용"> 홍범도 등 연해주 의병 국내 진격 작전 <br> <b>주권을 빼앗김</b> </div>
+			<div class="연도"> 1912 </div> <div class="내용"> 임병찬 대한 독립 의군부 조직, 토지 조사 사업 시작(~1918) </div>
+			<div class="연도"> 1914 </div> <div class="내용"> 박용만, 하와이에서 국민 군단 조직  </div>
+			<div class="연도"> 1915 </div> <div class="내용"> 대한 광복회 조직 </div>
+			<div class="연도"> 1919 </div> <div class="내용"> <b> 3·1 운동 <br> 대한 민국 임시 정부 수립</b> <br> 의열단 조직 <br> 한국인에 의한 영화 제작 시작  </div>
+			<div class="연도"> 1920 </div> <div class="내용"> 봉오동과 청산리에서 일본군 격파 <br> 조만식, 조선 물산 장려회 조직 <br> 조선일보·동아일보 창간  </div>
+			<div class="연도"> 1922 </div> <div class="내용"> 민립 대학 설립 운동 추진 <br> 이광수 민족 개조론 발표 <br> 어린이 날 행사를 치름 </div>
+			<div class="연도"> 1923 </div> <div class="내용"> 암태도 농민 항쟁(~1924) <br> 일본, 관동 조선인 대학살 </div>
+			<div class="연도"> 1924 </div> <div class="내용"> 북률 농민 항쟁 일어남 <br> 조선 청년 동맹, 조선 노·농 총동맹 결성 <br> 조선 공산당 결성 </div>
+			<div class="연도"> 1925 </div> <div class="내용"> 6·10 만세 운동 <br> 나석주, 동양 척식 회사에 폭탄을 던짐 <br> 경성 제국 대학 개교  </div>
+			<div class="연도"> 1926 </div> <div class="내용"> 신간회 결성 <br> 라디오 방송 시작  </div>
+			<div class="연도"> 1928 </div> <div class="내용"> 원산 총파업(~1929) </div>
+			<div class="연도"> 1929 </div> <div class="내용"> 광주 학생 항일 운동 </div>
+			<div class="연도"> 1931 </div> <div class="내용"> 일제의 만주 침략 <br> 신간회 해소. 동아일보 브나로드 운동 전개(~1934) </div>
+			<div class="연도"> 1932 </div> <div class="내용"> 이봉창, 윤봉길의 의거 <br> 조선 혁명군과 한국 독립군이 한·중 연합군 조직  </div>
+			<div class="연도"> 1933 </div> <div class="내용"> 한글 맞춤법 통일안 제정 <br> 조선 총독부, 농촌 진흥 운동 시작  </div>
+			<div class="연도"> 1936 </div> <div class="내용"> 손기정, 베를린 올림픽 대회 마라톤 우승 <br> 동아일보 일장기 말살 사건  </div>
+			<div class="연도"> 1937 </div> <div class="내용"> 중·일 전쟁 시작 <br> 황국 신민의 서사 제정 및 신사 참배 강요 <br> 화신 백화점 개점  </div>
+			<div class="연도"> 1938 </div> <div class="내용"> 김원봉 등 조선 의용대 조직 <br> <b> 한글 교육 금지 </b> </div>
+			<div class="연도"> 1939 </div> <div class="내용"> 강제 연행 시작(국민 징용령). 1945년까지 45만 명이 동원됨  </div>
+			<div class="연도"> 1940 </div> <div class="내용"> 한국 광복군 창설 <br> 창씨 개명 실시 <br> 조선·동아일보 폐간  </div>
+			<div class="연도"> 1941 </div> <div class="내용"> 임시 정부, 건국 강령 발표 및 대일 선전 포고  </div>
+			<div class="연도"> 1942 </div> <div class="내용"> 독립 동맹 및 조선 의용군 결성 <br> 조선어학회 사건 <br> 서울 인구 100만을 넘어섬 </div>
+			<div class="연도"> 1943 </div> <div class="내용"> 일제, 징병제·학병제 실시로 조선 청년을 일본군으로 끌고 감 </div>
+			<div class="연도"> 1944 </div> <div class="내용"> 조선 총독부, 여자 정신대 근무령 공포·시행 <br> 여운형, 건국 동맹 결성 </div>
+			<div class="연도"> 1945 </div> <div class="내용"> <b>해방</b> <br> 건국 준비 위원회 발족 <br> 미·소 군정 실시 <br> 모스크바 3상 회의 개최  </div>
+			<div class="연도"> 1946 </div> <div class="내용"> 북조선 임시 인민 위원회 발족 <br> 북한, 토지 개혁 실시 <br> 제2차 미·소 공동 위원회 소집 <br> <b>38선 이북으로 통행 금지</b> </div>
+			<div class="연도"> 1947 </div> <div class="내용"> 제2차 미·소 공동위 개최, 여운형 피살 </div>
+			<div class="연도"> 1948 </div> <div class="내용"> 김구, 남북 협상을 제의 <br> 제주 4·3 항쟁 시작 <br> 유엔 감시 하에 남한 총선거 실시, <b>대한 민국 정부 수립 <br> <북한, 조선 민주주의 인민 공화국 수립 </b> </div>
+			<div class="연도"> 1949 </div> <div class="내용"> 반민족 행위 특별 조사 위원회 발족 <br> 정부, 농지 개혁법 공포 <br> 김구 순국 </div>
+			<div class="연도"> 1950 </div> <div class="내용"> 한·미 상호 방위 원조 협정 조인 <br> 북한 남침으로 <b>6·25 전쟁 발발</b> <br> 중공군, 한국전 개입 </div>
+			<div class="연도"> 1951 </div> <div class="내용"> 소련 유엔 대표, 38선 정전 회담 제의  </div>
+			<div class="연도"> 1952 </div> <div class="내용"> 국회, 경찰 포위 속에 개헌안 발췌 통과  </div>
+			<div class="연도"> 1953 </div> <div class="내용"> 포로 교환 협정 조인 <br> <b>남북 휴전 협정</b>  </div>
+			<div class="연도"> 1954 </div> <div class="내용"> 국회, 개헌안 사사오입 통과 처리 </div>
+			<div class="연도"> 1956 </div> <div class="내용"> 제3대 정·부통령 선거로 대통령에 자유당 이승만, 부통령에 민주당의 장면 당선 <br> 북한, 천리마 운동 시작 </div>
+			<div class="연도"> 1958 </div> <div class="내용"> 진보당 사건 발생, 위원장 조봉암 등 간부 7명 간첩 혐의로 구속 </div>
+			<div class="연도"> 1960 </div> <div class="내용"> 제5대 정·부통령 선거 실시, 대통령 이승만·부통령 이기붕 당선 <br> 마산에서 부정 선거 규탄 시위 <br> 서울 시내 2만여 학생 총궐기 <br> <b>4.19 혁명 발발 </b> </div>
+			<div class="연도"> 1961 </div> <div class="내용"> 군사 정변 일어남 <br> 북한, 제1차 경제 개발 계획 시작(~1970) </div>
+			<div class="연도"> 1962 </div> <div class="내용"> 제1차 경제 개발 5개년 계획 시작(~1966) <br> 공용 연호 서기로 변경 <br> 북한, 4대 군사 노선 채택 </div>
+			<div class="연도"> 1963 </div> <div class="내용"> 대통령 선거 실시해 박정희 당선 </div>
+			<div class="연도"> 1964 </div> <div class="내용"> 한·일 회담 반대 시위, 월남 지원을 위한 국군 파견에 관한 협정 체결 <br> 미터법 실시  </div>
+			<div class="연도"> 1965 </div> <div class="내용"> 한·일 협정 조인, 일본과 국교 정상화  </div>
+
+			<div class="연도"> 1966 </div> <div class="내용"> 한·미 행정 협정 조인 </div>
+			<div class="연도"> 1968 </div> <div class="내용"> 국민 교육 현장 선포. 미국 정보함 푸에블로 호 사건 발발 </div>
+			<div class="연도"> 1969 </div> <div class="내용"> 3선 개헌 국민 투표 법안 국회서 변칙 통과 <br>
+			경부 고속 도로 개통 <br> 새마을 운동 시작 <br> 서울 평화 시장 노동자 전태일이 노동 조건 개선을 요구하며 분신함 </div>
+			<div class="연도"> 1972 </div> <div class="내용"> 7.4 남북 공동 성명 발표 <br> 유신 헌법 확정 <br> 북한, 사회주의 헌법 공포, 주석제 신설  </div>
+			<div class="연도"> 1975 </div> <div class="내용"> 대통령 긴급 조치 9호 발표 <br> 북한 비동맹 회원국 가입  </div>
+			<div class="연도"> 1977 </div> <div class="내용"> 한국 등반대 에베레스트 등정 성공 <br> 수출 100억 불 달성  </div>
+			<div class="연도"> 1978 </div> <div class="내용"> 자연 보호 헌장 선포 </div>
+			<div class="연도"> 1979 </div> <div class="내용"> 부·마 항쟁 <br> 박정희 대통령 김재규 정보부장에 의해 피격 사망 <br> 신군부 쿠데타, 정승화 육참 체포 </div>
+			<div class="연도"> 1980 </div> <div class="내용"> 광주 민중 항쟁 </div>
+			<div class="연도"> 1981 </div> <div class="내용"> 전두환, 대통령에 당선  </div>
+			<div class="연도"> 1982 </div> <div class="내용"> 야간 통행 금지 전면 해제 <br> 정부, 일본에 역사 교과서 왜곡 내용 시정을 요구  </div>
+			<div class="연도"> 1983 </div> <div class="내용"> KBS 이산 가족 찾기 TV 생방송  </div>
+			<div class="연도"> 1985 </div> <div class="내용"> 남북 고향 방문단 상호 교류 <br> 북한, 핵확산 금지 조약(NPT) 가입  </div>
+			<div class="연도"> 1986 </div> <div class="내용"> 아시아 경기 대회 개최  </div>
+			<div class="연도"> 1987 </div> <div class="내용"> 전국적인 민주화 시위 </div>
+			<div class="연도"> 1988 </div> <div class="내용"> 노태우, 대통령에 당선 <br> 제24회 서울 올림픽 경기 대회 개막 </div>
+			<div class="연도"> 1989 </div> <div class="내용"> 헝가리, 폴란드 등 동구권 국가와 수교 정주영 현대 그룹 명예 회장 방북, 남북 경제 협력 논의  </div>
+			<div class="연도"> 1990 </div> <div class="내용"> 소련과 국교 수립 </div>
+			<div class="연도"> 1991 </div> <div class="내용"> 유엔 총회, 남북한 유엔 가입안을 만장일치로 통과 </div>
+			<div class="연도"> 1992 </div> <div class="내용"> 중국과 국교 수립 <br> 김영삼, 14대 대통령에 당선  </div>
+			<div class="연도"> 1993 </div> <div class="내용"> 금융 실명제 실시 <br> 북한, 핵확산 금지 조약(NPT) 탈퇴  </div>
+			<div class="연도"> 1994 </div> <div class="내용"> 북한, 김일성 주석 사망  </div>
+			<div class="연도"> 1995 </div> <div class="내용"> 지방 자치제 실시 <br> 옛 총독부 건물 해체  </div>
+			<div class="연도"> 1998 </div> <div class="내용"> 김대중 정부 출범 </div>
+		</div>
+
+
+
+
+		<script>
+		</script>
+	</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+			@import url('https://webfontbox.github.io/Arita/font.css');
+			@import url('https://webfontbox.github.io/Arita/font.min.css');
+
+			html, body { margin: 0; padding: 0; height: 100%; overflow: hidden;}
+
+			/* 햄버거 메뉴 */
+
+				/*
+				 * Made by Erik Terwan
+				 * 24th of November 2015
+				 * MIT License
+				 *
+				 *
+				 * If you are thinking of using this in
+				 * production code, beware of the browser
+				 * prefixes.
+				 */
+
+				#menuToggle
+				{
+				  display: block;
+				  position: absolute;
+				  top: 2vw;
+				  left: 1vw;
+				  
+				  z-index: 1;
+				  
+				  -webkit-user-select: none;
+				  user-select: none;
+				}
+
+				#menuToggle a
+				{
+				  text-decoration: none;
+				  color: black;
+				  
+				  transition: color 0.3s ease;
+				}
+
+				#menuToggle a:hover
+				{
+				  color: #b8ff48;
+				}
+
+
+				#menuToggle input
+				{
+				  display: block;
+				  width: 40px;
+				  height: 32px;
+				  position: absolute;
+				  top: -7px;
+				  left: -5px;
+				  
+				  cursor: pointer;
+				  
+				  opacity: 0; /* hide this */
+				  z-index: 2; /* and place it over the hamburger */
+				  
+				  -webkit-touch-callout: none;
+				}
+
+				/*
+				 * Just a quick hamburger
+				 */
+				#menuToggle span
+				{
+				  display: block;
+				  width: 33px;
+				  height: 4px;
+				  margin-bottom: 5px;
+				  position: relative;
+				  
+				  background: black;
+				  
+				  z-index: 1;
+				  
+				  transform-origin: 4px 0px;
+				  
+				  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+				              opacity 0.55s ease;
+				}
+
+				#menuToggle span:first-child
+				{
+				  transform-origin: 0% 0%;
+				}
+
+				#menuToggle span:nth-last-child(2)
+				{
+				  transform-origin: 0% 100%;
+				}
+
+				/* 
+				 * Transform all the slices of hamburger
+				 * into a crossmark.
+				 */
+				#menuToggle input:checked ~ span
+				{
+				  opacity: 1;
+				  transform: rotate(45deg) translate(-2px, -1px);
+				  background: black;
+				}
+
+				/*
+				 * But let's hide the middle one.
+				 */
+				#menuToggle input:checked ~ span:nth-last-child(3)
+				{
+				  opacity: 0;
+				  transform: rotate(0deg) scale(0.2, 0.2);
+				}
+
+				/*
+				 * Ohyeah and the last one should go the other direction
+				 */
+				#menuToggle input:checked ~ span:nth-last-child(2)
+				{
+				  transform: rotate(-45deg) translate(0, -1px);
+				}
+
+				/*
+				 * Make this absolute positioned
+				 * at the top left of the screen
+				 */
+				#menu
+				{
+				  position: absolute;
+				  width: 11vw;
+				  margin: -100px 0 0 -50px;
+				  padding: 50px;
+				  padding-top: 125px;
+				  
+				  background: #fff;
+				  list-style-type: none;
+				  -webkit-font-smoothing: antialiased;
+				  /* to stop flickering of text in safari */
+				  
+				  transform-origin: 0% 0%;
+				  transform: translate(-100%, 0);
+				  
+				  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+				}
+
+				#menu li
+				{ 
+				  font-family: 'Arita';
+				  padding: 10px 0;
+				  font-size: 22px;
+				}
+
+				/*
+				 * And let's slide it in from the left
+				 */
+				#menuToggle input:checked ~ ul
+				{
+				  transform: none;
+				}
+
+			.title {
+				height: 6vh;
+				padding-top: 1vw;
+				padding-bottom: 1vw;
+				font-family: 'Arita';
+				font-weight: 600;
+				text-align: center;
+				outline: 1px solid black;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.text {
+				font-family: 'Arita buri';
+				font-weight: 500;
+				line-height: 1.7;
+				height: 82vh;
+				overflow: auto;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.footer {
+				height: 8vh;
+				text-align: center;
+			}
+
+
+			.main {width: 100%;  font-size: 16pt; text-align: center; }
+
+			img {
+			    display: inline-block;
+			    margin: 0 auto;
+			    position: absolute;
+			    top: 50%;
+			    left: 50%;
+			    transform: translate(-50%, -50%);
+			}
+
+			.link {
+				font-size: 14pt;
+				color: black;
+				padding: 15px;
+			}
+
+			a {text-decoration-line: none;}
+
+
+			button {
+				width: 20px;
+				height: 20px;
+				background-color: #A5A5A5;
+				border: none;
+				border-radius: 5px;
+			}
+			button:hover {background-color: #b8ff48;}
+			button:active {background-color: #b8ff48;}
+			button:visited {color: #b8ff48;}
+
+			.spanbutton {
+				font-family: 'Arita'; 
+				margin: 0px 50px;
+				display: inline;
+			}
+
+
+			.name {
+				position: absolute;
+				font-family: 'Arita';
+				font-weight: 600;
+				font-size: 18pt;
+				text-align: left;
+				z-index: 1;
+			}
+
+			span {
+				font-family: 'Arita buri';
+				font-weight: 500;
+				font-size: 14pt;
+				line-height: 1.3;
+				width: 300px;
+				display: inline-block;
+			}
+
+			.name span {
+				display: none;
+			}
+
+			.name:hover {background-color: #b8ff48; padding: 10px; outline: 0.5px solid black; z-index: 10;}
+
+			.name:hover span {
+				display: block;
+			}
+
+			.top {transform: translate(0%, -100%);}
+			.right {text-align: right;}
+
+		</style>
+		<title>한글</title>
+	</head>
+
+	<body>
+		<!--    Made by Erik Terwan    -->
+		<!--   24th of November 2015   -->
+		<!--        MIT License        -->
+		<nav role="navigation">
+		  <div id="menuToggle">
+		    <!--
+		    A fake / hidden checkbox is used as click reciever,
+		    so you can use the :checked selector on it.
+		    -->
+		    <input type="checkbox" />
+		    
+		    <!--
+		    Some spans to act as a hamburger.
+		    
+		    They are acting like a real hamburger,
+		    not that McDonalds stuff.
+		    -->
+		    <span></span>
+		    <span></span>
+		    <span></span>
+		    
+		    <!--
+		    Too bad the menu has to be inside of the button
+		    but hey, it's pure CSS magic.
+		    -->
+		    <ul id="menu">
+		      <a href="index.html"><li>Main</li></a>
+		      <a href="default_hangeul.html"><li>한글</li></a>
+		      <a href="default_latin.html"><li>라틴</li></a>
+		      <a href="default_munjang.html"><li>문장부호</li></a>
+		    </ul>
+		  </div>
+		</nav>
+
+		<div class="title main">
+			<a href="hangeul_pc_yet.html"><div class="link">옛활자시대</div></a>
+			<a href="hangeul_pc_sae.html"><div class="link">새활자시대</div></a>
+			<a href="hangeul_pc_wondo.html"><div class="link">원도활자시대</div></a>
+			<a href="hangeul_pc_digital.html"><div class="link">디지털타입시대</div></a>
+		</div>
+		<div class="text main">
+				<img src="img/default_hangeul_line.svg" id="myImage1" style="height: 115%"> 
+
+				<div class="name top" style="top: 30%; left: 38%;"> 윗선 <br>
+					<span style="width: 310px;"> 보통 글자의 맨윗부분의 기준선. <br> 글자를 일정한 비례의 가로 글줄로 <br> 나누어볼 때 다른 선에 비해 <br> 상대적으로 위에 있는 기준선을 말한다. </span>
+				</div>
+
+				<div class="name right" style="top: 40.5%; left: 34%; transform: translate(-100%, 0%);"> 첫닿윗선 <br>
+					<span> 첫 닿소리 글자의 윗부분이 닿는 <br> 기준선을 말한다. </span>
+				</div>
+
+				<div class="name right" style="top: 51%; left: 34%; transform: translate(-100%, 0%);"> 첫닿밑선 <br>
+					<span> 첫 닿소리 글자의 아래쪽 밑 부분이 <br> 닿는 기준선을 말한다. </span>
+				</div>
+
+				<div class="name" style="top: 61%; left: 33%;"> 밑선 <br>
+					<span> 기둥 맨 아랫부분의 범위를 결정하는 선을 말한다. </span>
+				</div>
+
+				<div class="name top" style="top: 30%; left: 50.5%;"> 첫닿왼선 <br>
+					<span> 첫 닿소리 글자의 왼쪽 바깥 부분이 <br> 닿는 기준선을 말한다. </span>
+				</div>
+
+				<div class="name top" style="top: 19%; left: 58%;"> 첫닿오른선 <br>
+					<span> 첫 닿소리 글자의 오른쪽 바깥 부분이 닿는 기준선을 말한다. </span>
+				</div>
+
+				<div class="name top" style="top: 30%; left: 60%;"> 기둥선 <br>
+					<span style="width: 310px;"> 홀자에서 세로로 된 줄기인 기둥의 <br> 자리를 기준으로 삼는 안내선을 말한다. </span>
+				</div>
+
+				<div class="name" style="top: 61%; left: 53.5%;"> 왼선 <br>
+					<span> 글자 또는 글자의 일정한 부분의 왼쪽 기준선을 줄인 말. <br> 오른쪽 기준선의 상대적 개념. <br> 특히 글자가 세로 글줄을 이룰 때 <br> 맨 왼쪽의 기준선을 말한다. </span>
+				</div>
+
+				<div class="name" style="top: 61%; left: 62.5%;"> 오른선 <br>
+					<span style="width: 310px;"> 글자가 세로 글줄을 이룰 때 글자 <br> 너비의 오른쪽 기준이 되는 선을 말한다. </span>
+				</div>
+		</div>
+
+		<div class="footer main">
+			<div class="spanbutton"> <a href="#"> <button style="background-color: #b8ff48;"></button> </a> 기준선 </div>
+			<div class="spanbutton"> <a href="default_hangeul-2.html"> <button></button> </a> 글자부분이름 </div>
+		</div>
+	</body>
+</html>
